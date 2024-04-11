@@ -75,6 +75,11 @@ public class login extends javax.swing.JFrame {
         jButton1.setText("Iniciar");
 
         jButton2.setText("Registrar-se");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -141,6 +146,17 @@ public class login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        reguistre pantallaReguistre = new reguistre();
+        pantallaReguistre.setTitle("Registrar-se - Alfabetització");
+        pantallaReguistre.setMinimumSize(new java.awt.Dimension(500, 600));
+        pantallaReguistre.setResizable(false);
+        pantallaReguistre.setLocationRelativeTo(null);
+        
+        this.dispose();
+        pantallaReguistre.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
