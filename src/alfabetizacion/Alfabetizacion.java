@@ -1,5 +1,6 @@
 package alfabetizacion;
 
+import javax.swing.ImageIcon;
 import loginReguistre.login;
 
 public class Alfabetizacion {
@@ -9,11 +10,13 @@ public class Alfabetizacion {
     }
 
     private void inici() {
+        ImageIcon icono = new ImageIcon("img/logo.png");
         login pantallaLogin = new login();
         pantallaLogin.setTitle("Iniciar Sessió - Alfabetització");
         pantallaLogin.setMinimumSize(new java.awt.Dimension(500, 600));
         pantallaLogin.setResizable(false);
         pantallaLogin.setLocationRelativeTo(null);
+        pantallaLogin.setIconImage(icono.getImage());
         pantallaLogin.setVisible(true);
     }
 }
