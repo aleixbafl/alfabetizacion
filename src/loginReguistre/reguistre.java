@@ -421,7 +421,7 @@ public class reguistre extends javax.swing.JFrame {
                         } 
                     } else {
                         if (usuariCorrecte()) {
-                            
+                            insertarCredencials();
                         }
                     }
                 }
@@ -661,7 +661,6 @@ public class reguistre extends javax.swing.JFrame {
             String[] valors = {dniObligatori.getText(), nomObligatori.getText(), cognomObligatori.getText(), dataString(dataObligatori.getCalendar()), dniOpcional.getText(), nomOpcional.getText(), cognomOpcional.getText(), dataString(dataOpcional.getCalendar())};
             try {
                 int num = conectarBD.ecjecutarActualitzar("INSERT INTO `pareMare`(`dni`, `nom`, `cognom`, `dataNaixe`) VALUES ('?','?','?','?'), ('?','?','?','?');", valors);
-                System.out.println(num);
             } catch (SQLException ex) {
                 if (ex.getErrorCode() == 0) {
                     missatge("A agut un error en la connexió al servidor de Base de Dades, comprova la vostra connexió a internet.");
