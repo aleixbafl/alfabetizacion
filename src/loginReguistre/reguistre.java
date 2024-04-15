@@ -4,17 +4,34 @@
  */
 package loginReguistre;
 
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import serverConexio.conexioBD;
+
 /**
  *
  * @author aleix
  */
 public class reguistre extends javax.swing.JFrame {
-
-    /**
-     * Creates new form reguistre
-     */
+    
+    private boolean dosProgenitos = false;
+    
     public reguistre() {
         initComponents();
+        if (preguntaSiNo("Sou 2 pares/mares?") == JOptionPane.YES_OPTION) {
+            dosProgenitos = true;
+        }
     }
 
     /**
@@ -45,7 +62,7 @@ public class reguistre extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         dniOpcional = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        nomopcional = new javax.swing.JTextField();
+        nomOpcional = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cognomOpcional = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -54,13 +71,13 @@ public class reguistre extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        nomUsuari = new javax.swing.JTextField();
+        correuElectronic = new javax.swing.JTextField();
+        contrasenya1 = new javax.swing.JPasswordField();
         jLabel15 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        contrasenya2 = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
         registrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -166,7 +183,7 @@ public class reguistre extends javax.swing.JFrame {
 
         jLabel10.setText("Nom:");
 
-        nomopcional.setToolTipText("Ex.: Pepe");
+        nomOpcional.setToolTipText("Ex.: Pepe");
 
         jLabel11.setText("Cognom:");
 
@@ -189,7 +206,7 @@ public class reguistre extends javax.swing.JFrame {
                     .addGroup(projenitor3Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(nomopcional, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                        .addComponent(nomOpcional, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
                     .addGroup(projenitor3Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -212,7 +229,7 @@ public class reguistre extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(projenitor3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(nomopcional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomOpcional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(projenitor3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -254,22 +271,18 @@ public class reguistre extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(correuElectronic, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(contrasenya2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(contrasenya1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -280,21 +293,31 @@ public class reguistre extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomUsuari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contrasenya1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(correuElectronic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contrasenya2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Ja tinc un compte");
+        login.setText("Ja tinc un compte");
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
 
         registrar.setText("Registrar Compte");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -304,7 +327,7 @@ public class reguistre extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -325,7 +348,7 @@ public class reguistre extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
@@ -365,6 +388,49 @@ public class reguistre extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
+        login pantallaLogin = new login();
+        pantallaLogin.setTitle("Iniciar Sessió - Alfabetització");
+        pantallaLogin.setMinimumSize(new java.awt.Dimension(500, 600));
+        pantallaLogin.setResizable(false);
+        pantallaLogin.setLocationRelativeTo(null);
+        pantallaLogin.setIconImage(icono.getImage());
+        
+        this.dispose();
+        pantallaLogin.setVisible(true);
+    }//GEN-LAST:event_loginActionPerformed
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        if (!campsBuits()) {
+            if (dniCorrecte(dniObligatori.getText())) {
+                if (dataCorrecte(dataObligatori.getCalendar())) {
+                    if (dosProgenitos) {
+                        if (dniCorrecte(dniOpcional.getText())) {
+                            if (dataCorrecte(dataOpcional.getCalendar())) {
+                                if (dniObligatori.getText().equals(dniOpcional.getText())) {
+                                    missatge("El DNI dels 2 progenitors no poden ser iguals.");
+                                }
+                                if (usuariCorrecte()) {
+                                    insertarCredencials();
+                                }
+                            }
+                        } else {
+                            missatge("El DNI introduït del 2n progenitor és incorrecte.");
+                        } 
+                    } else {
+                        if (usuariCorrecte()) {
+                            
+                        }
+                    }
+                }
+            } else {
+                missatge("El DNI introduït del 1r progenitor és incorrecte.");
+            }
+        }
+    }//GEN-LAST:event_registrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -398,16 +464,19 @@ public class reguistre extends javax.swing.JFrame {
                 new reguistre().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cognomObligatori;
     private javax.swing.JTextField cognomOpcional;
+    private javax.swing.JPasswordField contrasenya1;
+    private javax.swing.JPasswordField contrasenya2;
+    private javax.swing.JTextField correuElectronic;
     private com.toedter.calendar.JCalendar dataObligatori;
     private com.toedter.calendar.JCalendar dataOpcional;
     private javax.swing.JTextField dniObligatori;
     private javax.swing.JTextField dniOpcional;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -428,14 +497,204 @@ public class reguistre extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton login;
     private javax.swing.JTextField nomObligatori;
-    private javax.swing.JTextField nomopcional;
+    private javax.swing.JTextField nomOpcional;
+    private javax.swing.JTextField nomUsuari;
     private javax.swing.JPanel projenitor1;
     private javax.swing.JPanel projenitor3;
     private javax.swing.JButton registrar;
     // End of variables declaration//GEN-END:variables
+
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(rootPane, missatge);
+    }
+
+    private boolean campsBuits() {
+        if(dniObligatori.getText().isEmpty()){
+            missatge("Per a poder registrar-te/vós primer s'ha d'omplir els camps del progenitor obligatori (falta el DNI).");
+            return true;
+        } else {
+            if (nomObligatori.getText().isEmpty()) {
+                missatge("Per a poder registrar-te/vós primer s'ha d'omplir els camps del progenitor obligatori (falta el Nom).");
+                return true;
+            } else {
+                if (cognomObligatori.getText().isEmpty()) {
+                    missatge("Per a poder registrar-te/vós primer s'ha d'omplir els camps del progenitor obligatori (falta el Cognom).");
+                    return true;
+                } else {
+                    if (dosProgenitos) {
+                        if (dniOpcional.getText().isEmpty()) {
+                            missatge("Per a poder registrar-te/vós primer s'ha d'omplir els camps del progenitor opcional (falta el DNI), ja que s'ha escollit que sou 2 progenitors.");
+                            return true;
+                        } else {
+                            if (nomOpcional.getText().isEmpty()) {
+                                missatge("Per a poder registrar-te/vós primer s'ha d'omplir els camps del progenitor opcional (falta el Nom), ja que s'ha escollit que sou 2 progenitors.");
+                                return true;
+                            } else {
+                                if (cognomOpcional.getText().isEmpty()) {
+                                    missatge("Per a poder registrar-te/vós primer s'ha d'omplir els camps del progenitor opcional (falta el Cognom), ja que s'ha escollit que sou 2 progenitors.");
+                                    return true;
+                                }
+                                return false;
+                            }
+                        }
+                    } else{
+                        return campsBuitsUsuari();
+                    }
+                }
+            }
+        }
+    }
+
+    private String dataString(Calendar calendar) {
+        SimpleDateFormat dataForm = new SimpleDateFormat("yyyy-MM-dd");
+        String data = dataForm.format(calendar.getTime());
+        return data;
+    }
+
+    private boolean dniCorrecte(String dni) {
+        if (dni.length() != 9) {
+            return false;
+        }
+        
+        String numeros = "";
+        for (int i = 0; i < dni.length() - 1; i++) {
+            numeros = numeros + dni.charAt(i);
+        }
+        
+        char lletra = Character.toUpperCase(dni.charAt(8));
+        
+        if (!numeros.matches("[0-9]+")) {
+            return false;
+        }
+        
+        char lletraCalcul = calcularLletraDNI(Integer.parseInt(numeros));
+        
+        return lletraCalcul == lletra;
+    }
+    
+    private boolean dataCorrecte(Calendar dataCalen){
+        String data = dataString(dataCalen);
+        
+        LocalDate dataGuardada = LocalDate.parse(data, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate dataActual = LocalDate.now();
+        
+        int anys = Period.between(dataGuardada, dataActual).getYears();
+        if (anys < 18) {
+            missatge("Els pares no poden ser menors de 18 anys.");
+            return false;
+        } else{
+            return true;
+        }
+    }
+
+    private char calcularLletraDNI(int numerosDNI) {
+        String lletres = "TRWAGMYFPDXBNJZSQVHLCKE";
+        int index = numerosDNI%23;
+        return lletres.charAt(index);
+    }
+
+    private int preguntaSiNo(String missatge) {
+        return JOptionPane.showConfirmDialog(this, missatge, "Confirmación", JOptionPane.YES_NO_OPTION);
+    }
+
+    private boolean campsBuitsUsuari() {
+        if (nomUsuari.getText().isEmpty()) {
+            missatge("S'ha d'introduir el nom de l'usuari.");
+            return true;            
+        } else if (correuElectronic.getText().isEmpty()) {
+            missatge("S'ha d'introduir el correu de l'usuari.");
+            return true;
+        } else if (contrasenya1.getText().isEmpty()) {
+            missatge("S'ha d'introduir la contrasenya de l'usuari.");
+            return true;
+        } else if (contrasenya2.getText().isEmpty()) {
+            missatge("S'ha d'introduir la confirmació de la contrasenya de l'usuari.");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean usuariCorrecte() {
+        conexioBD conectarBD = new conexioBD();
+        conectarBD.obrirConexio();
+        try {
+            ResultSet resultat = conectarBD.ecjecutarSelect("SELECT `nomUsuari` FROM `usuari` WHERE `nomUsuari`LIKE '" + nomUsuari.getText() + "';");
+            if (resultat.next()) {
+                missatge("El nom de l'usuari ja existeix, ha de ser un altre.");
+                conectarBD.tancaConexio();
+                return false;
+            } else {
+                conectarBD.tancaConexio();
+                if (correuValid(correuElectronic.getText())) {
+                    if (contrasenya1.getText().equals(contrasenya2.getText())) {
+                        return true;
+                    } else{
+                        missatge("Les contrasenyes introduïdes no coincideixen.");
+                        return false;
+                    }
+                } else {
+                    missatge("Correu electrònic incorrecte sol s'accepta els dominis (gmail/hotmail/yahoo \".\" com/es/mx), Ex.: \"hola@gmail.com\".");
+                    return false;
+                }
+            }
+        } catch (SQLException ex) {
+            missatge("MySQL Error: " + ex);
+        }
+        conectarBD.tancaConexio();
+        return false;
+    }
+
+    private boolean correuValid(String email) {
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:gmail|hotmail|yahoo)\\.(?:com|es|mx)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private void insertarCredencials() {
+        if (dosProgenitos) {
+            conexioBD conectarBD = new conexioBD();
+            conectarBD.obrirConexio();
+            String[] valors = {dniObligatori.getText(), nomObligatori.getText(), cognomObligatori.getText(), dataString(dataObligatori.getCalendar()), dniOpcional.getText(), nomOpcional.getText(), cognomOpcional.getText(), dataString(dataOpcional.getCalendar())};
+            try {
+                int num = conectarBD.ecjecutarActualitzar("INSERT INTO `pareMare`(`dni`, `nom`, `cognom`, `dataNaixe`) VALUES ('?','?','?','?'), ('?','?','?','?');", valors);
+                System.out.println(num);
+            } catch (SQLException ex) {
+                if (ex.getErrorCode() == 0) {
+                    missatge("A agut un error en la connexió al servidor de Base de Dades, comprova la vostra connexió a internet.");
+                } else if (ex.getErrorCode() == 2002) {
+                    missatge("El servidor de Base de Dades no està disponible.");
+                } else if (ex.getErrorCode() == 1040) {
+                    missatge("Error en el límit de connexió; s'ha arribat al màxim de connexions permeses pel servidor de Base de Dades.");
+                } else {
+                    missatge("Error no especificat en el procés d'inserció de les dades.");
+                }
+            } finally {
+                conectarBD.tancaConexio();
+            }
+        } else {
+            conexioBD conectarBD = new conexioBD();
+            conectarBD.obrirConexio();
+            String[] valors = {dniObligatori.getText(), nomObligatori.getText(), cognomObligatori.getText(), dataString(dataObligatori.getCalendar())};
+            try {
+                int num = conectarBD.ecjecutarActualitzar("INSERT INTO `pareMare`(`dni`, `nom`, `cognom`, `dataNaixe`) VALUES ('?','?','?','?');", valors);
+                System.out.println(num);
+            } catch (SQLException ex) {
+                if (ex.getErrorCode() == 0) {
+                    missatge("A agut un error en la connexió al servidor de Base de Dades, comprova la vostra connexió a internet.");
+                } else if (ex.getErrorCode() == 2002) {
+                    missatge("El servidor de Base de Dades no està disponible.");
+                } else if (ex.getErrorCode() == 1040) {
+                    missatge("Error en el límit de connexió; s'ha arribat al màxim de connexions permeses pel servidor de Base de Dades.");
+                } else {
+                    missatge("Error no especificat en el procés d'inserció de les dades.");
+                }
+            } finally {
+                conectarBD.tancaConexio();
+            }
+        }
+    }
 }

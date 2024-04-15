@@ -11,6 +11,7 @@ public class Alfabetizacion {
 
     private void inici() {
         ImageIcon icono = new ImageIcon("img/logo.png");
+        
         login pantallaLogin = new login();
         pantallaLogin.setTitle("Iniciar Sessió - Alfabetització");
         pantallaLogin.setMinimumSize(new java.awt.Dimension(500, 600));

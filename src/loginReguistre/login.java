@@ -4,6 +4,8 @@
  */
 package loginReguistre;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author aleix
@@ -148,11 +150,14 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
         reguistre pantallaReguistre = new reguistre();
         pantallaReguistre.setTitle("Registrar-se - Alfabetització");
         pantallaReguistre.setMinimumSize(new java.awt.Dimension(500, 600));
         pantallaReguistre.setResizable(false);
         pantallaReguistre.setLocationRelativeTo(null);
+        pantallaReguistre.setIconImage(icono.getImage());
         
         this.dispose();
         pantallaReguistre.setVisible(true);
