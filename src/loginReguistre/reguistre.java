@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 import serverConexio.conexioBD;
 
 /**
@@ -24,9 +25,9 @@ import serverConexio.conexioBD;
  * @author aleix
  */
 public class reguistre extends javax.swing.JFrame {
-    
+
     private boolean dosProgenitos = false;
-    
+
     public reguistre() {
         initComponents();
         if (preguntaSiNo("Sou 2 pares/mares?") == JOptionPane.YES_OPTION) {
@@ -390,14 +391,14 @@ public class reguistre extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         ImageIcon icono = new ImageIcon("img/logo.png");
-        
+
         login pantallaLogin = new login();
         pantallaLogin.setTitle("Iniciar Sessió - Alfabetització");
         pantallaLogin.setMinimumSize(new java.awt.Dimension(500, 600));
         pantallaLogin.setResizable(false);
         pantallaLogin.setLocationRelativeTo(null);
         pantallaLogin.setIconImage(icono.getImage());
-        
+
         this.dispose();
         pantallaLogin.setVisible(true);
     }//GEN-LAST:event_loginActionPerformed
@@ -414,14 +415,40 @@ public class reguistre extends javax.swing.JFrame {
                                 }
                                 if (usuariCorrecte()) {
                                     insertarCredencials();
+                                    missatge("Dades inserides correctament.");
+
+                                    ImageIcon icono = new ImageIcon("img/logo.png");
+
+                                    login pantallaLogin = new login();
+                                    pantallaLogin.setTitle("Iniciar Sessió - Alfabetització");
+                                    pantallaLogin.setMinimumSize(new java.awt.Dimension(500, 600));
+                                    pantallaLogin.setResizable(false);
+                                    pantallaLogin.setLocationRelativeTo(null);
+                                    pantallaLogin.setIconImage(icono.getImage());
+                                    
+                                    this.dispose();
+                                    pantallaLogin.setVisible(true);
                                 }
                             }
                         } else {
                             missatge("El DNI introduït del 2n progenitor és incorrecte.");
-                        } 
+                        }
                     } else {
                         if (usuariCorrecte()) {
                             insertarCredencials();
+                            missatge("Dades inserides correctament.");
+
+                            ImageIcon icono = new ImageIcon("img/logo.png");
+
+                            login pantallaLogin = new login();
+                            pantallaLogin.setTitle("Iniciar Sessió - Alfabetització");
+                            pantallaLogin.setMinimumSize(new java.awt.Dimension(500, 600));
+                            pantallaLogin.setResizable(false);
+                            pantallaLogin.setLocationRelativeTo(null);
+                            pantallaLogin.setIconImage(icono.getImage());
+                            
+                            this.dispose();
+                            pantallaLogin.setVisible(true);
                         }
                     }
                 }
@@ -464,7 +491,7 @@ public class reguistre extends javax.swing.JFrame {
                 new reguistre().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -511,7 +538,7 @@ public class reguistre extends javax.swing.JFrame {
     }
 
     private boolean campsBuits() {
-        if(dniObligatori.getText().isEmpty()){
+        if (dniObligatori.getText().isEmpty()) {
             missatge("Per a poder registrar-te/vós primer s'ha d'omplir els camps del progenitor obligatori (falta el DNI).");
             return true;
         } else {
@@ -539,7 +566,7 @@ public class reguistre extends javax.swing.JFrame {
                                 return false;
                             }
                         }
-                    } else{
+                    } else {
                         return campsBuitsUsuari();
                     }
                 }
@@ -557,41 +584,57 @@ public class reguistre extends javax.swing.JFrame {
         if (dni.length() != 9) {
             return false;
         }
-        
+
         String numeros = "";
         for (int i = 0; i < dni.length() - 1; i++) {
             numeros = numeros + dni.charAt(i);
         }
-        
+
         char lletra = Character.toUpperCase(dni.charAt(8));
-        
+
         if (!numeros.matches("[0-9]+")) {
             return false;
         }
-        
+
         char lletraCalcul = calcularLletraDNI(Integer.parseInt(numeros));
-        
+
+        if (lletraCalcul == lletra) {
+            conexioBD conexio = new conexioBD();
+            conexio.obrirConexio();
+            try {
+                ResultSet resultat = conexio.ecjecutarSelect("SELECT`dni` FROM `pareMare` WHERE `dni` LIKE '" + numeros + lletra + "';");
+                if (resultat.next()) {
+                    missatge("Aquest DNI ja està registrat.");
+                    conexio.tancaConexio();
+                    return false;
+                }
+                conexio.tancaConexio();
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
+
         return lletraCalcul == lletra;
     }
-    
-    private boolean dataCorrecte(Calendar dataCalen){
+
+    private boolean dataCorrecte(Calendar dataCalen) {
         String data = dataString(dataCalen);
-        
+
         LocalDate dataGuardada = LocalDate.parse(data, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         LocalDate dataActual = LocalDate.now();
-        
+
         int anys = Period.between(dataGuardada, dataActual).getYears();
         if (anys < 18) {
             missatge("Els pares no poden ser menors de 18 anys.");
             return false;
-        } else{
+        } else {
             return true;
         }
     }
 
     private char calcularLletraDNI(int numerosDNI) {
         String lletres = "TRWAGMYFPDXBNJZSQVHLCKE";
-        int index = numerosDNI%23;
+        int index = numerosDNI % 23;
         return lletres.charAt(index);
     }
 
@@ -602,7 +645,7 @@ public class reguistre extends javax.swing.JFrame {
     private boolean campsBuitsUsuari() {
         if (nomUsuari.getText().isEmpty()) {
             missatge("S'ha d'introduir el nom de l'usuari.");
-            return true;            
+            return true;
         } else if (correuElectronic.getText().isEmpty()) {
             missatge("S'ha d'introduir el correu de l'usuari.");
             return true;
@@ -630,8 +673,27 @@ public class reguistre extends javax.swing.JFrame {
                 conectarBD.tancaConexio();
                 if (correuValid(correuElectronic.getText())) {
                     if (contrasenya1.getText().equals(contrasenya2.getText())) {
-                        return true;
-                    } else{
+                        if (contrasenya1.getText().length() < 8) {
+                            missatge("La contrasenya ha de tenir almenys 8 caràcters.");
+                            return false;
+                        } else{
+                            if (!contrasenya1.getText().matches(".*[!@#$%^&*()-_=+\\\\|[{]};:'\\\",<.>/?].*")) {
+                                missatge("La contrasenya ha de contenir almenys un caràcter especial (!@#$%^&*()-_=+\\\\|[{]};:'\\\",<.>/?).");
+                                return false;
+                            } else if (!contrasenya1.getText().matches(".*[A-Z].*")) {
+                                missatge("La contrasenya ha de contenir almenys una majúscula.");
+                                return false;
+                            } else if (!contrasenya1.getText().matches(".*[a-z].*")) {
+                                missatge("La contrasenya ha de contenir almenys una minúscula.");
+                                return false;
+                            } else if (!contrasenya1.getText().matches(".*\\d.*")) {
+                                missatge("La contrasenya ha de contenir almenys un número.");
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+                    } else {
                         missatge("Les contrasenyes introduïdes no coincideixen.");
                         return false;
                     }
@@ -658,42 +720,36 @@ public class reguistre extends javax.swing.JFrame {
         if (dosProgenitos) {
             conexioBD conectarBD = new conexioBD();
             conectarBD.obrirConexio();
-            String[] valors = {dniObligatori.getText(), nomObligatori.getText(), cognomObligatori.getText(), dataString(dataObligatori.getCalendar()), dniOpcional.getText(), nomOpcional.getText(), cognomOpcional.getText(), dataString(dataOpcional.getCalendar())};
             try {
-                int num = conectarBD.ecjecutarActualitzar("INSERT INTO `pareMare`(`dni`, `nom`, `cognom`, `dataNaixe`) VALUES ('" + dniObligatori.getText() + "','" + nomObligatori.getText() + "','" + cognomObligatori.getText() + "','" + dataString(dataObligatori.getCalendar()) + "'), ('" + dniOpcional.getText() + "','" + nomOpcional.getText() + "','" + cognomOpcional.getText() + "','" + dataString(dataOpcional.getCalendar()) + "');");
+                conectarBD.ecjecutarActualitzar("INSERT INTO `pareMare`(`dni`, `nom`, `cognom`, `dataNaixe`) VALUES ('" + dniMayuscula(dniObligatori.getText()) + "','" + nomObligatori.getText() + "','" + cognomObligatori.getText() + "','" + dataString(dataObligatori.getCalendar()) + "'), ('" + dniMayuscula(dniOpcional.getText()) + "','" + nomOpcional.getText() + "','" + cognomOpcional.getText() + "','" + dataString(dataOpcional.getCalendar()) + "');");
+                conectarBD.ecjecutarActualitzar("INSERT INTO `usuari`(`nomUsuari`, `contrasenya`, `correuElecUsuari`) VALUES ('" + nomUsuari.getText() + "','" + BCrypt.hashpw(contrasenya1.getText(), BCrypt.gensalt()) + "','" + correuElectronic.getText() + "');");
+                conectarBD.ecjecutarActualitzar("INSERT INTO `familia`(`dniProje1`, `dniProje2`, `dniFill`, `nomUsuariFamil`) VALUES ('" + dniMayuscula(dniObligatori.getText()) + "','" + dniMayuscula(dniOpcional.getText()) + "','','" + nomUsuari.getText() + "')");
             } catch (SQLException ex) {
-                if (ex.getErrorCode() == 0) {
-                    missatge("A agut un error en la connexió al servidor de Base de Dades, comprova la vostra connexió a internet.");
-                } else if (ex.getErrorCode() == 2002) {
-                    missatge("El servidor de Base de Dades no està disponible.");
-                } else if (ex.getErrorCode() == 1040) {
-                    missatge("Error en el límit de connexió; s'ha arribat al màxim de connexions permeses pel servidor de Base de Dades.");
-                } else {
-                    missatge("Error no especificat en el procés d'inserció de les dades.");
-                }
+                missatge("Error en el procés d'inserció de les dades.");
             } finally {
                 conectarBD.tancaConexio();
             }
         } else {
             conexioBD conectarBD = new conexioBD();
             conectarBD.obrirConexio();
-            String[] valors = {dniObligatori.getText(), nomObligatori.getText(), cognomObligatori.getText(), dataString(dataObligatori.getCalendar())};
             try {
-                int num = conectarBD.ecjecutarActualitzar("INSERT INTO `pareMare`(`dni`, `nom`, `cognom`, `dataNaixe`) VALUES ('" + dniObligatori.getText() + "','" + nomObligatori.getText() + "','" + cognomObligatori.getText() + "','" + dataString(dataObligatori.getCalendar()) + "');");
-                System.out.println(num);
+                conectarBD.ecjecutarActualitzar("INSERT INTO `pareMare`(`dni`, `nom`, `cognom`, `dataNaixe`) VALUES ('" + dniMayuscula(dniObligatori.getText()) + "','" + nomObligatori.getText() + "','" + cognomObligatori.getText() + "','" + dataString(dataObligatori.getCalendar()) + "');");
+                conectarBD.ecjecutarActualitzar("INSERT INTO `usuari`(`nomUsuari`, `contrasenya`, `correuElecUsuari`) VALUES ('" + nomUsuari.getText() + "','" + BCrypt.hashpw(contrasenya1.getText(), BCrypt.gensalt()) + "','" + correuElectronic.getText() + "');");
+                conectarBD.ecjecutarActualitzar("INSERT INTO `familia`(`dniProje1`, `nomUsuariFamil`) VALUES ('" + dniMayuscula(dniObligatori.getText()) + "','" + nomUsuari.getText() + "')");
             } catch (SQLException ex) {
-                if (ex.getErrorCode() == 0) {
-                    missatge("A agut un error en la connexió al servidor de Base de Dades, comprova la vostra connexió a internet.");
-                } else if (ex.getErrorCode() == 2002) {
-                    missatge("El servidor de Base de Dades no està disponible.");
-                } else if (ex.getErrorCode() == 1040) {
-                    missatge("Error en el límit de connexió; s'ha arribat al màxim de connexions permeses pel servidor de Base de Dades.");
-                } else {
-                    missatge("Error no especificat en el procés d'inserció de les dades.");
-                }
+                missatge("Error en el procés d'inserció de les dades a  la base de dades.");
             } finally {
                 conectarBD.tancaConexio();
             }
         }
+    }
+
+    private String dniMayuscula(String dni) {
+        String num = "";
+        for (int i = 0; i < dni.length() - 1; i++) {
+            num = num + dni.charAt(i);
+        }
+        char lletra = Character.toUpperCase(dni.charAt(8));
+        return num + lletra;
     }
 }
