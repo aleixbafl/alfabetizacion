@@ -6,9 +6,21 @@ package panells;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import loginReguistre.login;
+import objectesBD.usuariBD;
+import serverConexio.conexioBD;
 
 /**
  *
@@ -21,6 +33,54 @@ public class families extends javax.swing.JFrame {
      */
     public families() {
         initComponents();
+        
+        
+        
+        File f = new File("usuari.usr");
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            while (fis.available() > 0 ) {
+                usuariBD userLogin = (usuariBD) ois.readObject();
+
+                conexioBD bd = new conexioBD();
+                bd.obrirConexio();
+                try {
+                    DefaultListModel modelo = new DefaultListModel();
+                    ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT `fills`.`nom`, `fills`.`cognoms` FROM `fills` WHERE `fills`.`dni` LIKE (SELECT `familia`.`dniFill` FROM `familia` WHERE `familia`.`nomUsuariFamil` LIKE '" + userLogin.getNomUsuari() + "' AND `familia`.`dniFill` IS NOT NULL); ");
+                    String nomCognom = "";
+                    while(resultatUsuari.next()){
+                        if (nomCognom.equalsIgnoreCase("")) {
+                            nomCognom = resultatUsuari.getString("nom") + " " + resultatUsuari.getString("cognoms");
+                        } else {
+                            nomCognom = nomCognom + "|" + resultatUsuari.getString("nom") + " " + resultatUsuari.getString("cognoms");
+                        }
+                    }
+                    if (nomCognom.contains(String.valueOf('|'))) {
+                        String[] nomCognomArry = nomCognom.split("|");
+                        for (int i = 0; i < nomCognomArry.length; i++) {
+                            modelo.addElement(nomCognomArry[i]);
+                        }
+                    } else {
+                        modelo.addElement(nomCognom);
+                    }
+                    if (nomCognom.isEmpty()) {
+                        fillsMissatge.setText("No hi ha fills");
+                    }
+                    llistaFills.setModel(modelo);
+                } catch (SQLException ex) {
+                    Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException ex) {
+            missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
+        } catch (IOException ex) {
+            missatge("Error de lectura de les credencials.");
+        } catch (ClassNotFoundException ex) {
+            missatge("Error no especificat.");
+        }
     }
 
     /**
@@ -36,13 +96,15 @@ public class families extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        afegir = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
+        historic = new javax.swing.JButton();
+        activitats = new javax.swing.JButton();
+        tancaSessio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        llistaFills = new javax.swing.JList<>();
+        fillsMissatge = new javax.swing.JLabel();
+        desseleccionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 500));
@@ -71,69 +133,88 @@ public class families extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Afegir");
+        jPanel3.setToolTipText("");
 
-        jButton2.setText("Eliminar");
+        afegir.setText("Afegir");
 
-        jButton3.setText("Históric");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        eliminar.setText("Eliminar");
+
+        historic.setText("Històric");
+        historic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                historicActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Inoiciar Jocs");
+        activitats.setText("Activitats");
+        activitats.setActionCommand("Iniciar Activitats");
 
-        jButton5.setText("Tancar ssessó ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        tancaSessio.setText("Tanca Sessió");
+        tancaSessio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                tancaSessioActionPerformed(evt);
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        llistaFills.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(llistaFills);
+
+        fillsMissatge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        desseleccionar.setText("Desseleccionar");
+        desseleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desseleccionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(210, Short.MAX_VALUE)
+                .addComponent(tancaSessio)
+                .addContainerGap(234, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(afegir)
+                    .addComponent(historic)
+                    .addComponent(eliminar)
+                    .addComponent(activitats))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(desseleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fillsMissatge, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(204, 204, 204)
-                .addComponent(jButton5)
-                .addContainerGap(229, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(fillsMissatge, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(afegir)
+                        .addGap(18, 24, Short.MAX_VALUE)
+                        .addComponent(eliminar)
+                        .addGap(18, 24, Short.MAX_VALUE)
+                        .addComponent(activitats)
+                        .addGap(18, 25, Short.MAX_VALUE)
+                        .addComponent(historic))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(83, 83, 83))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(desseleccionar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(tancaSessio)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,11 +250,11 @@ public class families extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void historicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_historicActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void tancaSessioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tancaSessioActionPerformed
         File f = new File("usuari.usr");
         f.delete();
         
@@ -188,7 +269,11 @@ public class families extends javax.swing.JFrame {
 
         this.dispose();
         pantallaLogin.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_tancaSessioActionPerformed
+
+    private void desseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desseleccionarActionPerformed
+        llistaFills.clearSelection();
+    }//GEN-LAST:event_desseleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,16 +311,22 @@ public class families extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton activitats;
+    private javax.swing.JButton afegir;
+    private javax.swing.JButton desseleccionar;
+    private javax.swing.JButton eliminar;
+    private javax.swing.JLabel fillsMissatge;
+    private javax.swing.JButton historic;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> llistaFills;
+    private javax.swing.JButton tancaSessio;
     // End of variables declaration//GEN-END:variables
+
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(rootPane, missatge);
+    }
 }

@@ -233,8 +233,8 @@ public class login extends javax.swing.JFrame {
                         ImageIcon icono = new ImageIcon("img/logo.png");
 
                         families panellFamilies = new families();
-                        panellFamilies.setTitle("Registrar-se - Alfabetització");
-                        panellFamilies.setMinimumSize(new java.awt.Dimension(500, 600));
+                        panellFamilies.setTitle("Panell Família - Alfabetització");
+                        panellFamilies.setMinimumSize(new java.awt.Dimension(600, 500));
                         //panellFamilies.setResizable(false);
                         panellFamilies.setLocationRelativeTo(null);
                         panellFamilies.setIconImage(icono.getImage());
