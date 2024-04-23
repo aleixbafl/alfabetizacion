@@ -4,7 +4,23 @@
  */
 package loginReguistre;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import objectesBD.usuariBD;
+import org.mindrot.jbcrypt.BCrypt;
+import panells.families;
+import serverConexio.conexioBD;
 
 /**
  *
@@ -15,8 +31,33 @@ public class login extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
-    public login() {
+    public login(){
         initComponents();
+        
+        File f = new File("usuari.usr");
+        if (f.exists()) {
+            if (preguntaSiNo("Vols recarregar les credencials?") == JOptionPane.YES_OPTION) {
+                try {
+                    FileInputStream fis = new FileInputStream(f);
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    while (fis.available() > 0 ) {
+                        usuariBD userLogin = (usuariBD) ois.readObject();
+                        usuari.setText(userLogin.getNomUsuari());
+                        contrasenya.setText(userLogin.getContrasenya());
+                    }
+                    ois.close();
+                    fis.close();
+                } catch (FileNotFoundException ex) {
+                    missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
+                } catch (IOException ex) {
+                    missatge("Error de lectura de les credencials.");
+                } catch (ClassNotFoundException ex) {
+                    missatge("Error no especificat.");
+                } 
+            } else {
+                f.delete();
+            }
+        }
     }
 
     /**
@@ -33,10 +74,10 @@ public class login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        usuari = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        contrasenya = new javax.swing.JPasswordField();
+        inicia = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,19 +103,24 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Correu Electrònic:");
+        jLabel2.setText("Nom Usuari::");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setToolTipText("correu@exemple.com");
+        usuari.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usuari.setToolTipText("correu@exemple.com");
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Contrasenya:");
 
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setToolTipText("Contrasenya1234");
+        contrasenya.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        contrasenya.setToolTipText("Contrasenya1234");
 
-        jButton1.setText("Iniciar");
+        inicia.setText("Iniciar");
+        inicia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciaActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Registrar-se");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -92,9 +138,9 @@ public class login extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jPasswordField1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usuari)
+                    .addComponent(contrasenya)
+                    .addComponent(inicia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addGap(140, 140, 140))
         );
@@ -104,13 +150,13 @@ public class login extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usuari, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contrasenya, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inicia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
@@ -163,10 +209,76 @@ public class login extends javax.swing.JFrame {
         pantallaReguistre.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void iniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciaActionPerformed
+        if (usuari.getText().isEmpty()) {
+            missatge("Has d'inserir el nom d'usuari del compte.");
+        } else if (contrasenya.getText().isEmpty()) {
+            missatge("Has d'inserir la contrasenya.");
+        } else {
+            try {
+                conexioBD conectar = new conexioBD();
+                conectar.obrirConexio();
+                ResultSet resultatUsuari = conectar.ecjecutarSelect("SELECT * FROM `usuari` WHERE `nomUsuari` LIKE '" + usuari.getText() + "'; ");
+                if (resultatUsuari.next()) {
+                    if (BCrypt.checkpw(contrasenya.getText(), resultatUsuari.getString("contrasenya"))) {
+                        File f = new File("usuari.usr");
+                        while (!f.exists()) {
+                            usuariBD userLogin = new usuariBD(resultatUsuari.getString("nomUsuari"), contrasenya.getText(), resultatUsuari.getString("correuElecUsuari"));
+                            FileOutputStream fos = new FileOutputStream(f);
+                            ObjectOutputStream oos = new ObjectOutputStream(fos);
+                            oos.writeObject(userLogin);
+                        }
+                        conectar.tancaConexio();
+
+                        ImageIcon icono = new ImageIcon("img/logo.png");
+
+                        families panellFamilies = new families();
+                        panellFamilies.setTitle("Panell Família - Alfabetització");
+                        panellFamilies.setMinimumSize(new java.awt.Dimension(600, 500));
+                        //panellFamilies.setResizable(false);
+                        panellFamilies.setLocationRelativeTo(null);
+                        panellFamilies.setIconImage(icono.getImage());
+
+                        this.dispose();
+                        panellFamilies.setVisible(true);
+                    } else {
+                        missatge("La contrasenya és incorrecta.");
+                    }
+                } else {
+                    missatge("El nom d'usuari introduït no existeix o s'ha escrit malament.");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_iniciaActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        login inici = new login();
+        inici.primer();
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField contrasenya;
+    private javax.swing.JButton inicia;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField usuari;
+    // End of variables declaration//GEN-END:variables
+
+    private void primer() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -190,6 +302,7 @@ public class login extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -197,17 +310,16 @@ public class login extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(rootPane, missatge);
+    }
+    
+    private int preguntaSiNo(String missatge) {
+        return JOptionPane.showConfirmDialog(this, missatge, "Confirmación", JOptionPane.YES_NO_OPTION);
+    }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    // End of variables declaration//GEN-END:variables
+    private void cargarCredencials() {
+        
+    }
 }
