@@ -4,6 +4,7 @@
  */
 package panells;
 
+import IniciarJocs.PanellJocs;
 import fills.afegir;
 import java.awt.Color;
 import java.io.File;
@@ -156,6 +157,11 @@ public class families extends javax.swing.JFrame {
 
         activitats.setText("Activitats");
         activitats.setActionCommand("Iniciar Activitats");
+        activitats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activitatsActionPerformed(evt);
+            }
+        });
 
         tancaSessio.setText("Tanca Sessió");
         tancaSessio.addActionListener(new java.awt.event.ActionListener() {
@@ -343,6 +349,14 @@ public class families extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void activitatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activitatsActionPerformed
+        PanellJocs newframe = new PanellJocs();
+
+        newframe.setVisible(true);
+
+        this.dispose(); 
+    }//GEN-LAST:event_activitatsActionPerformed
 
     /**
      * @param args the command line arguments
