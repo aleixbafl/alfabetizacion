@@ -4,6 +4,7 @@
  */
 package panells;
 
+import fills.afegir;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,8 +34,6 @@ public class families extends javax.swing.JFrame {
      */
     public families() {
         initComponents();
-        
-        
         
         File f = new File("usuari.usr");
         try {
@@ -107,7 +106,6 @@ public class families extends javax.swing.JFrame {
         desseleccionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 500));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -136,8 +134,18 @@ public class families extends javax.swing.JFrame {
         jPanel3.setToolTipText("");
 
         afegir.setText("Afegir");
+        afegir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afegirActionPerformed(evt);
+            }
+        });
 
         eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
 
         historic.setText("Històric");
         historic.addActionListener(new java.awt.event.ActionListener() {
@@ -274,6 +282,67 @@ public class families extends javax.swing.JFrame {
     private void desseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desseleccionarActionPerformed
         llistaFills.clearSelection();
     }//GEN-LAST:event_desseleccionarActionPerformed
+
+    private void afegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afegirActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+
+        afegir afegirFill = new afegir();
+        afegirFill.setTitle("Afegir Fill - Alfabetització");
+        afegirFill.setMinimumSize(new java.awt.Dimension(600, 500));
+        afegirFill.setResizable(false);
+        afegirFill.setLocationRelativeTo(null);
+        afegirFill.setIconImage(icono.getImage());
+
+        this.dispose();
+        afegirFill.setVisible(true);
+    }//GEN-LAST:event_afegirActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        if (llistaFills == null) {
+            missatge("No hi ha fills per a poder eliminar.");
+        } else {
+            int seleccionat = llistaFills.getSelectedIndex();
+            if (seleccionat != -1) {
+                String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
+                try {
+                    File f = new File("usuari.usr");
+                    FileInputStream fis = new FileInputStream(f);
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    while (fis.available() > 0 ) {
+                        usuariBD userLogin = (usuariBD) ois.readObject();
+                        conexioBD bd = new conexioBD();
+                        bd.obrirConexio();
+                        try {
+                            boolean seguir = true;
+                            ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT f.nom, f.cognoms FROM fills f JOIN familia fa ON f.dni = fa.dniFill JOIN usuari u ON fa.nomUsuariFamil = u.nomUsuari WHERE u.nomUsuari = '" + userLogin.getNomUsuari() + "'; ");
+                            while (resultatUsuari.next() && seguir){
+                                String nom = resultatUsuari.getString("f.nom"), cognom = resultatUsuari.getString("f.cognoms");
+                                String nomCognom = resultatUsuari.getString("f.nom") + " " + resultatUsuari.getString("f.cognoms");
+                                if (nomCognom.equals(contingut)) {
+                                    bd.ecjecutarActualitzar("DELETE FROM fills WHERE nom = '" + nom + "' AND cognoms = '" + cognom + "';");
+                                    DefaultListModel<String> model = (DefaultListModel<String>) llistaFills.getModel();
+                                    model.remove(seleccionat);
+                                    missatge("S'ha eliminat correctament el fill.");
+                                }
+                            }
+                        } catch (SQLException ex) {
+                            Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    ois.close();
+                    fis.close();
+                } catch (FileNotFoundException ex) {
+                    missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
+                } catch (IOException ex) {
+                    missatge("Error de lectura de les credencials.");
+                } catch (ClassNotFoundException ex) {
+                    missatge("Error no especificat.");
+                }
+            } else {
+                missatge("Has de seleccionar un element per a poder eliminar-lo.");
+            }
+        }
+    }//GEN-LAST:event_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
