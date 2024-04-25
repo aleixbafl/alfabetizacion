@@ -46,18 +46,19 @@ public class families extends javax.swing.JFrame {
                 bd.obrirConexio();
                 try {
                     DefaultListModel modelo = new DefaultListModel();
-                    ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT `fills`.`nom`, `fills`.`cognoms` FROM `fills` WHERE `fills`.`dni` LIKE (SELECT `familia`.`dniFill` FROM `familia` WHERE `familia`.`nomUsuariFamil` LIKE '" + userLogin.getNomUsuari() + "' AND `familia`.`dniFill` IS NOT NULL); ");
+                    ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT fills.nom, fills.cognoms FROM fills JOIN familia ON fills.dni = familia.dniFill JOIN usuari ON familia.nomUsuariFamil = usuari.nomUsuari WHERE usuari.nomUsuari = '" + userLogin.getNomUsuari() + "';");
                     String nomCognom = "";
                     while(resultatUsuari.next()){
-                        if (nomCognom.equalsIgnoreCase("")) {
+                        if (nomCognom.equals("")) {
                             nomCognom = resultatUsuari.getString("nom") + " " + resultatUsuari.getString("cognoms");
                         } else {
-                            nomCognom = nomCognom + "|" + resultatUsuari.getString("nom") + " " + resultatUsuari.getString("cognoms");
+                            nomCognom = nomCognom + "\\" + resultatUsuari.getString("nom") + " " + resultatUsuari.getString("cognoms");
                         }
                     }
-                    if (nomCognom.contains(String.valueOf('|'))) {
-                        String[] nomCognomArry = nomCognom.split("|");
+                    if (nomCognom.contains(String.valueOf('\\'))) {
+                        String[] nomCognomArry = nomCognom.split("\\\\");
                         for (int i = 0; i < nomCognomArry.length; i++) {
+                            System.out.println(nomCognomArry[i]);
                             modelo.addElement(nomCognomArry[i]);
                         }
                     } else {
@@ -68,7 +69,7 @@ public class families extends javax.swing.JFrame {
                     }
                     llistaFills.setModel(modelo);
                 } catch (SQLException ex) {
-                    Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
+                    missatge("XD");
                 }
             }
             ois.close();

@@ -4,6 +4,24 @@
  */
 package fills;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import objectesBD.usuariBD;
+import panells.families;
+import serverConexio.conexioBD;
+
 /**
  *
  * @author aleix
@@ -33,12 +51,12 @@ public class afegir extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        dni = new javax.swing.JTextField();
+        nom = new javax.swing.JTextField();
+        cognoms = new javax.swing.JTextField();
+        dataCalendari = new com.toedter.calendar.JCalendar();
+        afegir = new javax.swing.JButton();
+        tornar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,15 +89,27 @@ public class afegir extends javax.swing.JFrame {
 
         jLabel3.setText("Nom:");
 
-        jLabel4.setText("Cognom");
+        jLabel4.setText("Cognoms:");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        dni.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jButton1.setText("Afegir");
+        cognoms.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jButton2.setText("<-|");
+        afegir.setText("Afegir");
+        afegir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afegirActionPerformed(evt);
+            }
+        });
+
+        tornar.setText("<-|");
+        tornar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tornarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -87,10 +117,10 @@ public class afegir extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tornar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(dataCalendari, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -98,10 +128,10 @@ public class afegir extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                         .addGap(50, 50, 50)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(dni)
+                            .addComponent(nom)
+                            .addComponent(cognoms, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                    .addComponent(afegir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -112,22 +142,22 @@ public class afegir extends javax.swing.JFrame {
                         .addContainerGap(29, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)))
+                        .addComponent(tornar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 20, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cognoms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dataCalendari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(afegir)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -163,6 +193,61 @@ public class afegir extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tornarActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+
+        families panellFamilies = new families();
+        panellFamilies.setTitle("Panell Família - Alfabetització");
+        panellFamilies.setMinimumSize(new java.awt.Dimension(600, 500));
+        //panellFamilies.setResizable(false);
+        panellFamilies.setLocationRelativeTo(null);
+        panellFamilies.setIconImage(icono.getImage());
+
+        this.dispose();
+        panellFamilies.setVisible(true);
+    }//GEN-LAST:event_tornarActionPerformed
+
+    private void afegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afegirActionPerformed
+        if (dni.getText().isEmpty()) {
+            missatge("Has d'introduir el DNI.");
+        } else if (nom.getText().isEmpty()) {
+            missatge("Has d'introduir el nom.");
+        } else if (cognoms.getText().isEmpty()) {
+            missatge("Has d'introduir els cognoms.");
+        } else {
+            if (dniCorrecte(dni.getText())) {
+                if (dataCorrecte(dataCalendari.getCalendar())) {
+                    String dniPares = obtenirPares();
+                    String[] dniParesSplit = new String[2];
+                    if (dniPares.contains("|")) {
+                        String[] stringSplit = dniPares.split("|");
+                        dniParesSplit[1] = stringSplit[1];
+                        dniParesSplit[2] = stringSplit[2];
+                    }
+                    usuariBD user = llegirUsuari();
+                    conexioBD bd = new conexioBD();
+                    bd.obrirConexio();
+                    try {
+                        System.out.println(dniParesSplit.length);
+                        bd.ecjecutarActualitzar("INSERT INTO `fills`(`dni`, `nom`, `cognoms`, `dataNaixe`) VALUES ('" + dni.getText() + "','" + nom.getText() + "','" + cognoms.getText() + "','" + dataString(dataCalendari.getCalendar()) + "');");
+                        if (dniPares.contains("|")) {
+                            bd.ecjecutarActualitzar("INSERT INTO `familia`(`dniProje1`, `dniProje2`, `dniFill`, `nomUsuariFamil`) VALUES ('" + dniParesSplit[1] + "','" + dniParesSplit[2] + "','" + dni.getText() + "','" + user.getNomUsuari() + "')");
+                        } else {
+                            bd.ecjecutarActualitzar("INSERT INTO `familia`(`dniProje1`, `dniFill`, `nomUsuariFamil`) VALUES ('" + dniPares + "','" + dni.getText() + "','" + user.getNomUsuari() + "')");
+                        }
+                    } catch (SQLException ex) {
+                        missatge("Error en el procés de la BD.");
+                    }
+                    missatge("El fill s'ha afegit correctament.");
+                    dni.setText("");
+                    nom.setText("");
+                    cognoms.setText("");
+                    dataCalendari.setCalendar(dataLocal());
+                }
+            }
+        }
+    }//GEN-LAST:event_afegirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,9 +285,10 @@ public class afegir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JButton afegir;
+    private javax.swing.JTextField cognoms;
+    private com.toedter.calendar.JCalendar dataCalendari;
+    private javax.swing.JTextField dni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -210,8 +296,128 @@ public class afegir extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField nom;
+    private javax.swing.JButton tornar;
     // End of variables declaration//GEN-END:variables
+
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(rootPane, missatge);
+    }
+    
+    private boolean dniCorrecte(String dni) {
+        if (dni.length() != 9) {
+            return false;
+        }
+
+        String numeros = "";
+        for (int i = 0; i < dni.length() - 1; i++) {
+            numeros = numeros + dni.charAt(i);
+        }
+
+        char lletra = Character.toUpperCase(dni.charAt(8));
+
+        if (!numeros.matches("[0-9]+")) {
+            return false;
+        }
+
+        char lletraCalcul = calcularLletraDNI(Integer.parseInt(numeros));
+
+        if (lletraCalcul == lletra) {
+            conexioBD conexio = new conexioBD();
+            conexio.obrirConexio();
+            try {
+                ResultSet resultat = conexio.ecjecutarSelect("SELECT * FROM `fills` WHERE `fills`.`dni` LIKE '" + numeros + lletra + "';");
+                if (resultat.next()) {
+                    missatge("El DNI d'aquest nen/a ja està registrat i no es pot tornar a registrar-lo.");
+                    conexio.tancaConexio();
+                    return false;
+                }
+                conexio.tancaConexio();
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
+        if (lletraCalcul != lletra) {
+            missatge("El DNI introduït és incorrecte.");
+        }
+        return lletraCalcul == lletra;
+    }
+
+    private char calcularLletraDNI(int numerosDNI) {
+        String lletres = "TRWAGMYFPDXBNJZSQVHLCKE";
+        int index = numerosDNI % 23;
+        return lletres.charAt(index);
+    }
+    
+    private boolean dataCorrecte(Calendar dataCalen) {
+        String data = dataString(dataCalen);
+
+        LocalDate dataGuardada = LocalDate.parse(data, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate dataActual = LocalDate.now();
+
+        int anys = Period.between(dataGuardada, dataActual).getYears();
+        if ((anys > 6) || (anys < 3)) {
+            missatge("Els fills han de tenir entre 3 i 6 anys.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    private String dataString(Calendar calendar) {
+        SimpleDateFormat dataForm = new SimpleDateFormat("yyyy-MM-dd");
+        String data = dataForm.format(calendar.getTime());
+        return data;
+    }
+
+    private String obtenirPares() {
+        usuariBD user = llegirUsuari();
+        
+        conexioBD bd = new conexioBD();
+        bd.obrirConexio();
+        try {
+            ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT * FROM `familia` WHERE `familia`.`nomUsuariFamil` LIKE '" + user.getNomUsuari() + "'; ");
+            if (resultatUsuari.next()) {
+                if (resultatUsuari.getString("dniProje2") == null) {
+                    return resultatUsuari.getString("dniProje1");
+                } else {
+                    return resultatUsuari.getString("dniProje1") + "|" + resultatUsuari.getString("dniProje2");
+                }
+            }
+        } catch (SQLException ex) {
+            missatge("Error en el procés de la BD.");
+        }
+        return null;
+    }
+
+    private usuariBD llegirUsuari() {
+        File f = new File("usuari.usr");
+        if (f.exists()) {
+            try {
+                FileInputStream fis = new FileInputStream(f);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                while (fis.available() > 0 ) {
+                    usuariBD userLogin = (usuariBD) ois.readObject();
+                    return userLogin;
+                }
+                ois.close();
+                fis.close();
+            } catch (FileNotFoundException ex) {
+                missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
+            } catch (IOException ex) {
+                missatge("Error de lectura de les credencials.");
+            } catch (ClassNotFoundException ex) {
+                missatge("Error no especificat.");
+            }
+        }
+        return null;
+    }
+
+    private Calendar dataLocal() {
+        LocalDate dataActual = LocalDate.now();
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear(); // Limpiar cualquier valor anterior en el Calendar
+        calendar.set(dataActual.getYear(), dataActual.getMonthValue() - 1, dataActual.getDayOfMonth());
+        return calendar;
+    }
 }

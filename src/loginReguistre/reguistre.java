@@ -430,8 +430,6 @@ public class reguistre extends javax.swing.JFrame {
                                     pantallaLogin.setVisible(true);
                                 }
                             }
-                        } else {
-                            missatge("El DNI introduït del 2n progenitor és incorrecte.");
                         }
                     } else {
                         if (usuariCorrecte()) {
@@ -452,8 +450,6 @@ public class reguistre extends javax.swing.JFrame {
                         }
                     }
                 }
-            } else {
-                missatge("El DNI introduït del 1r progenitor és incorrecte.");
             }
         }
     }//GEN-LAST:event_registrarActionPerformed
@@ -611,6 +607,14 @@ public class reguistre extends javax.swing.JFrame {
                 conexio.tancaConexio();
             } catch (SQLException ex) {
                 System.out.println(ex);
+            }
+        }
+        
+        if (lletraCalcul != lletra) {
+            if (dni.equals(dniObligatori.getText())) {
+                missatge("El DNI introduït del 1r progenitor és incorrecte.");
+            } else {
+                missatge("El DNI introduït del 2n progenitor és incorrecte.");
             }
         }
 
