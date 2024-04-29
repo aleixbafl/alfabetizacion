@@ -189,6 +189,9 @@
                 <Property name="text" type="java.lang.String" value="Activitats"/>
                 <Property name="actionCommand" type="java.lang.String" value="Iniciar Activitats"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activitatsActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="tancaSessio">
               <Properties>
