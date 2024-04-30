@@ -4,6 +4,9 @@
  */
 package menujocsparaules;
 
+import JocsDaus.BuscaNumeros;
+import ahorcado.juego_normal;
+
 /**
  *
  * @author Samuel Fluerici
@@ -38,9 +41,14 @@ public class menujocsparaules extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("JOCS DE PARAULES ");
+        jLabel1.setText("JOCS DE PARAULES I FRASES");
 
         jButton1.setText("Joc1 ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Joc 2");
         jButton2.setToolTipText("");
@@ -52,21 +60,21 @@ public class menujocsparaules extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton2)
-                            .addComponent(jButton1))))
-                .addContainerGap(163, Short.MAX_VALUE))
+                            .addComponent(jButton1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel1)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel1)
-                .addGap(79, 79, 79)
+                .addGap(78, 78, 78)
                 .addComponent(jButton1)
                 .addGap(65, 65, 65)
                 .addComponent(jButton2)
@@ -86,6 +94,14 @@ public class menujocsparaules extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            juego_normal newframe = new juego_normal();
+
+        newframe.setVisible(true);
+
+        this.dispose(); 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
