@@ -34,6 +34,12 @@ public class login extends javax.swing.JFrame {
     public login(){
         initComponents();
         
+        /*
+            Comprovar si hi ha un arxiu anomenat "usuari.usr", en cas de ser així li pregunta a l'usuari (els pares) si volen recarregar les credencials.
+            Respostes:
+            - Si: llegirà l'arxiu i introduirà l'usuari i la contrasenya als camps corresponents (camp del nom d'usuari i camp de contrasenya).
+            - No: eliminarà l'arxiu.
+        */
         File f = new File("usuari.usr");
         if (f.exists()) {
             if (preguntaSiNo("Vols recarregar les credencials?") == JOptionPane.YES_OPTION) {
@@ -78,7 +84,7 @@ public class login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         contrasenya = new javax.swing.JPasswordField();
         inicia = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        registrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,10 +128,10 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Registrar-se");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        registrar.setText("Registrar-se");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                registrarActionPerformed(evt);
             }
         });
 
@@ -141,7 +147,7 @@ public class login extends javax.swing.JFrame {
                     .addComponent(usuari)
                     .addComponent(contrasenya)
                     .addComponent(inicia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                    .addComponent(registrar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addGap(140, 140, 140))
         );
         jPanel3Layout.setVerticalGroup(
@@ -158,7 +164,7 @@ public class login extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addComponent(inicia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
         );
 
@@ -195,7 +201,9 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        
+        //Carregar la pantalla de registrar-se i tanca la d'iniciar sessió.        
         ImageIcon icono = new ImageIcon("img/logo.png");
         
         reguistre pantallaReguistre = new reguistre();
@@ -207,16 +215,22 @@ public class login extends javax.swing.JFrame {
         
         this.dispose();
         pantallaReguistre.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_registrarActionPerformed
 
     private void iniciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciaActionPerformed
+        /*
+            Primer comprova que s'ha introduït dades als camps, en cas de no ser així t'ho indica.
+            A continuació comprova si el nom d'usuari i la contrasenya introduïts són correctes, en cas de no ser-ho t'ho indica.
+            Si és correcte sé la informació de l'usuari en un arxiu a l'ordinador i donarà pas al panell de la família.
+        */
+        
         if (usuari.getText().isEmpty()) {
             missatge("Has d'inserir el nom d'usuari del compte.");
         } else if (contrasenya.getText().isEmpty()) {
             missatge("Has d'inserir la contrasenya.");
         } else {
+            conexioBD conectar = new conexioBD();
             try {
-                conexioBD conectar = new conexioBD();
                 conectar.obrirConexio();
                 ResultSet resultatUsuari = conectar.ecjecutarSelect("SELECT * FROM `usuari` WHERE `nomUsuari` LIKE '" + usuari.getText() + "'; ");
                 if (resultatUsuari.next()) {
@@ -248,7 +262,7 @@ public class login extends javax.swing.JFrame {
                     missatge("El nom d'usuari introduït no existeix o s'ha escrit malament.");
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                missatge(conectar.missatgeError(ex.getErrorCode()));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -268,13 +282,13 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contrasenya;
     private javax.swing.JButton inicia;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton registrar;
     private javax.swing.JTextField usuari;
     // End of variables declaration//GEN-END:variables
 

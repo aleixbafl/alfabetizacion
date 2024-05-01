@@ -11,12 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import panells.families;
 import serverConexio.conexioBD;
 
 /**
@@ -24,6 +23,8 @@ import serverConexio.conexioBD;
  * @author aleix
  */
 public class historic extends javax.swing.JFrame {
+    
+    private String dniFill = "";
 
     /**
      * Creates new form historic
@@ -32,11 +33,11 @@ public class historic extends javax.swing.JFrame {
         initComponents();
         
         File f = new File("dni.fill");
+        conexioBD bd = new conexioBD();
         try {
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
-            String dniFill = br.readLine();
-            conexioBD bd = new conexioBD();
+            dniFill = br.readLine();
             bd.obrirConexio();
             ResultSet resultat = bd.ecjecutarSelect("SELECT * FROM `fills` WHERE `fills`.`dni` = '" + dniFill +"';");
             if (resultat.next()) {
@@ -47,7 +48,7 @@ public class historic extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(historic.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(historic.class.getName()).log(Level.SEVERE, null, ex);
+            missatge(bd.missatgeError(ex.getErrorCode()));
         }
     }
 
@@ -245,7 +246,26 @@ public class historic extends javax.swing.JFrame {
 
     private void visualitzarActivitatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualitzarActivitatsActionPerformed
         if (dataInici.getCalendar().compareTo(dataFi.getCalendar()) <= 0) {
-            
+            String dataIniciStr = dataString(dataInici.getCalendar()), dataFiStr = dataString(dataFi.getCalendar());
+            conexioBD bd = new conexioBD();
+            bd.obrirConexio();
+            try {
+                ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT * FROM `realitzat` WHERE ((`realitzat`.`dataHora` >= '" + dataIniciStr + " 00:00:00') AND (`realitzat`.`dataHora` >= '" + dataFiStr + " 23:59:59')) AND `realitzat`.`dniFill` = '" + dniFill + "'; ");
+                int numResul = 0;
+                while (resultatUsuari.next()){
+                    numResul++;
+                    
+                }
+                if (numResul == 0) {
+                    if (dataIniciStr.equals(dataFiStr)) {
+                        missatge("No s'ha dut a terme cap activitat el dia: " + dataIniciStr);
+                    } else{
+                        missatge("Del dia " + dataIniciStr + " al dia " + dataFiStr + " no s'ha dut a terme cap activitat.");
+                    }
+                }
+            } catch (SQLException ex) {
+                missatge(bd.missatgeError(ex.getErrorCode()));
+            }
         } else {
             missatge("La data d'inici ha de ser igual o menor que la data fi.");
         }
@@ -310,5 +330,11 @@ public class historic extends javax.swing.JFrame {
 
     private void missatge(String missatge) {
         JOptionPane.showMessageDialog(rootPane, missatge);
+    }
+    
+    private String dataString(Calendar calendar) {
+        SimpleDateFormat dataForm = new SimpleDateFormat("yyyy-MM-dd");
+        String data = dataForm.format(calendar.getTime());
+        return data;
     }
 }

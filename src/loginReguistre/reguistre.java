@@ -729,7 +729,7 @@ public class reguistre extends javax.swing.JFrame {
                 conectarBD.ecjecutarActualitzar("INSERT INTO `usuari`(`nomUsuari`, `contrasenya`, `correuElecUsuari`) VALUES ('" + nomUsuari.getText() + "','" + BCrypt.hashpw(contrasenya1.getText(), BCrypt.gensalt()) + "','" + correuElectronic.getText() + "');");
                 conectarBD.ecjecutarActualitzar("INSERT INTO `familia`(`dniProje1`, `dniProje2`, `dniFill`, `nomUsuariFamil`) VALUES ('" + dniMayuscula(dniObligatori.getText()) + "','" + dniMayuscula(dniOpcional.getText()) + "','','" + nomUsuari.getText() + "')");
             } catch (SQLException ex) {
-                missatge("Error en el procés d'inserció de les dades.");
+                missatge(conectarBD.missatgeError(ex.getErrorCode()));
             } finally {
                 conectarBD.tancaConexio();
             }
@@ -741,7 +741,7 @@ public class reguistre extends javax.swing.JFrame {
                 conectarBD.ecjecutarActualitzar("INSERT INTO `usuari`(`nomUsuari`, `contrasenya`, `correuElecUsuari`) VALUES ('" + nomUsuari.getText() + "','" + BCrypt.hashpw(contrasenya1.getText(), BCrypt.gensalt()) + "','" + correuElectronic.getText() + "');");
                 conectarBD.ecjecutarActualitzar("INSERT INTO `familia`(`dniProje1`, `nomUsuariFamil`) VALUES ('" + dniMayuscula(dniObligatori.getText()) + "','" + nomUsuari.getText() + "')");
             } catch (SQLException ex) {
-                missatge("Error en el procés d'inserció de les dades a  la base de dades.");
+                missatge(conectarBD.missatgeError(ex.getErrorCode()));
             } finally {
                 conectarBD.tancaConexio();
             }

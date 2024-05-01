@@ -72,7 +72,7 @@ public class families extends javax.swing.JFrame {
                     }
                     llistaFills.setModel(modelo);
                 } catch (SQLException ex) {
-                    missatge("Error en la BD.");
+                    missatge(bd.missatgeError(ex.getErrorCode()));
                 }
             }
             ois.close();
@@ -386,7 +386,7 @@ public class families extends javax.swing.JFrame {
                                 }
                             }
                         } catch (SQLException ex) {
-                            Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
+                            missatge(bd.missatgeError(ex.getErrorCode()));
                         }
                     }
                     ois.close();
