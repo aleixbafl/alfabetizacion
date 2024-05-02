@@ -62,7 +62,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -75,9 +75,9 @@
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="141" max="32767" attributes="0"/>
+                  <EmptySpace pref="137" max="32767" attributes="0"/>
                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,16 +96,25 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Joc 1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Joc 2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Volver"/>
           </Properties>
           <Events>

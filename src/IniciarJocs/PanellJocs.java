@@ -47,6 +47,7 @@ public class PanellJocs extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Iniciar Jocs ");
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("Abecedari");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,13 +55,15 @@ public class PanellJocs extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Paraules i Frases ");
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setText("Paraules i frases");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Numeros");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +71,8 @@ public class PanellJocs extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(255, 0, 0));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setText("Salir ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +80,8 @@ public class PanellJocs extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(0, 255, 51));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setText("Menu");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,9 +98,9 @@ public class PanellJocs extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(45, 45, 45)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(94, 94, 94)
                 .addComponent(jButton3)
@@ -115,7 +122,7 @@ public class PanellJocs extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
@@ -137,7 +144,7 @@ public class PanellJocs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      menujocsparaules newframe = new menujocsparaules();
+         menujocsparaules newframe = new menujocsparaules();
 
         newframe.setVisible(true);
 
@@ -145,7 +152,7 @@ public class PanellJocs extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        menujocsabesedari newframe = new menujocsabesedari();
+          menujocsabesedari newframe = new menujocsabesedari();
 
         newframe.setVisible(true);
 
@@ -153,7 +160,7 @@ public class PanellJocs extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         menujocsnumeros newframe = new menujocsnumeros();
+          menujocsnumeros newframe = new menujocsnumeros();
 
         newframe.setVisible(true);
 
@@ -161,7 +168,7 @@ public class PanellJocs extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        families newframe = new families();
+          families newframe = new families();
 
         newframe.setVisible(true);
 
@@ -169,7 +176,7 @@ public class PanellJocs extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
