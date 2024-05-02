@@ -15,8 +15,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import serverConexio.conexioBD;
+import java.sql.Timestamp;
+import javax.swing.ImageIcon;
+import panells.families;
 
 /**
  *
@@ -70,7 +74,7 @@ public class historic extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        llistatActitats = new javax.swing.JList<>();
         visualitzarActivitats = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         categoria = new javax.swing.JLabel();
@@ -112,7 +116,7 @@ public class historic extends javax.swing.JFrame {
 
         jLabel2.setText("Fi:");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(llistatActitats);
 
         visualitzarActivitats.setText("Visualitzar Activitats");
         visualitzarActivitats.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +143,11 @@ public class historic extends javax.swing.JFrame {
         resultats.setText("Resultats");
 
         tornar.setText("Panell Família");
+        tornar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tornarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -250,11 +259,14 @@ public class historic extends javax.swing.JFrame {
             conexioBD bd = new conexioBD();
             bd.obrirConexio();
             try {
+                DefaultListModel modelo = new DefaultListModel();
                 ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT * FROM `realitzat` WHERE ((`realitzat`.`dataHora` >= '" + dataIniciStr + " 00:00:00') AND (`realitzat`.`dataHora` >= '" + dataFiStr + " 23:59:59')) AND `realitzat`.`dniFill` = '" + dniFill + "'; ");
                 int numResul = 0;
                 while (resultatUsuari.next()){
                     numResul++;
-                    
+                    Timestamp timestamp = resultatUsuari.getTimestamp("dataHora");
+                    String dataHoraStr = timestamp.toString();
+                    modelo.addElement(dataHoraStr);
                 }
                 if (numResul == 0) {
                     if (dataIniciStr.equals(dataFiStr)) {
@@ -262,6 +274,8 @@ public class historic extends javax.swing.JFrame {
                     } else{
                         missatge("Del dia " + dataIniciStr + " al dia " + dataFiStr + " no s'ha dut a terme cap activitat.");
                     }
+                } else {
+                    llistatActitats.setModel(modelo);
                 }
             } catch (SQLException ex) {
                 missatge(bd.missatgeError(ex.getErrorCode()));
@@ -270,6 +284,20 @@ public class historic extends javax.swing.JFrame {
             missatge("La data d'inici ha de ser igual o menor que la data fi.");
         }
     }//GEN-LAST:event_visualitzarActivitatsActionPerformed
+
+    private void tornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tornarActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+
+        families panellFamilies = new families();
+        panellFamilies.setTitle("Panell Família - Alfabetització");
+        panellFamilies.setMinimumSize(new java.awt.Dimension(600, 500));
+        //panellFamilies.setResizable(false);
+        panellFamilies.setLocationRelativeTo(null);
+        panellFamilies.setIconImage(icono.getImage());
+
+        this.dispose();
+        panellFamilies.setVisible(true);
+    }//GEN-LAST:event_tornarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,11 +344,11 @@ public class historic extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> llistatActitats;
     private javax.swing.JLabel nota;
     private javax.swing.JButton resultats;
     private javax.swing.JLabel titol;
