@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//samuel
 package ahorcado;
 
 import java.awt.Color;
@@ -15,10 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Casa
- */
+
 public class juego_normal extends javax.swing.JFrame {
     
      public ImageIcon imgs[];
@@ -34,7 +27,7 @@ public class juego_normal extends javax.swing.JFrame {
         setSize(650,707);//cambiar tamaÃ±o de la ventana
         this.setLocationRelativeTo(null);//posicion de la ventana
         
-        Image icon=new ImageIcon(getClass().getResource("/imagenes/hol.png")).getImage();
+        Image icon=new ImageIcon(getClass().getResource("ahoracado/hol.png")).getImage();
         setIconImage(icon);
         
         imgs = new ImageIcon[12];
@@ -42,20 +35,20 @@ public class juego_normal extends javax.swing.JFrame {
         msgs = new String[20];
         
         //imagen del joven que se va a ahorcar por que ella no lo ama xd xd
-        imgs[0] = new ImageIcon(getClass().getResource("/imagenes/im1.jpg"));
-        imgs[1] = new ImageIcon(getClass().getResource("/imagenes/im2.jpg"));
-        imgs[2] = new ImageIcon(getClass().getResource("/imagenes/im3.jpg"));
-        imgs[3] = new ImageIcon(getClass().getResource("/imagenes/im4.jpg"));
-        imgs[4] = new ImageIcon(getClass().getResource("/imagenes/im5.jpg"));
-        imgs[5] = new ImageIcon(getClass().getResource("/imagenes/im6.jpg"));
+        imgs[0] = new ImageIcon(getClass().getResource("ahoracado/im1.jpg"));
+        imgs[1] = new ImageIcon(getClass().getResource("ahoracado/im2.jpg"));
+        imgs[2] = new ImageIcon(getClass().getResource("ahoracado/im3.jpg"));
+        imgs[3] = new ImageIcon(getClass().getResource("ahoracado/im4.jpg"));
+        imgs[4] = new ImageIcon(getClass().getResource("ahoracado/im5.jpg"));
+        imgs[5] = new ImageIcon(getClass().getResource("ahoracado/im6.jpg"));
 
         
-       imgs[6] = new ImageIcon(getClass().getResource("/imagenes/fallo0.png"));
-       imgs[7] = new ImageIcon(getClass().getResource("/imagenes/fallo1.png"));
-       imgs[8] = new ImageIcon(getClass().getResource("/imagenes/fallo2.png"));
-       imgs[9] = new ImageIcon(getClass().getResource("/imagenes/fallo3.png"));
-       imgs[10] = new ImageIcon(getClass().getResource("/imagenes/fallo4.png"));
-       imgs[11] = new ImageIcon(getClass().getResource("/imagenes/fallo5.png"));
+       imgs[6] = new ImageIcon(getClass().getResource("ahoracado/fallo0.png"));
+       imgs[7] = new ImageIcon(getClass().getResource("ahoracado/fallo1.png"));
+       imgs[8] = new ImageIcon(getClass().getResource("ahoracado/fallo2.png"));
+       imgs[9] = new ImageIcon(getClass().getResource("ahoracado/fallo3.png"));
+       imgs[10] = new ImageIcon(getClass().getResource("ahoracado/fallo4.png"));
+       imgs[11] = new ImageIcon(getClass().getResource("ahoracado/fallo5.png"));
         //botones para las letras
         btns[1]=button_1;
         btns[2]=button_2;
@@ -149,8 +142,8 @@ public class juego_normal extends javax.swing.JFrame {
     
     //al presionar una letra, esta se buscara si pertenece a la palabra, de lo contrario la marcara como error 
     public void checarLetra(ActionEvent e) {
-        Icon cp=new ImageIcon(getClass().getResource("/imagenes/copa.png"));//icono de la copa
-        Icon cara=new ImageIcon(getClass().getResource("/imagenes/cara.png"));//icono de la copa
+        Icon cp=new ImageIcon(getClass().getResource("ahoracado/copa.png"));//icono de la copa
+        Icon cara=new ImageIcon(getClass().getResource("ahoracado/cara.png"));//icono de la copa
         JButton bt = (JButton) e.getSource();
         char c[];
        
@@ -194,7 +187,7 @@ public class juego_normal extends javax.swing.JFrame {
                     
                 } else {
                     Dibujo.setIcon(imgs[++err]);
-                    errores.setIcon(imgs[++err2]);//////////////////////////////////////_----
+                    errores.setIcon(imgs[++err2]);
                
                     if (err == 5) {
                         JOptionPane.showMessageDialog(this, "HAS PERDIDO\n Intenta con otra palabra la respuesta es: \n" + msgs[ran], "Ahorcado",JOptionPane.INFORMATION_MESSAGE, cara);
@@ -929,23 +922,8 @@ public class juego_normal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
-     Icon intru=new ImageIcon(getClass().getResource("/imagenes/intru.png"));
-        JOptionPane.showMessageDialog(null,"Jugadores: 2 (1 adivinador y 1 moderador)\n" +
-"Objetivo: Descubrir la palabra o frase incógnita.\n" +
-"\n" +
-"Preparación:\n" +
-"- Al inicio el moderador pensará en una palabra o frase y dibujará en una hoja una línea por cada letra.\n Se dibuja la base de la horca (sin el muñeco). El moderador dará una pista al jugador (adivinador).\n"
- +"Turno:\n" +
-"- En su turno el jugador puede: Pedir una letra / Adivinar la palabra. \n" +
-"- Pedir una letra: El moderador revisa si la letra pedida se encuentra en la palabra secreta.\n" +
-"-- Si la letra está, entonces el moderador la anota sobre la línea que ocupa su lugar en la palabra secreta.\n" +
-"-- Si la letra no está, entonces el moderador anotará la letra sobre la horca y dibujará una parte del muñeco. \n" +
-"- Muñeco: El muñeco se dibuja en 5 partes (cabeza, tronco y extremidades), por lo que el adivinador tiene 5 posibilidades de fallar.\n" +
-"- Adivinar la Palabra: El jugador puede intentar adivinar la palabra o frase secreta.\n" +
-"-- Si acierta la palabra, entonces el moderador completa la solución en el papel.\n" +
-"-- Si no acierta la palabra, entonces el moderador dibujará una parte del muñeco.\n"+"Fin de la partida:\n" +
-"- GANA el adivinador si descubre la palabra o frase secreta. \n" +
-"- PIERDE el avidinador si se dibuja el muñeco completo en la horca.\n", "Ahorcado - Instrucciones", JOptionPane.INFORMATION_MESSAGE, intru);
+     Icon intru=new ImageIcon(getClass().getResource("ahoracado/intru.png"));
+        JOptionPane.showMessageDialog(null,"" + "- PIERDE el avidinador si se dibuja el muñeco completo en la horca.\n", "Ahorcado - Instrucciones", JOptionPane.INFORMATION_MESSAGE, intru);
     }//GEN-LAST:event_helpActionPerformed
 
     private void button_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_1ActionPerformed
@@ -1082,9 +1060,7 @@ public class juego_normal extends javax.swing.JFrame {
    private void button_00ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         
     } 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1107,7 +1083,6 @@ public class juego_normal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(juego_normal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

@@ -5,7 +5,9 @@
 package menujocsparaules;
 
 import JocsDaus.BuscaNumeros;
+import ahorcado.ini;
 import ahorcado.juego_normal;
+import panells.families;
 
 /**
  *
@@ -33,6 +35,7 @@ public class menujocsparaules extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +56,13 @@ public class menujocsparaules extends javax.swing.JFrame {
         jButton2.setText("Joc 2");
         jButton2.setToolTipText("");
 
+        jButton3.setText("Volver");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -68,6 +78,10 @@ public class menujocsparaules extends javax.swing.JFrame {
                         .addGap(105, 105, 105)
                         .addComponent(jLabel1)))
                 .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +92,9 @@ public class menujocsparaules extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(65, 65, 65)
                 .addComponent(jButton2)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,12 +112,20 @@ public class menujocsparaules extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            juego_normal newframe = new juego_normal();
+            ini newframe = new ini();
 
         newframe.setVisible(true);
 
         this.dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+              families newframe = new families();
+
+        newframe.setVisible(true);
+
+        this.dispose(); 
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +165,7 @@ public class menujocsparaules extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
