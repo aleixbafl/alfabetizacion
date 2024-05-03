@@ -12,9 +12,9 @@ import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 
-public class juego_normal extends javax.swing.JFrame {
+public final class juego_normal extends javax.swing.JFrame {
     
-     public ImageIcon imgs[];
+    //public ImageIcon imgs[];
     public JButton btns[];
     public String msgs[];
     public int ran;
@@ -27,28 +27,28 @@ public class juego_normal extends javax.swing.JFrame {
         setSize(650,707);//cambiar tamaÃ±o de la ventana
         this.setLocationRelativeTo(null);//posicion de la ventana
         
-        Image icon=new ImageIcon(getClass().getResource("ahoracado/hol.png")).getImage();
-        setIconImage(icon);
+        //Image icon=new ImageIcon(getClass().getResource("ahoracado/hol.png")).getImage();
+        //setIconImage(icon);
         
-        imgs = new ImageIcon[12];
+        //imgs = new ImageIcon[12];
         btns = new JButton[28];
         msgs = new String[20];
         
         //imagen del joven que se va a ahorcar por que ella no lo ama xd xd
-        imgs[0] = new ImageIcon(getClass().getResource("ahoracado/im1.jpg"));
-        imgs[1] = new ImageIcon(getClass().getResource("ahoracado/im2.jpg"));
-        imgs[2] = new ImageIcon(getClass().getResource("ahoracado/im3.jpg"));
-        imgs[3] = new ImageIcon(getClass().getResource("ahoracado/im4.jpg"));
-        imgs[4] = new ImageIcon(getClass().getResource("ahoracado/im5.jpg"));
-        imgs[5] = new ImageIcon(getClass().getResource("ahoracado/im6.jpg"));
+        //imgs[0] = new ImageIcon(getClass().getResource("ahoracado/im1.jpg"));
+        //imgs[1] = new ImageIcon(getClass().getResource("ahoracado/im2.jpg"));
+        //imgs[2] = new ImageIcon(getClass().getResource("ahoracado/im3.jpg"));
+        //imgs[3] = new ImageIcon(getClass().getResource("ahoracado/im4.jpg"));
+        //imgs[4] = new ImageIcon(getClass().getResource("ahoracado/im5.jpg"));
+        //imgs[5] = new ImageIcon(getClass().getResource("ahoracado/im6.jpg"));
 
         
-       imgs[6] = new ImageIcon(getClass().getResource("ahoracado/fallo0.png"));
-       imgs[7] = new ImageIcon(getClass().getResource("ahoracado/fallo1.png"));
-       imgs[8] = new ImageIcon(getClass().getResource("ahoracado/fallo2.png"));
-       imgs[9] = new ImageIcon(getClass().getResource("ahoracado/fallo3.png"));
-       imgs[10] = new ImageIcon(getClass().getResource("ahoracado/fallo4.png"));
-       imgs[11] = new ImageIcon(getClass().getResource("ahoracado/fallo5.png"));
+       //imgs[6] = new ImageIcon(getClass().getResource("ahoracado/fallo0.png"));
+       //imgs[7] = new ImageIcon(getClass().getResource("ahoracado/fallo1.png"));
+       //imgs[8] = new ImageIcon(getClass().getResource("ahoracado/fallo2.png"));
+       //imgs[9] = new ImageIcon(getClass().getResource("ahoracado/fallo3.png"));
+       //imgs[10] = new ImageIcon(getClass().getResource("ahoracado/fallo4.png"));
+      // imgs[11] = new ImageIcon(getClass().getResource("ahoracado/fallo5.png"));
         //botones para las letras
         btns[1]=button_1;
         btns[2]=button_2;
@@ -79,34 +79,30 @@ public class juego_normal extends javax.swing.JFrame {
         btns[27]=button_15;
         
         //palabras por advinar, para agregar una nueva palabra sera necesario declararla al inicio
-        msgs[0] = "Guayaquil".toUpperCase();
+        msgs[0] = "hola".toUpperCase();
         msgs[1] = "Barcelona".toUpperCase();
-        msgs[2] = "Emelec".toUpperCase();
-        msgs[3] = "Ella no te ama".toUpperCase();
-        msgs[4] = "Ecuador".toUpperCase();
+        msgs[2] = "lleo".toUpperCase();
+        msgs[3] = "Bon dia".toUpperCase();
+        msgs[4] = "Classes".toUpperCase();
         msgs[5] = "Programacion".toUpperCase();
         msgs[6] = "Informatica".toUpperCase();
-        msgs[7] = "Filosofia".toUpperCase();
+        msgs[7] = "Matematiques".toUpperCase();
         msgs[8] = "Ahorcado".toUpperCase();
-        msgs[9] = "Freddy".toUpperCase();
-        msgs[10] = "Helicoptero".toUpperCase();
+        msgs[9] = "mare".toUpperCase();
+        msgs[10] = "pare".toUpperCase();
         msgs[11] = "Alumno".toUpperCase();
         msgs[12] = "Telefono".toUpperCase();
         msgs[13] = "Futbol".toUpperCase();
         msgs[14] = "oso".toUpperCase();
-        msgs[15] = "transformacion".toUpperCase();
+        msgs[15] = "cafe".toUpperCase();
         msgs[16] = "bus".toUpperCase();
-        msgs[17] = "Carro".toUpperCase();
-        msgs[18] = "Computacion".toUpperCase();
-        msgs[19] = "Supletorios".toUpperCase();
+        msgs[17] = "Coche".toUpperCase();
+        msgs[18] = "Entrenament".toUpperCase();
+        msgs[19] = "Institut".toUpperCase();
         
         //se asigna un evento a cada letra para comprobar que exista en la palabra a adivinar
         for (int i = 1; i < 28; i++) {
-            btns[i].addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    checarLetra(e);
-                }
-            });
+            btns[i].addActionListener(this::checarLetra);
         }
         iniciar();
     }
@@ -116,9 +112,9 @@ public class juego_normal extends javax.swing.JFrame {
         //ERRORES EN 0
         err = 0;
         err2=6;
-        Dibujo.setIcon(imgs[0]);
+        //Dibujo.setIcon(imgs[0]);
         txtPalabra.setText("");
-        errores.setIcon(imgs[6]);//:___________________________________----
+        //errores.setIcon(imgs[6]);//:___________________________________----
         //para activar las letras del tablero
         for (int i = 1; i < 28; i++) {
             btns[i].setEnabled(true);
@@ -142,7 +138,7 @@ public class juego_normal extends javax.swing.JFrame {
     
     //al presionar una letra, esta se buscara si pertenece a la palabra, de lo contrario la marcara como error 
     public void checarLetra(ActionEvent e) {
-        Icon cp=new ImageIcon(getClass().getResource("ahoracado/copa.png"));//icono de la copa
+        Icon cp=new ImageIcon(getClass().getResource("/ahoracado/copa.png"));//icono de la copa
         Icon cara=new ImageIcon(getClass().getResource("ahoracado/cara.png"));//icono de la copa
         JButton bt = (JButton) e.getSource();
         char c[];
@@ -186,8 +182,8 @@ public class juego_normal extends javax.swing.JFrame {
                     }
                     
                 } else {
-                    Dibujo.setIcon(imgs[++err]);
-                    errores.setIcon(imgs[++err2]);
+                    //Dibujo.setIcon(imgs[++err]);
+                    //errores.setIcon(imgs[++err2]);
                
                     if (err == 5) {
                         JOptionPane.showMessageDialog(this, "HAS PERDIDO\n Intenta con otra palabra la respuesta es: \n" + msgs[ran], "Ahorcado",JOptionPane.INFORMATION_MESSAGE, cara);
@@ -890,15 +886,7 @@ public class juego_normal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-      if (JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de querer regresar al menu principal?\n Se perdera todo su progreso..",
-                "Ahorcado", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION)
-        {ini i=new ini();
-        i.setVisible(true);
-        this.setVisible(false);
-        }
-        else{
-                setDefaultCloseOperation(0);
-        }
+             System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void button_25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_25ActionPerformed
@@ -1062,30 +1050,7 @@ public class juego_normal extends javax.swing.JFrame {
     } 
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(juego_normal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(juego_normal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(juego_normal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(juego_normal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new juego_normal().setVisible(true);

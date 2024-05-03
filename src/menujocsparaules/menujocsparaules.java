@@ -2,6 +2,7 @@
 package menujocsparaules;
 
 import ahorcado.juego_normal;
+import ahorcadov2.Main;
 import panells.families;
 
 
@@ -101,7 +102,7 @@ public class menujocsparaules extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         juego_normal newframe = new juego_normal();
+         Main newframe = new Main();
 
         newframe.setVisible(true);
 
