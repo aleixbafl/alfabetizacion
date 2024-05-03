@@ -40,6 +40,7 @@ public int sumaDados;
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,7 +81,7 @@ public int sumaDados;
 
         imagendado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alea_6.png"))); // NOI18N
         jPanel1.add(imagendado1);
-        imagendado1.setBounds(30, 150, 370, 270);
+        imagendado1.setBounds(20, 150, 370, 270);
 
         imagendado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alea_6.png"))); // NOI18N
         jPanel1.add(imagendado2);
@@ -124,6 +125,12 @@ public int sumaDados;
         });
         jPanel1.add(jButton4);
         jButton4.setBounds(500, 540, 120, 27);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("+");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(340, 246, 25, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,6 +265,7 @@ public int sumaDados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

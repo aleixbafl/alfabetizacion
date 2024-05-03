@@ -604,7 +604,7 @@ public class reguistre extends javax.swing.JFrame {
                     conexio.tancaConexio();
                     return false;
                 }
-                conexio.tancaConexio();
+                conexio.tancaConexio(); 
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
