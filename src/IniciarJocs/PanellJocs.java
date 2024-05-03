@@ -107,9 +107,9 @@ public class PanellJocs extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(82, 82, 82)
+                        .addGap(67, 67, 67)
                         .addComponent(jButton2)
-                        .addGap(53, 53, 53)))
+                        .addGap(68, 68, 68)))
                 .addComponent(jButton3)
                 .addGap(56, 56, 56))
         );

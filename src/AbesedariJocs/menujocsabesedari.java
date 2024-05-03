@@ -1,6 +1,7 @@
 //samuel
 package AbesedariJocs;
 
+import jocabc.jocdeabc;
 import panells.families;
 
 
@@ -20,6 +21,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -30,7 +32,12 @@ public class menujocsabesedari extends javax.swing.JFrame {
         jLabel1.setText("JOCS ABESEDARI");
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Joc 1");
+        jButton1.setText("Memoria ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Joc 2");
@@ -42,6 +49,9 @@ public class menujocsabesedari extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton4.setText("Menu");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,6 +70,8 @@ public class menujocsabesedari extends javax.swing.JFrame {
                 .addContainerGap(207, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(31, 31, 31)
                 .addComponent(jButton3)
                 .addGap(50, 50, 50))
         );
@@ -73,7 +85,9 @@ public class menujocsabesedari extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(46, 46, 46))
         );
 
@@ -98,6 +112,14 @@ public class menujocsabesedari extends javax.swing.JFrame {
 
         this.dispose(); 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         jocdeabc newframe = new jocdeabc();
+
+        newframe.setVisible(true);
+
+        this.dispose(); 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
 
@@ -129,6 +151,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
