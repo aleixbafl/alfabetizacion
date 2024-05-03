@@ -1,6 +1,13 @@
 package objectesBD;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class usuariBD implements Serializable {
     private String nomUsuari;
@@ -23,5 +30,18 @@ public class usuariBD implements Serializable {
 
     public String getCorreuElcectronic() {
         return correuElcectronic;
+    }
+    
+    public void guardarFill(){
+        File f = new File("usuari.usr");
+        try {
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(fillsBD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(fillsBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -15,8 +15,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -24,6 +26,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import loginReguistre.login;
+import objectesBD.fillsBD;
 import objectesBD.usuariBD;
 import serverConexio.conexioBD;
 
@@ -361,61 +364,57 @@ public class families extends javax.swing.JFrame {
         if (llistaFills == null) {
             missatge("No hi ha fills per a poder eliminar.");
         } else {
-            int seleccionat = llistaFills.getSelectedIndex();
-            if (seleccionat != -1) {
-                String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
-                try {
-                    File f = new File("usuari.usr");
-                    FileInputStream fis = new FileInputStream(f);
-                    ObjectInputStream ois = new ObjectInputStream(fis);
-                    while (fis.available() > 0 ) {
-                        usuariBD userLogin = (usuariBD) ois.readObject();
-                        conexioBD bd = new conexioBD();
-                        bd.obrirConexio();
+            if (preguntaSiNo("Estàs segur que vols eliminar aquest fill?") == JOptionPane.YES_OPTION) {
+                int seleccionat = llistaFills.getSelectedIndex();
+                if (seleccionat != -1) {
+                    String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
+                    fillsBD fill = obtenirFills(contingut);
+                    if (!fill.getNom().isEmpty()) {
                         try {
-                            boolean seguir = true;
-                            ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT f.nom, f.cognoms FROM fills f JOIN familia fa ON f.dni = fa.dniFill JOIN usuari u ON fa.nomUsuariFamil = u.nomUsuari WHERE u.nomUsuari = '" + userLogin.getNomUsuari() + "'; ");
-                            while (resultatUsuari.next() && seguir){
-                                String nom = resultatUsuari.getString("f.nom"), cognom = resultatUsuari.getString("f.cognoms");
-                                String nomCognom = resultatUsuari.getString("f.nom") + " " + resultatUsuari.getString("f.cognoms");
-                                if (nomCognom.equals(contingut)) {
-                                    bd.ecjecutarActualitzar("DELETE FROM fills WHERE nom = '" + nom + "' AND cognoms = '" + cognom + "';");
-                                    DefaultListModel<String> model = (DefaultListModel<String>) llistaFills.getModel();
-                                    model.remove(seleccionat);
-                                    missatge("S'ha eliminat correctament el fill.");
-                                }
-                            }
+                            conexioBD bd = new conexioBD();
+                            bd.obrirConexio();
+                            bd.ecjecutarActualitzar("DELETE FROM fills WHERE nom = '" + fill.getNom() + "' AND cognoms = '" + fill.getCognoms() + "';");
+                            DefaultListModel<String> model = (DefaultListModel<String>) llistaFills.getModel();
+                            model.remove(seleccionat);
+                            missatge("S'ha eliminat correctament el fill.");
                         } catch (SQLException ex) {
-                            missatge(bd.missatgeError(ex.getErrorCode()));
+                            Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-                    ois.close();
-                    fis.close();
-                } catch (FileNotFoundException ex) {
-                    missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
-                } catch (IOException ex) {
-                    missatge("Error de lectura de les credencials.");
-                } catch (ClassNotFoundException ex) {
-                    missatge("Error no especificat.");
+                } else {
+                    missatge("Has de seleccionar un element per a poder eliminar-lo.");
                 }
             } else {
-                missatge("Has de seleccionar un element per a poder eliminar-lo.");
+                
             }
         }
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void activitatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activitatsActionPerformed
-        ImageIcon icono = new ImageIcon("img/logo.png");
-        
-        PanellJocs pantallaJocs = new PanellJocs();
-        pantallaJocs.setTitle("Registrar-se - Alfabetització");
-        pantallaJocs.setMinimumSize(new java.awt.Dimension(450, 600));
-        pantallaJocs.setResizable(false);
-        pantallaJocs.setLocationRelativeTo(null);
-        pantallaJocs.setIconImage(icono.getImage());
-        
-        this.dispose();
-        pantallaJocs.setVisible(true);
+        if (llistaFills == null) {
+            missatge("No hi ha fills per a poder seleccionar.");
+        } else {
+            int seleccionat = llistaFills.getSelectedIndex();
+            if (seleccionat != -1) {
+                String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
+                fillsBD fill = obtenirFills(contingut);
+                fill.guardarFill();
+                
+                ImageIcon icono = new ImageIcon("img/logo.png");
+
+                PanellJocs pantallaJocs = new PanellJocs();
+                pantallaJocs.setTitle("Registrar-se - Alfabetització");
+                pantallaJocs.setMinimumSize(new java.awt.Dimension(450, 600));
+                pantallaJocs.setResizable(false);
+                pantallaJocs.setLocationRelativeTo(null);
+                pantallaJocs.setIconImage(icono.getImage());
+
+                this.dispose();
+                pantallaJocs.setVisible(true);
+            } else {
+                missatge("Has de seleccionar un element per a poder eliminar-lo.");
+            }
+        }
     }//GEN-LAST:event_activitatsActionPerformed
 
     /**
@@ -471,5 +470,55 @@ public class families extends javax.swing.JFrame {
 
     private void missatge(String missatge) {
         JOptionPane.showMessageDialog(rootPane, missatge);
+    }
+    
+    private int preguntaSiNo(String missatge) {
+        return JOptionPane.showConfirmDialog(this, missatge, "Confirmación", JOptionPane.YES_NO_OPTION);
+    }
+    
+    private fillsBD obtenirFills(String fillSeleci) {
+        fillsBD fill = new fillsBD();
+        try {
+            File f = new File("usuari.usr");
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            while (fis.available() > 0 ) {
+                usuariBD userLogin = (usuariBD) ois.readObject();
+                conexioBD bd = new conexioBD();
+                bd.obrirConexio();
+                try {
+                    boolean seguir = true;
+                    ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT f.* FROM fills f JOIN familia fa ON f.dni = fa.dniFill JOIN usuari u ON fa.nomUsuariFamil = u.nomUsuari WHERE u.nomUsuari = '" + userLogin.getNomUsuari() + "'; ");
+                    while (resultatUsuari.next() && seguir){
+                        String nomCognom = resultatUsuari.getString("f.nom") + " " + resultatUsuari.getString("f.cognoms");
+                        if (fillSeleci.equals(nomCognom)) {
+                            fill.setDni(resultatUsuari.getString("f.dni"));
+                            fill.setNom(resultatUsuari.getString("f.nom"));
+                            fill.setCognoms(resultatUsuari.getString("f.cognoms"));
+                            fill.setDataNaixe(dateString(resultatUsuari.getDate("f.dataNaixe")));
+                            fill.setNiveInici(resultatUsuari.getInt("f.niveInici"));
+                            fill.setNiveActual(resultatUsuari.getInt("f.niveActual"));
+                            seguir = false;
+                        }
+                    }
+                } catch (SQLException ex) {
+                    missatge(bd.missatgeError(ex.getErrorCode()));
+                }
+            }
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException ex) {
+            missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
+        } catch (IOException ex) {
+            missatge("Error de lectura de les credencials.");
+        } catch (ClassNotFoundException ex) {
+            missatge("Error no especificat.");
+        }
+        return fill;
+    }
+
+    private String dateString(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
     }
 }
