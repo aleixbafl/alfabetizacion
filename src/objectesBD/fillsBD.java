@@ -1,13 +1,16 @@
 package objectesBD;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class fillsBD implements Serializable {
     private String dni;
@@ -88,5 +91,35 @@ public class fillsBD implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(fillsBD.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void lleguirFill(){
+        File f = new File("fill.fill");
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+            fillsBD fillObj = (fillsBD) ois.readObject();
+            
+            this.dni = fillObj.getDni();
+            this.nom = fillObj.getNom();
+            this.cognoms = fillObj.getCognoms();
+            this.dataNaixe = fillObj.getDataNaixe();
+            this.niveInici = fillObj.getNiveInici();
+            this.niveActual = fillObj.getNiveActual();
+            
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException ex) {
+            missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
+        } catch (IOException ex) {
+            missatge("Error de lectura de les credencials.");
+        } catch (ClassNotFoundException ex) {
+            missatge("Classe no trobada.");
+        } 
+    }
+    
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(null, missatge);
     }
 }

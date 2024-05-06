@@ -286,6 +286,15 @@ public class historic extends javax.swing.JFrame {
     }//GEN-LAST:event_visualitzarActivitatsActionPerformed
 
     private void tornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tornarActionPerformed
+        File f = new File("fill.fill");
+        File dniF = new File("dni.fill");
+        if (f.exists()) {
+            f.delete();
+            if (dniF.exists()) {
+                dniF.delete();
+            }
+        }
+        
         ImageIcon icono = new ImageIcon("img/logo.png");
 
         families panellFamilies = new families();

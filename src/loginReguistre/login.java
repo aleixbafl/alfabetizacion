@@ -43,23 +43,10 @@ public class login extends javax.swing.JFrame {
         File f = new File("usuari.usr");
         if (f.exists()) {
             if (preguntaSiNo("Vols recarregar les credencials?") == JOptionPane.YES_OPTION) {
-                try {
-                    FileInputStream fis = new FileInputStream(f);
-                    ObjectInputStream ois = new ObjectInputStream(fis);
-                    while (fis.available() > 0 ) {
-                        usuariBD userLogin = (usuariBD) ois.readObject();
-                        usuari.setText(userLogin.getNomUsuari());
-                        contrasenya.setText(userLogin.getContrasenya());
-                    }
-                    ois.close();
-                    fis.close();
-                } catch (FileNotFoundException ex) {
-                    missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
-                } catch (IOException ex) {
-                    missatge("Error de lectura de les credencials.");
-                } catch (ClassNotFoundException ex) {
-                    missatge("Error no especificat.");
-                } 
+                usuariBD userLogin = new usuariBD();
+                userLogin.lleguirUser();
+                usuari.setText(userLogin.getNomUsuari());
+                contrasenya.setText(userLogin.getContrasenya());
             } else {
                 f.delete();
             }

@@ -364,28 +364,28 @@ public class families extends javax.swing.JFrame {
         if (llistaFills == null) {
             missatge("No hi ha fills per a poder eliminar.");
         } else {
-            if (preguntaSiNo("Estàs segur que vols eliminar aquest fill?") == JOptionPane.YES_OPTION) {
-                int seleccionat = llistaFills.getSelectedIndex();
-                if (seleccionat != -1) {
-                    String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
-                    fillsBD fill = obtenirFills(contingut);
-                    if (!fill.getNom().isEmpty()) {
-                        try {
-                            conexioBD bd = new conexioBD();
-                            bd.obrirConexio();
-                            bd.ecjecutarActualitzar("DELETE FROM fills WHERE nom = '" + fill.getNom() + "' AND cognoms = '" + fill.getCognoms() + "';");
-                            DefaultListModel<String> model = (DefaultListModel<String>) llistaFills.getModel();
-                            model.remove(seleccionat);
-                            missatge("S'ha eliminat correctament el fill.");
-                        } catch (SQLException ex) {
-                            Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
+            int seleccionat = llistaFills.getSelectedIndex();
+            if (seleccionat != -1) {
+                if (preguntaSiNo("Estàs segur que vols eliminar aquest fill?") == JOptionPane.YES_OPTION) {
+                        String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
+                        fillsBD fill = obtenirFills(contingut);
+                        if (!fill.getNom().isEmpty()) {
+                            try {
+                                conexioBD bd = new conexioBD();
+                                bd.obrirConexio();
+                                bd.ecjecutarActualitzar("DELETE FROM fills WHERE nom = '" + fill.getNom() + "' AND cognoms = '" + fill.getCognoms() + "';");
+                                DefaultListModel<String> model = (DefaultListModel<String>) llistaFills.getModel();
+                                model.remove(seleccionat);
+                                missatge("S'ha eliminat correctament el fill.");
+                            } catch (SQLException ex) {
+                                Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
-                    }
                 } else {
-                    missatge("Has de seleccionar un element per a poder eliminar-lo.");
+                    llistaFills.clearSelection();
                 }
             } else {
-                llistaFills.clearSelection();
+                missatge("Has de seleccionar un element per a poder eliminar-lo.");
             }
         }
     }//GEN-LAST:event_eliminarActionPerformed
@@ -403,7 +403,7 @@ public class families extends javax.swing.JFrame {
                 ImageIcon icono = new ImageIcon("img/logo.png");
 
                 PanellJocs pantallaJocs = new PanellJocs();
-                pantallaJocs.setTitle("Registrar-se - Alfabetització");
+                pantallaJocs.setTitle("Panell Activitats - Alfabetització");
                 pantallaJocs.setMinimumSize(new java.awt.Dimension(450, 600));
                 pantallaJocs.setResizable(false);
                 pantallaJocs.setLocationRelativeTo(null);

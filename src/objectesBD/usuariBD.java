@@ -1,13 +1,16 @@
 package objectesBD;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class usuariBD implements Serializable {
     private String nomUsuari;
@@ -58,5 +61,32 @@ public class usuariBD implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(fillsBD.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void lleguirUser(){
+        File f = new File("usuari.usr");
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+            usuariBD userSave = (usuariBD) ois.readObject();
+            
+            this.nomUsuari = userSave.getNomUsuari();
+            this.contrasenya = userSave.getContrasenya();
+            this.correuElcectronic = userSave.getCorreuElcectronic();
+            
+            ois.close();
+            fis.close();
+        } catch (FileNotFoundException ex) {
+            missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
+        } catch (IOException ex) {
+            missatge("Error de lectura de les credencials.");
+        } catch (ClassNotFoundException ex) {
+            missatge("Classe no trobada.");
+        } 
+    }
+    
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(null, missatge);
     }
 }
