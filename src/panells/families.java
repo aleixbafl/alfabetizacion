@@ -385,7 +385,7 @@ public class families extends javax.swing.JFrame {
                     missatge("Has de seleccionar un element per a poder eliminar-lo.");
                 }
             } else {
-                
+                llistaFills.clearSelection();
             }
         }
     }//GEN-LAST:event_eliminarActionPerformed

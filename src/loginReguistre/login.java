@@ -109,10 +109,10 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Nom Usuari::");
+        jLabel2.setText("Nom Usuari:");
 
         usuari.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        usuari.setToolTipText("correu@exemple.com");
+        usuari.setToolTipText("Los Simpson");
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
