@@ -20,6 +20,21 @@ public class usuariBD implements Serializable {
         this.correuElcectronic = correuElcectronic;
     }
 
+    public usuariBD() {
+    }
+
+    public void setNomUsuari(String nomUsuari) {
+        this.nomUsuari = nomUsuari;
+    }
+
+    public void setContrasenya(String contrasenya) {
+        this.contrasenya = contrasenya;
+    }
+
+    public void setCorreuElcectronic(String correuElcectronic) {
+        this.correuElcectronic = correuElcectronic;
+    }
+
     public String getNomUsuari() {
         return nomUsuari;
     }
@@ -32,7 +47,7 @@ public class usuariBD implements Serializable {
         return correuElcectronic;
     }
     
-    public void guardarFill(){
+    public void guardarUser(){
         File f = new File("usuari.usr");
         try {
             FileOutputStream fos = new FileOutputStream(f);

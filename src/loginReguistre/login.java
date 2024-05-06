@@ -238,9 +238,7 @@ public class login extends javax.swing.JFrame {
                         File f = new File("usuari.usr");
                         while (!f.exists()) {
                             usuariBD userLogin = new usuariBD(resultatUsuari.getString("nomUsuari"), contrasenya.getText(), resultatUsuari.getString("correuElecUsuari"));
-                            FileOutputStream fos = new FileOutputStream(f);
-                            ObjectOutputStream oos = new ObjectOutputStream(fos);
-                            oos.writeObject(userLogin);
+                            userLogin.guardarUser();
                         }
                         conectar.tancaConexio();
 
@@ -263,10 +261,6 @@ public class login extends javax.swing.JFrame {
                 }
             } catch (SQLException ex) {
                 missatge(conectar.missatgeError(ex.getErrorCode()));
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_iniciaActionPerformed
