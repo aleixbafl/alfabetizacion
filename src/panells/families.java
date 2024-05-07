@@ -7,7 +7,6 @@ package panells;
 import IniciarJocs.PanellJocs;
 import fills.afegir;
 import fills.historic;
-import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -404,7 +403,7 @@ public class families extends javax.swing.JFrame {
 
                 PanellJocs pantallaJocs = new PanellJocs();
                 pantallaJocs.setTitle("Panell Activitats - Alfabetització");
-                pantallaJocs.setMinimumSize(new java.awt.Dimension(450, 600));
+                pantallaJocs.setMinimumSize(new java.awt.Dimension(600, 450));
                 pantallaJocs.setResizable(false);
                 pantallaJocs.setLocationRelativeTo(null);
                 pantallaJocs.setIconImage(icono.getImage());

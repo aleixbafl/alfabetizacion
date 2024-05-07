@@ -36,7 +36,6 @@ public class menujocsabesedari extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("JOCS ABESEDARI");
 
         jButton1.setText("Joc 1");
@@ -57,7 +56,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addComponent(jButton1))))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,7 +67,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(57, 57, 57)
                 .addComponent(jButton2)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

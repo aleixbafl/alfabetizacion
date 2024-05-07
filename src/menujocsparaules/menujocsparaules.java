@@ -37,7 +37,6 @@ public class menujocsparaules extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("JOCS DE PARAULES ");
 
         jButton1.setText("Joc1 ");
@@ -59,7 +58,7 @@ public class menujocsparaules extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton2)
                             .addComponent(jButton1))))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,7 +69,7 @@ public class menujocsparaules extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(65, 65, 65)
                 .addComponent(jButton2)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
