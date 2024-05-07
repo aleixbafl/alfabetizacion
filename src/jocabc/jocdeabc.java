@@ -81,59 +81,64 @@ public class jocdeabc extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("jButton3");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/a.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("jButton4");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/b.png"))); // NOI18N
 
-        jButton5.setText("jButton5");
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/c.png"))); // NOI18N
 
-        jButton6.setText("jButton6");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/d.png"))); // NOI18N
 
-        jButton7.setText("jButton3");
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/e.png"))); // NOI18N
 
-        jButton8.setText("jButton6");
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/h.png"))); // NOI18N
 
-        jButton9.setText("jButton4");
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/f.png"))); // NOI18N
 
-        jButton10.setText("jButton5");
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/g.png"))); // NOI18N
 
-        jButton11.setText("jButton3");
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/i.png"))); // NOI18N
 
-        jButton12.setText("jButton4");
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/j.png"))); // NOI18N
 
-        jButton13.setText("jButton5");
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/k.png"))); // NOI18N
 
-        jButton14.setText("jButton6");
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/l.png"))); // NOI18N
 
-        jButton15.setText("jButton3");
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/m.png"))); // NOI18N
 
-        jButton16.setText("jButton4");
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/n.png"))); // NOI18N
 
-        jButton17.setText("jButton5");
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/o.png"))); // NOI18N
 
-        jButton18.setText("jButton6");
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/p.png"))); // NOI18N
 
-        jButton19.setText("jButton3");
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/q.png"))); // NOI18N
 
-        jButton20.setText("jButton4");
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/r.png"))); // NOI18N
 
-        jButton21.setText("jButton5");
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/s.png"))); // NOI18N
 
-        jButton22.setText("jButton6");
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/t.png"))); // NOI18N
 
-        jButton23.setText("jButton3");
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/u.png"))); // NOI18N
 
-        jButton24.setText("jButton4");
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/v.png"))); // NOI18N
 
-        jButton25.setText("jButton5");
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/w.png"))); // NOI18N
 
-        jButton26.setText("jButton6");
+        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/x.png"))); // NOI18N
 
-        jButton27.setText("jButton3");
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/y.png"))); // NOI18N
 
-        jButton28.setText("jButton4");
+        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/z.png"))); // NOI18N
 
-        jButton29.setText("jButton5");
+        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jocabc/ñ.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,52 +147,54 @@ public class jocdeabc extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButton19)
-                            .addGap(102, 102, 102)
-                            .addComponent(jButton20)
-                            .addGap(111, 111, 111)
-                            .addComponent(jButton21)
-                            .addGap(139, 139, 139)
-                            .addComponent(jButton22))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButton7)
-                                    .addGap(102, 102, 102)
-                                    .addComponent(jButton9)
-                                    .addGap(111, 111, 111)
-                                    .addComponent(jButton10))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton11)
-                                        .addComponent(jButton15))
-                                    .addGap(102, 102, 102)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton12)
-                                        .addComponent(jButton16))
-                                    .addGap(111, 111, 111)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton17)
-                                        .addComponent(jButton13))))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(139, 139, 139)
-                                    .addComponent(jButton18))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jButton14, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButton3)
-                            .addGap(102, 102, 102)
-                            .addComponent(jButton4)
-                            .addGap(111, 111, 111)
-                            .addComponent(jButton5)
-                            .addGap(139, 139, 139)
-                            .addComponent(jButton6)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton19)
+                                .addGap(102, 102, 102)
+                                .addComponent(jButton20)
+                                .addGap(111, 111, 111)
+                                .addComponent(jButton21)
+                                .addGap(139, 139, 139)
+                                .addComponent(jButton22))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jButton7)
+                                        .addGap(102, 102, 102)
+                                        .addComponent(jButton9)
+                                        .addGap(111, 111, 111)
+                                        .addComponent(jButton10))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton11)
+                                            .addComponent(jButton15))
+                                        .addGap(102, 102, 102)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton12)
+                                            .addComponent(jButton16))
+                                        .addGap(111, 111, 111)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton17)
+                                            .addComponent(jButton13))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(139, 139, 139)
+                                        .addComponent(jButton18))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(135, 135, 135)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton8)
+                                            .addComponent(jButton14)))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(102, 102, 102)
+                                .addComponent(jButton4)
+                                .addGap(111, 111, 111)
+                                .addComponent(jButton5)
+                                .addGap(139, 139, 139)
+                                .addComponent(jButton6)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -204,7 +211,7 @@ public class jocdeabc extends javax.swing.JFrame {
                                 .addComponent(jButton25)))
                         .addGap(139, 139, 139)
                         .addComponent(jButton26)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,17 +223,19 @@ public class jocdeabc extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jButton6))
                 .addGap(81, 81, 81)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10)
-                    .addComponent(jButton8))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton8)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton7)
+                        .addComponent(jButton9)
+                        .addComponent(jButton10)))
                 .addGap(74, 74, 74)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton14)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton11)
+                        .addComponent(jButton12)
+                        .addComponent(jButton13)))
                 .addGap(80, 80, 80)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton18)
@@ -245,7 +254,7 @@ public class jocdeabc extends javax.swing.JFrame {
                     .addComponent(jButton25)
                     .addComponent(jButton24)
                     .addComponent(jButton23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton29)
                     .addComponent(jButton28)
@@ -260,7 +269,7 @@ public class jocdeabc extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(661, 661, 661)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -309,6 +318,11 @@ public class jocdeabc extends javax.swing.JFrame {
 
         this.dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      
+            
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
