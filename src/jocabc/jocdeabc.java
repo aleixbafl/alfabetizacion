@@ -2,89 +2,17 @@
 package jocabc;
 
 import IniciarJocs.PanellJocs;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import panells.families;
 
 
 
 public class jocdeabc extends javax.swing.JFrame {
 
-    private JTextField[] camposTexto;
-    private JButton btnComprobar;
-
     public jocdeabc() {
         initComponents();
-        crearInterfaz();
     }
-
-
-    private void crearInterfaz() {
-        JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setLayout(new GridLayout(0, 1, 5, 5));
-        panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        JPanel panelCampos = new JPanel(new GridLayout(0, 1, 5, 5));
-        camposTexto = new JTextField[27];
-        for (int i = 0; i < 27; i++) {
-            camposTexto[i] = new JTextField(1);
-            camposTexto[i].setHorizontalAlignment(JTextField.CENTER);
-            panelCampos.add(camposTexto[i]);
-        }
-        panelPrincipal.add(panelCampos);
-
-        // Crear botón de comprobación
-        btnComprobar = new JButton("Comprobar");
-        btnComprobar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                comprobarLetras();
-            }
-        });
-
-        JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        panelBoton.add(btnComprobar);
-        panelPrincipal.add(panelBoton);
-
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(panelPrincipal, BorderLayout.CENTER);
-
-        pack();
-        setLocationRelativeTo(null);
-    }
-
-    private void comprobarLetras() {
-        StringBuilder letras = new StringBuilder();
-        for (int i = 0; i < 27; i++) {
-            String texto = camposTexto[i].getText().trim();
-            if (texto.length() != 1) {
-                JOptionPane.showMessageDialog(this, "El campo " + (i + 1) + " debe contener exactamente una letra.");
-                return; // Salir del método si el campo no contiene exactamente una letra
-            }
-            letras.append(texto);
-        }
-
-        // Verificar si todas las letras introducidas están en orden alfabético
-        if (verificarOrdenAlfabetico(letras.toString())) {
-            JOptionPane.showMessageDialog(this, "¡Todas las letras están en orden alfabético!");
-        } else {
-            JOptionPane.showMessageDialog(this, "¡Al menos una letra no está en orden alfabético!");
-        }
-    }
-
-    private boolean verificarOrdenAlfabetico(String letras) {
-        char[] letrasOrden = letras.toCharArray();
-        for (int i = 0; i < letrasOrden.length - 1; i++) {
-            if (letrasOrden[i] > letrasOrden[i + 1]) {
-                return false; // Las letras no están en orden alfabético
-            }
-        }
-        return true; // Todas las letras están en orden alfabético
-    }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -251,6 +179,11 @@ public class jocdeabc extends javax.swing.JFrame {
         btnComprobar2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnComprobar2.setForeground(new java.awt.Color(0, 0, 0));
         btnComprobar2.setText("Comprobar");
+        btnComprobar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprobar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -407,7 +340,7 @@ public class jocdeabc extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
@@ -515,33 +448,32 @@ public class jocdeabc extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(661, 661, 661)
+                .addContainerGap(661, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(21, 21, 21))
+                .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addGap(21, 21, 21))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -591,13 +523,42 @@ public class jocdeabc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
+    private void btnComprobar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprobar2ActionPerformed
+   
+     JTextField[] camposTexto = {jTextField23, jTextField28, jTextField29, jTextField31, jTextField30, jTextField2, jTextField1, jTextField3, jTextField4, jTextField9, jTextField6, jTextField7, jTextField5, jTextField8, jTextField10, jTextField11, jTextField12, jTextField15, jTextField14, jTextField12, jTextField13, jTextField20, jTextField17, jTextField19, jTextField16, jTextField21, jTextField22};
+
+    String[] letras = {"z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "ñ"};
+
+    boolean campoVacio = false;
+    boolean letraIncorrecta = false;
+
+    for (int i = 0; i < camposTexto.length; i++) {
+        JTextField campoTexto = camposTexto[i];
+        String letra = letras[i];
+        String texto = campoTexto.getText().trim();
+
+        if (texto.isEmpty()) {
+            campoVacio = true;
+        } else if (texto.length() > 1 || !Character.isLetter(texto.charAt(0))) {
+            letraIncorrecta = true;
+        } else if (!texto.equalsIgnoreCase(letra)) {
+            letraIncorrecta = true;
+        }
+    }
+
+    if (campoVacio) {
+        missatge("Al menos uno de los campos está vacío. ¡Incorrecto!");
+    } else if (letraIncorrecta) {
+        missatge("Al menos uno de los campos contiene una letra incorrecta o más de una letra. ¡Incorrecto!");
+    } else {
+        missatge("¡Todos los campos son correctos!");
+    }
+
+    }//GEN-LAST:event_btnComprobar2ActionPerformed
+
     
     public static void main(String args[]) {
-         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new jocdeabc().setVisible(true);
-            }
-        });
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -662,4 +623,8 @@ public class jocdeabc extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(rootPane, missatge);
+    }
+   
 }
