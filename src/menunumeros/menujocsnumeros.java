@@ -2,6 +2,7 @@
 package menunumeros;
 
 import JocsDaus.BuscaNumeros;
+import JocsNum.JocdeNum;
 import panells.families;
 
 
@@ -40,7 +41,12 @@ public class menujocsnumeros extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("Joc 2");
+        jButton2.setText("Resta de Numeros");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Volver");
@@ -120,6 +126,14 @@ public class menujocsnumeros extends javax.swing.JFrame {
 
         this.dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+          JocdeNum newframe = new JocdeNum();
+
+        newframe.setVisible(true);
+
+        this.dispose(); 
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
 

@@ -2,11 +2,8 @@
 package JocsDaus;
 
 import IniciarJocs.PanellJocs;
-import SelectorMode.Numeros;
-import SelectorMode.TriarModeAplicacio;
 import java.util.Random;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import menunumeros.menujocsnumeros;
 
 
