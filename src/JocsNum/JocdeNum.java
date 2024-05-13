@@ -37,18 +37,28 @@ public int restaNum;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("JOC DE NUMEROS ");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(286, 26, 215, 32);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("START");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(176, 474, 73, 27);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Comprovar ");
@@ -57,104 +67,55 @@ public int restaNum;
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(672, 474, 111, 27);
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(436, 462, 195, 53);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Resultado : ");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(436, 533, 195, 42);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("Menu");
+        jPanel1.add(jButton3);
+        jButton3.setBounds(31, 593, 72, 23);
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("Volver");
+        jPanel1.add(jButton4);
+        jButton4.setBounds(395, 593, 72, 23);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cuanto da esta resta ? ");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(436, 423, 203, 20);
 
-        imagen2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/JocsNum/ocho.png"))); // NOI18N
+        imagen2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/un5.png"))); // NOI18N
+        jPanel1.add(imagen2);
+        imagen2.setBounds(512, 123, 204, 204);
 
-        imagen1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/JocsNum/cinco.png"))); // NOI18N
+        imagen1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/un5.png"))); // NOI18N
+        jPanel1.add(imagen1);
+        imagen1.setBounds(171, 123, 204, 204);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("-");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
-                .addGap(41, 41, 41)
-                .addComponent(jButton2)
-                .addGap(55, 55, 55))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(436, 436, 436)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton3)
-                        .addGap(292, 292, 292)
-                        .addComponent(jButton4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addGap(116, 116, 116)
-                .addComponent(imagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(imagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(26, 26, 26))
-        );
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(381, 206, 15, 48);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
         );
 
         pack();
@@ -163,95 +124,99 @@ public int restaNum;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
      try {
-        int numeroIngresado = Integer.parseInt(jTextField1.getText()); // Obtener el número ingresado por el jugador
-        if (numeroIngresado == restaNum) { // Comparar el número ingresado con la suma de los valores de los dados
-            jLabel3.setText("¡Número correcto!"); // Establecer el texto del JLabel como "¡Número correcto!"
+        int numeroIngresado = Integer.parseInt(jTextField1.getText()); 
+        if (numeroIngresado == restaNum) { 
+            jLabel3.setText("¡Número correcto!"); 
         } else {
-            jLabel3.setText("Número incorrecto. La resta de los dados es: " + restaNum ); // Establecer el texto del JLabel como "Número incorrecto. La suma de los dados es: [sumaDados]"
+            jLabel3.setText("Número incorrecto. La resta de los dados es: " + restaNum ); 
         }
     } catch (NumberFormatException e) {
-        jLabel3.setText("Por favor, ingresa un número válido."); // Establecer el texto del JLabel como "Por favor, ingresa un número válido."
+        jLabel3.setText("Por favor, ingresa un número válido."); 
     }
              
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           Random rnd = new Random();
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        
+        Random rnd = new Random();
         int num1 = rnd.nextInt(6) + 1; 
         int num2 = rnd.nextInt(6) + 1; 
 
-    imagen1.setIcon(new ImageIcon(getClass().getResource("/JocsNum/un" + num1 + ".png")));
-    imagen2.setIcon(new ImageIcon(getClass().getResource("/JocsNum/un" + num2 + ".png")));
+    imagen1.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num1 + ".png")));
+    imagen2.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num2 + ".png")));
             
      System.out.println("num1: " + num1 + ", num2: " + num2);
 
-    // Calcula la suma de los valores de los dados
     restaNum = num1 - num2;
     
     
         if (num1==0){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("uno.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un1.png")));
         }
         else if (num1==1){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("dos.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un2.png")));
         }
         else if (num1==2){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("tres.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un3.png")));
         }
         else if (num1==3){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("cuanto.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un4.png")));
         }
         else if (num1==4){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("cinco.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un5.png")));
         }
         else if (num1==5){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("seis.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un6.png")));
         }
          else if (num1==6){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("siete.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un7.png")));
         }
          else if (num1==7){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("ocho.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un8.png")));
         }
          else if (num1==8){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("nueve.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un9.png")));
         }
          else if (num1==9){
-            imagen1.setIcon(new ImageIcon(getClass().getResource("diez.png")));
+            imagen1.setIcon(new ImageIcon(getClass().getResource("un10.png")));
         }
         
          if (num2==0){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("uno.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un1.png")));
         }
         else if (num2==1){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("dos.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un2.png")));
         }
         else if (num2==2){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("tres.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un3.png")));
         }
         else if (num2==3){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("cuatro.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un4.png")));
         }
         else if (num2==4){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("cinco.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un5.png")));
         }
         else if (num2==5){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("seis.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un6.png")));
         }
            else if (num2==6){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("siete.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un7.png")));
         }
            else if (num2==7){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("ocho.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un8.png")));
         }
            else if (num2==8){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("nueve.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un9.png")));
         }
            else if (num2==9){
-            imagen2.setIcon(new ImageIcon(getClass().getResource("diez.png")));
+            imagen2.setIcon(new ImageIcon(getClass().getResource("un10.png")));
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     public static void main(String args[]) {
