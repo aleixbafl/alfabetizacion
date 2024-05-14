@@ -499,16 +499,6 @@ public class paraules extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tornarActionPerformed
-        fillsBD fill = new fillsBD();
-        fill.lleguirFill();
-        
-        conexioBD conexio = new conexioBD();
-        try {
-            conexio.ecjecutarActualitzar("");
-        } catch (SQLException ex) {
-            Logger.getLogger(paraules.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         ImageIcon icono = new ImageIcon("img/logo.png");
 
         PanellJocs pantallaJocs = new PanellJocs();
@@ -797,6 +787,7 @@ public class paraules extends javax.swing.JFrame {
             if (ordreCorrecte) {
                 if (lletraParaula == 'Z') {
                     tornar.setEnabled(true);
+                    guardarInformacio();
                 }
             }
         }
@@ -853,5 +844,34 @@ public class paraules extends javax.swing.JFrame {
         } else {
             missatge("S'han acabat els errors permesos. Continua fins a acabar-ho.");
         }
+    }
+
+    private void guardarInformacio() {
+        JButton[] nomBotons = {jButton1, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8, jButton9, jButton10, jButton11, jButton12, jButton13, jButton14, jButton15, jButton16, jButton17, jButton18, jButton19, jButton20, jButton21, jButton22, jButton23, jButton24, jButton25, jButton26, jButton27};
+        String paraules = "";
+        for (int i = 0; i < nomBotons.length; i++) {
+            if (i == 0) {
+                paraules = nomBotons[i].getText();
+            } else {
+                paraules = paraules + ", " + nomBotons[i].getText();
+            }
+        }
+        fillsBD fill = new fillsBD();
+        fill.lleguirFill();
+        
+        conexioBD conexio = new conexioBD();
+        conexio.obrirConexio();
+        try {
+            conexio.ecjecutarActualitzar("INSERT INTO `activitatRealitzat`(`dniFill`, `nota`, `tipo`, `comtingutActiv`) VALUES ('" + fill.getDni() + "','" + notaNum + "','Abecedari - Paraules','" + paraules + "');");
+        } catch (SQLException ex) {
+            if ((ex.getErrorCode() == 1062) || (ex.getErrorCode() == 1049) || (ex.getErrorCode() == 1146)) {
+                missatge("Hi ha alguna cosa errònia en la BD, taules o en les dades introduïdes.");
+            } else if (ex.getErrorCode() == 0) {
+                missatge("Error en la connexió a la BD, comprova que tinguis connexió a internet.");
+            } else {
+                missatge("Error no especificat: " + ex.getErrorCode());
+            }
+        }
+        conexio.tancaConexio();
     }
 }
