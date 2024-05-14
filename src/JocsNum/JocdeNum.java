@@ -4,6 +4,7 @@ package JocsNum;
 import AbesedariJocs.menujocsabesedari;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import menunumeros.menujocsnumeros;
 import panells.families;
 
@@ -36,6 +37,7 @@ public int restaNum;
         imagen2 = new javax.swing.JLabel();
         imagen1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +121,15 @@ public int restaNum;
         jLabel6.setText("-");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(381, 206, 15, 48);
+
+        jButton5.setText("Instrucciónes ");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5);
+        jButton5.setBounds(405, 680, 110, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -247,6 +258,17 @@ public int restaNum;
         this.dispose(); 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+       JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de la resta!\\n\\n\" +\n" +
+"                         \"Instrucciones:\\n\" +\n" +
+"                         \"- Se mostrarán dos números aleatorios.\\n\" +\n" +
+"                         \"- Debes calcular la resta entre ambos números.\\n\" +\n" +
+"                         \"- Escribe tu respuesta en el campo de texto.\\n\" +\n" +
+"                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n" +
+"                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n" +
+"                         \"- ¡Diviértete practicando resta!\";");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     public static void main(String args[]) {
 
@@ -264,6 +286,7 @@ public int restaNum;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

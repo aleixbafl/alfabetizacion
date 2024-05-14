@@ -4,6 +4,7 @@ package JocsDaus;
 import IniciarJocs.PanellJocs;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import menunumeros.menujocsnumeros;
 
 
@@ -38,6 +39,7 @@ public int sumaDados;
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +59,7 @@ public int sumaDados;
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(170, 690, 154, 27);
+        jButton2.setBounds(150, 690, 154, 27);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 51, 255));
@@ -128,6 +130,16 @@ public int sumaDados;
         jLabel4.setText("+");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(340, 246, 25, 50);
+
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton5.setText("Instrucciónes");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5);
+        jButton5.setBounds(330, 690, 120, 27);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,6 +252,18 @@ public int sumaDados;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        JOptionPane.showMessageDialog(rootPane,  "\"¡Bienvenido al juego de los dados!\\n\\n\" +\n" +
+"                         \"Instrucciones:\\n\" +\n" +
+"                         \"- Se lanzarán dos dados.\\n\" +\n" +
+"                         \"- Se mostrarán las imágenes de los dados y la suma de sus valores.\\n\" +\n" +
+"                         \"- ¡Intenta adivinar cuál será la suma de los valores de los dados!\\n\" +\n" +
+"                         \"- Escribe tu respuesta en el campo de texto.\\n\" +\n" +
+"                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n" +
+"                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n" +
+"                         \"- ¡Diviértete jugando con los dados!\";");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,6 +283,7 @@ public int sumaDados;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

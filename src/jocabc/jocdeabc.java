@@ -78,6 +78,7 @@ public class jocdeabc extends javax.swing.JFrame {
         jTextField31 = new javax.swing.JTextField();
         btnComprobar2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton30 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -443,24 +444,32 @@ public class jocdeabc extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("El abecedari de colos ");
 
+        jButton30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton30.setText("Instruccións");
+        jButton30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton30ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(661, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton30)
+                .addGap(50, 50, 50)
+                .addComponent(jButton2)
+                .addGap(30, 30, 30)
+                .addComponent(jButton1)
+                .addGap(48, 48, 48))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,7 +481,8 @@ public class jocdeabc extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton30))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -556,6 +566,16 @@ public class jocdeabc extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnComprobar2ActionPerformed
 
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+      JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de escribir las letras del abecedario correctamente en orden!\\n\\n\" +\n" +
+"                         \"Instrucciones:\\n\" +\n" +
+"                         \"- Se mostrarán las letras del abecedario en orden, una a la vez.\\n\" +\n" +
+"                         \"- Tu objetivo es escribir cada letra correctamente en el campo de texto en el mismo orden.\\n\" +\n" +
+"                         \"- Si te equivocas al escribir una letra, se mostrará un mensaje indicándolo.\\n\" +\n" +
+"                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta y avanzar a la siguiente letra.\\n\" +\n" +
+"                         \"- ¡Diviértete aprendiendo las letras del abecedario en orden!\";");
+    }//GEN-LAST:event_jButton30ActionPerformed
+
     
     public static void main(String args[]) {
        
@@ -586,6 +606,7 @@ public class jocdeabc extends javax.swing.JFrame {
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
