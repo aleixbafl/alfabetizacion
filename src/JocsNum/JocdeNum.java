@@ -1,8 +1,11 @@
 //samuel Fluerici
 package JocsNum;
 
+import AbesedariJocs.menujocsabesedari;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import menunumeros.menujocsnumeros;
+import panells.families;
 
 
 public class JocdeNum extends javax.swing.JFrame {
@@ -45,7 +48,7 @@ public int restaNum;
         jPanel1.add(jLabel1);
         jLabel1.setBounds(286, 26, 215, 32);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setText("START");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -58,7 +61,7 @@ public int restaNum;
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(176, 474, 73, 27);
+        jButton1.setBounds(120, 400, 210, 60);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Comprovar ");
@@ -68,30 +71,40 @@ public int restaNum;
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(672, 474, 111, 27);
+        jButton2.setBounds(480, 480, 111, 27);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(436, 462, 195, 53);
+        jTextField1.setBounds(440, 410, 195, 53);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Resultado : ");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(436, 533, 195, 42);
+        jLabel2.setBounds(440, 530, 195, 42);
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("Menu");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3);
-        jButton3.setBounds(31, 593, 72, 23);
+        jButton3.setBounds(560, 680, 72, 23);
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("Volver");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4);
-        jButton4.setBounds(395, 593, 72, 23);
+        jButton4.setBounds(680, 680, 72, 23);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cuanto da esta resta ? ");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(436, 423, 203, 20);
+        jLabel3.setBounds(460, 370, 203, 20);
 
         imagen2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes2/un5.png"))); // NOI18N
         jPanel1.add(imagen2);
@@ -111,7 +124,7 @@ public int restaNum;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,6 +230,22 @@ public int restaNum;
             imagen2.setIcon(new ImageIcon(getClass().getResource("un10.png")));
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        menujocsnumeros newframe = new menujocsnumeros();
+
+        newframe.setVisible(true);
+
+        this.dispose(); 
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         families newframe = new families();
+
+        newframe.setVisible(true);
+
+        this.dispose(); 
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     public static void main(String args[]) {
