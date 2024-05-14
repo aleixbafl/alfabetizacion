@@ -273,52 +273,8 @@ public class families extends javax.swing.JFrame {
         int seleccionat = llistaFills.getSelectedIndex();
         if (seleccionat != -1) {
             String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
-            try {
-                File f = new File("usuari.usr");
-                FileInputStream fis = new FileInputStream(f);
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                while (fis.available() > 0 ) {
-                    usuariBD userLogin = (usuariBD) ois.readObject();
-                    conexioBD bd = new conexioBD();
-                    bd.obrirConexio();
-                    try {
-                        boolean seguir = true;
-                        ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT f.nom, f.cognoms, f.dni FROM fills f JOIN familia fa ON f.dni = fa.dniFill JOIN usuari u ON fa.nomUsuariFamil = u.nomUsuari WHERE u.nomUsuari = '" + userLogin.getNomUsuari() + "'; ");
-                        while (resultatUsuari.next() && seguir){
-                            if (contingut.equals(resultatUsuari.getString("f.nom") + " " + resultatUsuari.getString("f.cognoms"))) {
-                                File fl = new File("dni.fill");
-                                FileWriter fw = new FileWriter(fl);
-                                BufferedWriter bw = new BufferedWriter(fw);
-                                bw.write(resultatUsuari.getString("dni"));
-                                bw.close();
-                                fw.close();
-                                
-                                ImageIcon icono = new ImageIcon("img/logo.png");
-
-                                historic pantallaHistoric = new historic();
-                                pantallaHistoric.setTitle("Iniciar Sessió - Alfabetització");
-                                pantallaHistoric.setMinimumSize(new java.awt.Dimension(700, 600));
-                                pantallaHistoric.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                                pantallaHistoric.setLocationRelativeTo(null);
-                                pantallaHistoric.setIconImage(icono.getImage());
-
-                                this.dispose();
-                                pantallaHistoric.setVisible(true);
-                            }
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                ois.close();
-                fis.close();
-                } catch (FileNotFoundException ex) {
-                    missatge("Error d'ubicació i/o de nom de la lectura de l'arxiu de les credencials.");
-                } catch (IOException ex) {
-                    missatge("Error de lectura de les credencials.");
-                } catch (ClassNotFoundException ex) {
-                    missatge("Error no especificat.");
-                }
+            fillsBD fill = obtenirFills(contingut);
+            fill.guardarFill();
         } else {
             missatge("Has de seleccionar un fill.");
         }

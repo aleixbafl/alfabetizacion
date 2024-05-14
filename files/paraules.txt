@@ -1,0 +1,27 @@
+Árbol,Avión,Animal,Amigo,Aro,Amarillo,Alas,Abeja,Azul,Agua,Arena,Ardilla,Anillo,Alfombra,Almohada,Avellana,Aventura,Abuelita,Aplauso,Araña
+Barco,Bebé,Balón,Burro,Bote,Baño,Bolso,Bastón,Bicicleta,Bandera,Bombero,Botón,Bombilla,Búho,Botella,Botana,Banda,Beso,Banana,Bolsa
+Casa,Coche,Caballo,Camión,Cama,Conejo,Cielo,Cocina,Calcetín,Cuento,Cebra,Cola,Cuchara,Calle,Calabaza,Castillo,Corazón,Caracol,Chocolate,Campana
+Dinosaurio,Dedo,Dado,Doctor,Delfín,Diente,Dibujo,Ducha,Dormir,Dulce,Dulzura,Día,Despertador,Dados,Dama,Domino,Ducha,Delantal,Dardo,Duda
+Elefante,Estrella,Escuela,Espejo,Esterilla,Escalera,Estufa,Enero,Erizo,Esfera,Esmalte,Escoba,Estuche,Estanque,Ensalada,Espada,Escudo,Esquina,Establo,Espejito
+Flor,Fresa,Foca,Fuego,Foca,Fruta,Flauta,Falda,Forma,Feliz,Familia,Foco,Fuerte,Fútbol,Foto,Faro,Felpa,Fresco,Frío,Fantasma
+Gato,Globo,Gorro,Galleta,Gallina,Gafas,Grúa,Guitarra,Globo,Granja,Goma,Gris,Galleta,Garaje,Gota,Galletita,Grano,Gaviota,Gente,Golosina
+Huevo,Helado,Hada,Hielo,Hoja,Hámster,Huevo,Hormiga,Hora,Hombre,Historia,Hogar,Hielo,Hierba,Hermano,Hambre,Hilo,Hermoso,Huerto,Horno
+Isla,Insecto,Iglesia,Iglú,Invierno,Imán,Insecto,Inicio,Idea,Ilusión,Infantil,Indio,Ingreso,Inglés,Información,Imaginación,Ingreso,Interrupción,Incendio,Ingreso
+Jirafa,Juego,Juguete,Jardín,Jugo,Jueves,Joven,Jirafa,Juguera,Jockey,Joya,Jaula,Jardinería,Jarra,Jirón,Jueguito,Jornada,Jueguito,Jefatura,Jueguito
+Koala,Kiosko,Karate,Kilo,Kilo,Kiosco,Kilo,Kínder,Ketchup,Karaoke,Karateka,Kínder,Keroseno,Kilo,Kínder,Kiwi,Kilómetro,Kino,Kilo,Kiosquero
+León,Lápiz,Lobo,Llave,Luna,Loro,Lámpara,Libro,Leche,Llanto,Lluvia,Ladrón,Lugar,Lila,Limón,Lechuga,Lobo,Lluvia,Llave,Lata
+Manzana,Mariposa,Mono,Mochila,Mesa,Música,Mamá,Mapa,Muñeca,Mago,Muñeco,Miel,Miedo,Martillo,Montaña,Maleta,Madera,Maíz,Manta,Motor
+Nube,Nariz,Naranja,Niño,Noche,Nido,Nave,Navidad,Nuez,Número,Nariz,Novela,Natación,Nido,Nota,Nube,Nube,Náufrago,Nube,Novedad
+(Ñ) Araña,(Ñ) Baño,(Ñ) Caña,(Ñ) Señal,(Ñ) Pequeño,(Ñ) Pequeña,(Ñ) Niño,(Ñ) Niña,(Ñ) Sueño,(Ñ) Año,(Ñ) España,(Ñ) Cataluña,(Ñ) Leña,(Ñ) Mañana,(Ñ) Señor,(Ñ) Señora,(Ñ) Moño,(Ñ) Montaña,(Ñ) Rebaño,(Ñ) Ordeñar
+Oso,Oveja,Ojo,Oreja,Oro,Ola,Oveja,Oruga,Otoño,Olla,Oso,Obrero,Orilla,Oído,Opinión,Orquídea,Ocaso,Oportunidad,Obediencia,Olivo
+Perro,Pato,Pelota,Pájaro,Pez,Papá,Paloma,Piña,Pino,Pintura,Pared,Princesa,Piscina,Payaso,Peluche,Pera,Plátano,Pan,Puerta,Pastel
+Queso,Querubín,Quetzal,Quijote,Queso,Química,Querido,Quieto,Quince,Querubín,Queque,Queja,Querubín,Quemado,Quimera,Quirófano,Querubín,Querencia,Querubín,Quemar
+Rana,Ratón,Rueda,Reloj,Río,Ropa,Robot,Rana,Rayo,Rosa,Rincón,Ramo,Relámpago,Rana,Rana,Roca,Rata,Rama,Rey,Ráfaga
+Sol,Silla,Serpiente,Sapo,Sandía,Sombra,Semáforo,Sol,Sábado,Sal,Sirena,Sombrero,Sopa,Señal,Submarino,Saco,Sapo,Sombra,Sonrisa,Salchicha
+Tigre,Tren,Tortuga,Teléfono,Taza,Tractor,Tía,Tomate,Tambor,Tijeras,Trébol,Tristeza,Torta,Tostada,Techo,Tren,Tinta,Tronco,Tío,Topo
+Uva,Unicornio,Uña,Uniforme,Universo,Uva,Universidad,Uva,Útil,Uva,Unidad,Último,Uva,Uva,Uva,Último,Uva,Unión,Uva,Urna
+Vaca,Volcán,Vela,Ventana,Violín,Vaso,Viento,Verdura,Vela,Verano,Vuelo,Vida,Vaso,Vapor,Volante,Velocidad,Vestido,Viaje,Vocales,Vaca
+Waffle,Watusi,Wok,Waffle,Web,Whisky,Waffle,Whisky,Wok,Wok,Web,Whisky,Wok,Web,Web,Whisky,Web,Wok,Wok,Whisky
+Xilófono,Xilófono,Xilografía,Xilófono,Xilografía,Xilófono,Xilófono,Xilófono,Xilófono,Xilografía,Xilófono,Xilófono,Xilófono,Xilófono,Xilófono,Xilófono,Xilófono,Xilófono,Xilófono,Xilófono
+Yate,Yema,Yunque,Yegua,Yema,Yate,Yate,Yoyo,Yegua,Yoyo,Yoyo,Yema,Yoyo,Yema,Yoyo,Yema,Yoyo,Yoyo,Yema,Yoyo
+Zanahoria,Zorro,Zapato,Zapatilla,Zoológico,Zumo,Zanahoria,Zoológico,Zumbido,Zapatilla,Zumbido,Zoológico,Zapato,Zoológico,Zanahoria,Zumbido,Zapato,Zapato,Zanahoria,Zumbido

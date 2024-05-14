@@ -5,6 +5,7 @@
 package fills;
 
 import IniciarJocs.PanellJocs;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import objectesBD.usuariBD;
@@ -94,6 +95,11 @@ public class insertaContra extends javax.swing.JFrame {
             usuariBD user = new usuariBD();
             user.lleguirUser();
             if (user.getContrasenya().equals(contra.getText())) {
+                File f = new File("fill.fill");
+                if (f.exists()) {
+                    f.delete();
+                }
+                
                 ImageIcon icono = new ImageIcon("img/logo.png");
 
                 families panellFamilies = new families();

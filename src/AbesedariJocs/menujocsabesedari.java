@@ -34,7 +34,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lletres = new javax.swing.JButton();
-        paraules = new javax.swing.JButton();
+        paraulesJoc = new javax.swing.JButton();
         tornar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +63,12 @@ public class menujocsabesedari extends javax.swing.JFrame {
 
         lletres.setText("Ordenar Lletres");
 
-        paraules.setText("Ordenar Paraules");
+        paraulesJoc.setText("Ordenar Paraules");
+        paraulesJoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paraulesJocActionPerformed(evt);
+            }
+        });
 
         tornar.setText("Tornar-hi");
         tornar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +85,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lletres)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(paraules)
+                .addComponent(paraulesJoc)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(236, Short.MAX_VALUE)
@@ -93,7 +98,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lletres)
-                    .addComponent(paraules))
+                    .addComponent(paraulesJoc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(tornar)
                 .addGap(88, 88, 88))
@@ -146,6 +151,20 @@ public class menujocsabesedari extends javax.swing.JFrame {
         pantallaJocs.setVisible(true);
     }//GEN-LAST:event_tornarActionPerformed
 
+    private void paraulesJocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paraulesJocActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
+        paraules pantallaParaulesJoc = new paraules();
+        pantallaParaulesJoc.setTitle("Ordenar Paraules - Alfabetització");
+        pantallaParaulesJoc.setMinimumSize(new java.awt.Dimension(800, 550));
+        pantallaParaulesJoc.setResizable(false);
+        pantallaParaulesJoc.setLocationRelativeTo(null);
+        pantallaParaulesJoc.setIconImage(icono.getImage());
+
+        this.dispose();
+        pantallaParaulesJoc.setVisible(true);
+    }//GEN-LAST:event_paraulesJocActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,7 +206,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton lletres;
-    private javax.swing.JButton paraules;
+    private javax.swing.JButton paraulesJoc;
     private javax.swing.JButton tornar;
     // End of variables declaration//GEN-END:variables
 }
