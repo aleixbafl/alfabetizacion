@@ -65,6 +65,7 @@ public int restaNum;
         jPanel1.add(jButton1);
         jButton1.setBounds(120, 400, 210, 60);
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Comprovar ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +83,8 @@ public int restaNum;
         jPanel1.add(jLabel2);
         jLabel2.setBounds(440, 530, 195, 42);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Menu");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,9 +92,10 @@ public int restaNum;
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(560, 680, 72, 23);
+        jButton3.setBounds(570, 680, 72, 27);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setBackground(new java.awt.Color(0, 0, 0));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setText("Volver");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +103,7 @@ public int restaNum;
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(680, 680, 72, 23);
+        jButton4.setBounds(680, 680, 80, 27);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,6 +125,8 @@ public int restaNum;
         jPanel1.add(jLabel6);
         jLabel6.setBounds(381, 206, 15, 48);
 
+        jButton5.setBackground(new java.awt.Color(0, 0, 0));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setText("Instrucciónes ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +134,7 @@ public int restaNum;
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(405, 680, 110, 23);
+        jButton5.setBounds(405, 680, 130, 27);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
