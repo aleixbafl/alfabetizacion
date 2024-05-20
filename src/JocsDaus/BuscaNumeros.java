@@ -7,22 +7,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import menunumeros.menujocsnumeros;
 
-
 public class BuscaNumeros extends javax.swing.JFrame {
 
-public int dado2;
-public  int dado1;
-public int sumaDados;
-
-
+    public int dado2;
+    public int dado1;
+    public int sumaDados;
 
     public BuscaNumeros() {
         initComponents();
     }
-    
-    
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -187,7 +181,7 @@ public int sumaDados;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          PanellJocs newframe = new PanellJocs();
+        PanellJocs newframe = new PanellJocs();
 
         newframe.setVisible(true);
 
@@ -195,7 +189,7 @@ public int sumaDados;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         menujocsnumeros newframe = new menujocsnumeros();
 
         newframe.setVisible(true);
@@ -209,74 +203,63 @@ public int sumaDados;
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        
+
         Random rnd = new Random();
-        int dado1 = rnd.nextInt(6) + 1; 
-        int dado2 = rnd.nextInt(6) + 1; 
+        int dado1 = rnd.nextInt(6) + 1;
+        int dado2 = rnd.nextInt(6) + 1;
 
-    imagendado1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado1 + ".png")));
-    imagendado2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado2 + ".png")));
-            
-     System.out.println("dado1: " + dado1 + ", dado2: " + dado2);
+        imagendado1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado1 + ".png")));
+        imagendado2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado2 + ".png")));
 
-    // Calcula la suma de los valores de los dados
-    sumaDados = dado1 + dado2;
-    
-    
-        if (dado1==0){
+        System.out.println("dado1: " + dado1 + ", dado2: " + dado2);
+
+        // Calcula la suma de los valores de los dados
+        sumaDados = dado1 + dado2;
+
+        if (dado1 == 0) {
             imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_1.png")));
-        }
-        else if (dado1==1){
+        } else if (dado1 == 1) {
             imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_2.png")));
-        }
-        else if (dado1==2){
+        } else if (dado1 == 2) {
             imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_3.png")));
-        }
-        else if (dado1==3){
+        } else if (dado1 == 3) {
             imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_4.png")));
-        }
-        else if (dado1==4){
+        } else if (dado1 == 4) {
             imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_5.png")));
-        }
-        else if (dado1==5){
+        } else if (dado1 == 5) {
             imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_6.png")));
         }
-        
-         if (dado2==0){
+
+        if (dado2 == 0) {
             imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_1.png")));
-        }
-        else if (dado2==1){
+        } else if (dado2 == 1) {
             imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_2.png")));
-        }
-        else if (dado2==2){
+        } else if (dado2 == 2) {
             imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_3.png")));
-        }
-        else if (dado2==3){
+        } else if (dado2 == 3) {
             imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_4.png")));
-        }
-        else if (dado2==4){
+        } else if (dado2 == 4) {
             imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_5.png")));
-        }
-        else if (dado2==5){
+        } else if (dado2 == 5) {
             imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_6.png")));
         }
-        
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    
-     try {
-        int numeroIngresado = Integer.parseInt(jTextField1.getText()); // Obtener el número ingresado por el jugador
-        if (numeroIngresado == sumaDados) { // Comparar el número ingresado con la suma de los valores de los dados
-            jLabel3.setText("¡Número correcto!"); // Establecer el texto del JLabel como "¡Número correcto!"
-        } else {
-            jLabel3.setText("Número incorrecto. La suma de los dados es: " + sumaDados ); // Establecer el texto del JLabel como "Número incorrecto. La suma de los dados es: [sumaDados]"
+
+        try {
+            int numeroIngresado = Integer.parseInt(jTextField1.getText());
+            if (numeroIngresado == sumaDados) {
+                jLabel3.setText("¡Número correcto!");
+            } else {
+                jLabel3.setText("Número incorrecto. La suma de los dados es: " + sumaDados);
+            }
+        } catch (NumberFormatException e) {
+            jLabel3.setText("Por favor, ingresa un número válido.");
         }
-    } catch (NumberFormatException e) {
-        jLabel3.setText("Por favor, ingresa un número válido."); // Establecer el texto del JLabel como "Por favor, ingresa un número válido."
-    }
-     
-    
+
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -284,22 +267,22 @@ public int sumaDados;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        JOptionPane.showMessageDialog(rootPane,  "\"¡Bienvenido al juego de los dados!\\n\\n\" +\n" +
-"                         \"Instrucciones:\\n\" +\n" +
-"                         \"- Se lanzarán dos dados.\\n\" +\n" +
-"                         \"- Se mostrarán las imágenes de los dados y la suma de sus valores.\\n\" +\n" +
-"                         \"- ¡Intenta adivinar cuál será la suma de los valores de los dados!\\n\" +\n" +
-"                         \"- Escribe tu respuesta en el campo de texto.\\n\" +\n" +
-"                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n" +
-"                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n" +
-"                         \"- ¡Diviértete jugando con los dados!\";");
+        JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de los dados!\\n\\n\" +\n"
+                + "                         \"Instrucciones:\\n\" +\n"
+                + "                         \"- Se lanzarán dos dados.\\n\" +\n"
+                + "                         \"- Se mostrarán las imágenes de los dados y la suma de sus valores.\\n\" +\n"
+                + "                         \"- ¡Intenta adivinar cuál será la suma de los valores de los dados!\\n\" +\n"
+                + "                         \"- Escribe tu respuesta en el campo de texto.\\n\" +\n"
+                + "                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n"
+                + "                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n"
+                + "                         \"- ¡Diviértete jugando con los dados!\";");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new BuscaNumeros().setVisible(true);

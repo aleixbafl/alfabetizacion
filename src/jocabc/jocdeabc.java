@@ -6,8 +6,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import panells.families;
 
-
-
 public class jocdeabc extends javax.swing.JFrame {
 
     public jocdeabc() {
@@ -541,24 +539,24 @@ public class jocdeabc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       families newframe = new families();
+        families newframe = new families();
 
         newframe.setVisible(true);
 
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         PanellJocs newframe = new PanellJocs();
+        PanellJocs newframe = new PanellJocs();
 
         newframe.setVisible(true);
 
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      
-            
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
@@ -574,46 +572,46 @@ public class jocdeabc extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void btnComprobar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprobar2ActionPerformed
-   
-     JTextField[] camposTexto = {jTextField23, jTextField28, jTextField29, jTextField31, jTextField30, jTextField2, jTextField1, jTextField3, jTextField4, jTextField9, jTextField6, jTextField7, jTextField5, jTextField8, jTextField10, jTextField11, jTextField12, jTextField15, jTextField14, jTextField12, jTextField13, jTextField20, jTextField17, jTextField19, jTextField16, jTextField21, jTextField22};
 
-    String[] letras = {"z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "ñ"};
+        JTextField[] camposTexto = {jTextField23, jTextField28, jTextField29, jTextField31, jTextField30, jTextField2, jTextField1, jTextField3, jTextField4, jTextField9, jTextField6, jTextField7, jTextField5, jTextField8, jTextField10, jTextField11, jTextField12, jTextField15, jTextField14, jTextField12, jTextField13, jTextField20, jTextField17, jTextField19, jTextField16, jTextField21, jTextField22};
 
-    boolean campoVacio = false;
-    boolean letraIncorrecta = false;
+        String[] letras = {"z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "ñ"};
 
-    for (int i = 0; i < camposTexto.length; i++) {
-        JTextField campoTexto = camposTexto[i];
-        String letra = letras[i];
-        String texto = campoTexto.getText().trim();
+        boolean campoVacio = false;
+        boolean letraIncorrecta = false;
 
-        if (texto.isEmpty()) {
-            campoVacio = true;
-        } else if (texto.length() > 1 || !Character.isLetter(texto.charAt(0))) {
-            letraIncorrecta = true;
-        } else if (!texto.equalsIgnoreCase(letra)) {
-            letraIncorrecta = true;
+        for (int i = 0; i < camposTexto.length; i++) {
+            JTextField campoTexto = camposTexto[i];
+            String letra = letras[i];
+            String texto = campoTexto.getText().trim();
+
+            if (texto.isEmpty()) {
+                campoVacio = true;
+            } else if (texto.length() > 1 || !Character.isLetter(texto.charAt(0))) {
+                letraIncorrecta = true;
+            } else if (!texto.equalsIgnoreCase(letra)) {
+                letraIncorrecta = true;
+            }
         }
-    }
 
-    if (campoVacio) {
-        missatge("Al menos uno de los campos está vacío o ¡Incorrecto!");
-    } else if (letraIncorrecta) {
-        missatge("Al menos uno de los campos contiene una o varias letras o nuemros. ¡Incorrecto!");
-    } else {
-        missatge("¡Todos los campos son correctos!");
-    }
+        if (campoVacio) {
+            missatge("Al menos uno de los campos está vacío o ¡Incorrecto!");
+        } else if (letraIncorrecta) {
+            missatge("Al menos uno de los campos contiene una o varias letras o nuemros. ¡Incorrecto!");
+        } else {
+            missatge("¡Todos los campos son correctos!");
+        }
 
     }//GEN-LAST:event_btnComprobar2ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-      JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de escribir las letras del abecedario correctamente en orden!\\n\\n\" +\n" +
-"                         \"Instrucciones:\\n\" +\n" +
-"                         \"- Se mostrarán las letras del abecedario en orden, una a la vez.\\n\" +\n" +
-"                         \"- Tu objetivo es escribir cada letra correctamente en el campo de texto en el mismo orden.\\n\" +\n" +
-"                         \"- Si te equivocas al escribir una letra, se mostrará un mensaje indicándolo.\\n\" +\n" +
-"                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta y avanzar a la siguiente letra.\\n\" +\n" +
-"                         \"- ¡Diviértete aprendiendo las letras del abecedario en orden!\";");
+        JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de escribir las letras del abecedario correctamente en orden!\\n\\n\" +\n"
+                + "                         \"Instrucciones:\\n\" +\n"
+                + "                         \"- Se mostrarán las letras del abecedario en orden, una a la vez.\\n\" +\n"
+                + "                         \"- Tu objetivo es escribir cada letra correctamente en el campo de texto en el mismo orden.\\n\" +\n"
+                + "                         \"- Si te equivocas al escribir una letra, se mostrará un mensaje indicándolo.\\n\" +\n"
+                + "                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta y avanzar a la siguiente letra.\\n\" +\n"
+                + "                         \"- ¡Diviértete aprendiendo las letras del abecedario en orden!\";");
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jTextField21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField21ActionPerformed
@@ -624,9 +622,8 @@ public class jocdeabc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField23ActionPerformed
 
-    
     public static void main(String args[]) {
-       
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -696,5 +693,5 @@ public class jocdeabc extends javax.swing.JFrame {
     private void missatge(String missatge) {
         JOptionPane.showMessageDialog(rootPane, missatge);
     }
-   
+
 }

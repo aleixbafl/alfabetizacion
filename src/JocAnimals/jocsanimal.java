@@ -7,7 +7,7 @@ import java.awt.event.*;
 import panells.families;
 
 public class jocsanimal extends javax.swing.JFrame {
-    
+
     private String[] imagePaths = {"/imagenes3/imagen33.png", "/imagenes3/imagen1.png", "/imagenes3/imagen2.png", "/imagenes3/imagen3.png", "/imagenes3/imagen4.png", "/imagenes3/imagen5.png", "/imagenes3/imagen6.png", "/imagenes3/imagen7.png", "/imagenes3/imagen8.png", "/imagenes3/imagen9.png", "/imagenes3/imagen10.png", "/imagenes3/imagen11.png", "/imagenes3/imagen12.png", "/imagenes3/imagen13.png", "/imagenes3/imagen14.png", "/imagenes3/imagen15.png", "/imagenes3/imagen16.png", "/imagenes3/imagen17.png", "/imagenes3/imagen18.png", "/imagenes3/imagen19.png", "/imagenes3/imagen20.png", "/imagenes3/imagen21.png", "/imagenes3/imagen22.png", "/imagenes3/imagen23.png", "/imagenes3/imagen24.png", "/imagenes3/imagen25.png", "/imagenes3/imagen26.png", "/imagenes3/imagen27.png"};
     private String[] animalNames = {"Nombre33", "Abeja", "Ballena", "Cocodrilo", "Delfín", "Elefante", "Flamenco", "Gallina", "Hormiga", "Iguana", "jirafa", "Koala", "León", "Mono", "Nutria", "Ñu", "Oso", "Pingüino", "Quetzal", "Rana", "Serpiente", "Tortuga", "Urraca", "Vaca", "Wallaby", "Xarda", "Yapok", "Zorro"};
     private int currentIndex = 0;
@@ -22,9 +22,6 @@ public class jocsanimal extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-    
 
     private void showImage() {
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(imagePaths[currentIndex]));
@@ -39,26 +36,22 @@ public class jocsanimal extends javax.swing.JFrame {
             return;
         }
 
-      
         String userInput = jTextField1.getText().trim();
-       
+
         String correctAnimalName = animalNames[currentIndex];
 
-   
         if (userInput.equalsIgnoreCase(correctAnimalName)) {
             JOptionPane.showMessageDialog(this, "¡Respuesta correcta!", "Resultado", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "¡Respuesta incorrecta!", "Resultado", JOptionPane.ERROR_MESSAGE);
         }
 
-     
         currentIndex = (currentIndex + 1) % imagePaths.length;
         showImage();
-    
+
         jTextField1.setText("");
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -220,34 +213,33 @@ public class jocsanimal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-              menujocsabesedari newframe = new menujocsabesedari();
+        menujocsabesedari newframe = new menujocsabesedari();
 
         newframe.setVisible(true);
 
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         families newframe = new families();
+        families newframe = new families();
 
         newframe.setVisible(true);
 
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de adivinar animales!\\n\\n\" +\n" +
-"                         \"Instrucciones:\\n\" +\n" +
-"                         \"- Se mostrará una imagen de un animal.\\n\" +\n" +
-"                         \"- Debes escribir el nombre del animal en el campo de texto.\\n\" +\n" +
-"                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n" +
-"                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n" +
-"                         \"- ¡Diviértete aprendiendo sobre los animales!\";");
+        JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de adivinar animales!\\n\\n\" +\n"
+                + "                         \"Instrucciones:\\n\" +\n"
+                + "                         \"- Se mostrará una imagen de un animal.\\n\" +\n"
+                + "                         \"- Debes escribir el nombre del animal en el campo de texto.\\n\" +\n"
+                + "                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n"
+                + "                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n"
+                + "                         \"- ¡Diviértete aprendiendo sobre los animales!\";");
     }//GEN-LAST:event_jButton4ActionPerformed
 
-
     public static void main(String args[]) {
-  
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new jocsanimal().setVisible(true);
@@ -268,5 +260,3 @@ public class jocsanimal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
-
-             
