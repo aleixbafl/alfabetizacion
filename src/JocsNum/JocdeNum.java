@@ -15,7 +15,7 @@ public class JocdeNum extends javax.swing.JFrame {
     public int restaNum;
     public int puntuacion;
     private int contadorJuegos = 0;
-    private boolean[] respuestasCorrectas = new boolean[10]; 
+    private boolean[] respuestasCorrectas = new boolean[10];
 
     public JocdeNum() {
         initComponents();
@@ -32,7 +32,6 @@ public class JocdeNum extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -91,12 +90,6 @@ public class JocdeNum extends javax.swing.JFrame {
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(jTextField1);
         jTextField1.setBounds(440, 410, 195, 53);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Resultado : ");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(440, 530, 195, 42);
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -170,10 +163,12 @@ public class JocdeNum extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(220, 10, 340, 60);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setText("aaa");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Operacines contestadas : ");
+        jLabel4.setToolTipText("");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(90, 480, 250, 70);
+        jLabel4.setBounds(440, 540, 250, 70);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,11 +193,12 @@ public class JocdeNum extends javax.swing.JFrame {
                 respuestasCorrectas[contadorJuegos - 1] = true;
             } else {
                 jLabel3.setText("Número incorrecto. La resta de los dados es: " + restaNum);
-                 respuestasCorrectas[contadorJuegos - 1] = false;            }
+                respuestasCorrectas[contadorJuegos - 1] = false;
+            }
         } catch (NumberFormatException e) {
             jLabel3.setText("Por favor, ingresa un número válido.");
-               respuestasCorrectas[contadorJuegos - 1] = false;
- }        
+            respuestasCorrectas[contadorJuegos - 1] = false;
+        }
         contadorJuegos++;
 
         if (contadorJuegos >= 10) {
@@ -218,33 +214,33 @@ public class JocdeNum extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 
         if (contadorJuegos < 10) {
-           if (contadorJuegos < 10) {
-            Random rnd = new Random();
-            num1 = rnd.nextInt(10) + 1;
-            num2 = rnd.nextInt(10) + 1;
+            if (contadorJuegos < 10) {
+                Random rnd = new Random();
+                num1 = rnd.nextInt(10) + 1;
+                num2 = rnd.nextInt(10) + 1;
 
-            contadorJuegos++;
-            jLabel4.setText(String.valueOf(contadorJuegos));
+                contadorJuegos++;
+                jLabel4.setText(String.valueOf(contadorJuegos));
 
-            imagen1.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num1 + ".png")));
-            imagen2.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num2 + ".png")));
+                imagen1.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num1 + ".png")));
+                imagen2.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num2 + ".png")));
 
-            System.out.println("num1: " + num1 + ", num2: " + num2);
+                System.out.println("num1: " + num1 + ", num2: " + num2);
 
-            restaNum = num1 - num2;
+                restaNum = num1 - num2;
 
-            // Actualizar la etiqueta de imagen solo es necesario si las imágenes no coinciden con el valor
-            imagen1.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num1 + ".png")));
-            imagen2.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num2 + ".png")));
+                // Actualizar la etiqueta de imagen solo es necesario si las imágenes no coinciden con el valor
+                imagen1.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num1 + ".png")));
+                imagen2.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num2 + ".png")));
 
-        } else {
-            mostrarPuntuacion();
+            } else {
+                mostrarPuntuacion();
+            }
         }
-    }             
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void mostrarPuntuacion() {
-         int respuestasCorrectasCount = 0;
+        int respuestasCorrectasCount = 0;
         for (boolean respuesta : respuestasCorrectas) {
             if (respuesta) {
                 respuestasCorrectasCount++;
@@ -281,13 +277,13 @@ public class JocdeNum extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de la resta!\\n\\n\" +\n"
-                + "                         \"Instrucciones:\\n\" +\n"
-                + "                         \"- Se mostrarán dos números aleatorios.\\n\" +\n"
-                + "                         \"- Debes calcular la resta entre ambos números.\\n\" +\n"
-                + "                         \"- Escribe tu respuesta en el campo de texto.\\n\" +\n"
-                + "                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n"
-                + "                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n"
-                + "                         \"- ¡Diviértete practicando resta!\";");
+                + "\"Instrucciones:\\n\" +\n"
+                + "\"- Se mostrarán dos números aleatorios.\\n\" +\n"
+                + "\"- Debes calcular la resta entre ambos números.\\n\" +\n"
+                + "\"- Escribe tu respuesta en el campo de texto.\\n\" +\n"
+                + "\"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n"
+                + "\"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n"
+                + "\"- ¡Diviértete practicando resta!\";");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
@@ -312,7 +308,6 @@ public class JocdeNum extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

@@ -11,10 +11,14 @@ public class BuscaNumeros extends javax.swing.JFrame {
 
     public int dado2;
     public int dado1;
+    public int puntuacion;
     public int sumaDados;
+    private int contadorJuegos = 0;
+    private boolean[] respuestasCorrectas = new boolean[10];
 
     public BuscaNumeros() {
         initComponents();
+        puntuacion = 0;
     }
 
     @SuppressWarnings("unchecked")
@@ -118,7 +122,7 @@ public class BuscaNumeros extends javax.swing.JFrame {
         jLabel3.setText("Resultado:");
         jLabel3.setToolTipText("");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(410, 580, 330, 40);
+        jLabel3.setBounds(360, 580, 440, 40);
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -199,11 +203,10 @@ public class BuscaNumeros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-
         Random rnd = new Random();
         int dado1 = rnd.nextInt(6) + 1;
         int dado2 = rnd.nextInt(6) + 1;
@@ -211,39 +214,12 @@ public class BuscaNumeros extends javax.swing.JFrame {
         imagendado1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado1 + ".png")));
         imagendado2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado2 + ".png")));
 
-        System.out.println("dado1: " + dado1 + ", dado2: " + dado2);
-
-        // Calcula la suma de los valores de los dados
         sumaDados = dado1 + dado2;
 
-        if (dado1 == 0) {
-            imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_1.png")));
-        } else if (dado1 == 1) {
-            imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_2.png")));
-        } else if (dado1 == 2) {
-            imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_3.png")));
-        } else if (dado1 == 3) {
-            imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_4.png")));
-        } else if (dado1 == 4) {
-            imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_5.png")));
-        } else if (dado1 == 5) {
-            imagendado1.setIcon(new ImageIcon(getClass().getResource("Alea_6.png")));
+        contadorJuegos++;
+        if (contadorJuegos >= 10) {
+            mostrarPuntuacion();
         }
-
-        if (dado2 == 0) {
-            imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_1.png")));
-        } else if (dado2 == 1) {
-            imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_2.png")));
-        } else if (dado2 == 2) {
-            imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_3.png")));
-        } else if (dado2 == 3) {
-            imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_4.png")));
-        } else if (dado2 == 4) {
-            imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_5.png")));
-        } else if (dado2 == 5) {
-            imagendado2.setIcon(new ImageIcon(getClass().getResource("Alea_6.png")));
-        }
-
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -252,35 +228,57 @@ public class BuscaNumeros extends javax.swing.JFrame {
             int numeroIngresado = Integer.parseInt(jTextField1.getText());
             if (numeroIngresado == sumaDados) {
                 jLabel3.setText("¡Número correcto!");
+                respuestasCorrectas[contadorJuegos - 1] = true;
             } else {
                 jLabel3.setText("Número incorrecto. La suma de los dados es: " + sumaDados);
+                respuestasCorrectas[contadorJuegos - 1] = false;
             }
         } catch (NumberFormatException e) {
             jLabel3.setText("Por favor, ingresa un número válido.");
+            respuestasCorrectas[contadorJuegos - 1] = false;
+        }
+
+        contadorJuegos++;
+        if (contadorJuegos >= 10) {
+            mostrarPuntuacion();
         }
 
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void mostrarPuntuacion() {
+        int respuestasCorrectasCount = 0;
+        for (boolean respuesta : respuestasCorrectas) {
+            if (respuesta) {
+                respuestasCorrectasCount++;
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Tu puntuación es: " + respuestasCorrectasCount + "/10");
+        reiniciarJuego();
+    }
+
+    private void reiniciarJuego() {
+        contadorJuegos = 0;
+        respuestasCorrectas = new boolean[10];
+        jLabel3.setText("");
+        jTextField1.setText("");
+    }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de los dados!\\n\\n\" +\n"
-                + "                         \"Instrucciones:\\n\" +\n"
-                + "                         \"- Se lanzarán dos dados.\\n\" +\n"
-                + "                         \"- Se mostrarán las imágenes de los dados y la suma de sus valores.\\n\" +\n"
-                + "                         \"- ¡Intenta adivinar cuál será la suma de los valores de los dados!\\n\" +\n"
-                + "                         \"- Escribe tu respuesta en el campo de texto.\\n\" +\n"
-                + "                         \"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n"
-                + "                         \"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n"
-                + "                         \"- ¡Diviértete jugando con los dados!\";");
+                + "\"Instrucciones:\\n\" +\n"
+                + "\"- Se lanzarán dos dados.\\n\" +\n"
+                + "\"- Se mostrarán las imágenes de los dados y la suma de sus valores.\\n\" +\n"
+                + "\"- ¡Intenta adivinar cuál será la suma de los valores de los dados!\\n\" +\n"
+                + "\"- Escribe tu respuesta en el campo de texto.\\n\" +\n"
+                + "\"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n"
+                + "\"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n"
+                + "\"- ¡Diviértete jugando con los dados!\";");
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {

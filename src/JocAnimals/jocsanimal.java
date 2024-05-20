@@ -11,6 +11,10 @@ public class jocsanimal extends javax.swing.JFrame {
     private String[] imagePaths = {"/imagenes3/imagen33.png", "/imagenes3/imagen1.png", "/imagenes3/imagen2.png", "/imagenes3/imagen3.png", "/imagenes3/imagen4.png", "/imagenes3/imagen5.png", "/imagenes3/imagen6.png", "/imagenes3/imagen7.png", "/imagenes3/imagen8.png", "/imagenes3/imagen9.png", "/imagenes3/imagen10.png", "/imagenes3/imagen11.png", "/imagenes3/imagen12.png", "/imagenes3/imagen13.png", "/imagenes3/imagen14.png", "/imagenes3/imagen15.png", "/imagenes3/imagen16.png", "/imagenes3/imagen17.png", "/imagenes3/imagen18.png", "/imagenes3/imagen19.png", "/imagenes3/imagen20.png", "/imagenes3/imagen21.png", "/imagenes3/imagen22.png", "/imagenes3/imagen23.png", "/imagenes3/imagen24.png", "/imagenes3/imagen25.png", "/imagenes3/imagen26.png", "/imagenes3/imagen27.png"};
     private String[] animalNames = {"Nombre33", "Abeja", "Ballena", "Cocodrilo", "Delfín", "Elefante", "Flamenco", "Gallina", "Hormiga", "Iguana", "jirafa", "Koala", "León", "Mono", "Nutria", "Ñu", "Oso", "Pingüino", "Quetzal", "Rana", "Serpiente", "Tortuga", "Urraca", "Vaca", "Wallaby", "Xarda", "Yapok", "Zorro"};
     private int currentIndex = 0;
+    // Variable para almacenar la puntuación
+    private int puntuacion = 0;
+// Variable para medir el tiempo de respuesta
+    private long tiempo = 0;
 
     public jocsanimal() {
         initComponents();
@@ -31,26 +35,41 @@ public class jocsanimal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
 
         if (currentIndex == 0) {
-            currentIndex++;
-            showImage();
-            return;
-        }
-
-        String userInput = jTextField1.getText().trim();
-
-        String correctAnimalName = animalNames[currentIndex];
-
-        if (userInput.equalsIgnoreCase(correctAnimalName)) {
-            JOptionPane.showMessageDialog(this, "¡Respuesta correcta!", "Resultado", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "¡Respuesta incorrecta!", "Resultado", JOptionPane.ERROR_MESSAGE);
-        }
-
-        currentIndex = (currentIndex + 1) % imagePaths.length;
+        currentIndex++;
         showImage();
-
-        jTextField1.setText("");
+        return;
     }
+
+    String userInput = jTextField1.getText().trim();
+
+    String correctAnimalName = animalNames[currentIndex];
+    boolean isCorrect = userInput.equalsIgnoreCase(correctAnimalName);
+
+    if (isCorrect) {
+        JOptionPane.showMessageDialog(this, "¡Respuesta correcta!", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+        // Sumar puntuación base por respuesta correcta
+        int puntos = 10;
+        // Bonificación por responder rápidamente
+        if (tiempo <= 10) {
+            puntos += 5;
+        }
+        puntuacion += puntos;
+    } else {
+        JOptionPane.showMessageDialog(this, "¡Respuesta incorrecta!", "Resultado", JOptionPane.ERROR_MESSAGE);
+        // Penalización por respuesta incorrecta
+        puntuacion -= 5;
+    }
+
+    currentIndex = (currentIndex + 1) % imagePaths.length;
+    showImage();
+
+    jTextField1.setText("");
+
+    // Verificar si se ha mostrado la última imagen y mostrar la puntuación final
+    if (currentIndex == 0) {
+        mostrarPuntuacion();
+    }
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -212,6 +231,9 @@ public class jocsanimal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void mostrarPuntuacion() {
+    JOptionPane.showMessageDialog(this, "Tu puntuación final es: " + puntuacion, "Puntuación final", JOptionPane.PLAIN_MESSAGE);
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         menujocsabesedari newframe = new menujocsabesedari();
 

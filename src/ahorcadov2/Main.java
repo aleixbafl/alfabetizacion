@@ -8,23 +8,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-
 public class Main extends javax.swing.JFrame {
 
-   
     private ImageIcon imgs[];
     private JButton btns[];
     private String msgs[];
     private int ran;
     private int err;
     private String res[];
-    
+
+    private int puntuacion;  // Variable para almacenar la puntuación total
+    private final int PUNTOS_POR_LETRA = 10;  // Puntos por letra correcta
+    private final int PUNTOS_POR_ERROR = 5;  // Puntos restados por error
+
     public Main() {
         initComponents();
         imgs = new ImageIcon[6];
         btns = new JButton[27];
         msgs = new String[10];
-        
+
         //VECTOR CON LAS IMAGENES DEL AHORCADO
         imgs[0] = new ImageIcon(getClass().getResource("/ahorcadov2/im1.jpg"));
         imgs[1] = new ImageIcon(getClass().getResource("/ahorcadov2/im2.jpg"));
@@ -32,7 +34,7 @@ public class Main extends javax.swing.JFrame {
         imgs[3] = new ImageIcon(getClass().getResource("/ahorcadov2/im4.jpg"));
         imgs[4] = new ImageIcon(getClass().getResource("/ahorcadov2/im5.jpg"));
         imgs[5] = new ImageIcon(getClass().getResource("/ahorcadov2/im6.jpg"));
-        
+
         //VECTOR CON LOS BOTONES DE LAS LETRAS
         btns[1] = jButton2;
         btns[2] = jButton3;
@@ -60,33 +62,31 @@ public class Main extends javax.swing.JFrame {
         btns[24] = jButton25;
         btns[25] = jButton26;
         btns[26] = jButton27;
-        
-     
-        msgs[0] = "Los ordenadores son inutiles Solo pueden darte respuestas".toUpperCase();
-        msgs[1] = "Se ha creado el ordenador perfecto Metes todos tus problemas y ya no vuelven a salir".toUpperCase();
-        msgs[2] = "Para definir la recursividad primero debemos definir la recursividad".toUpperCase();
-        msgs[3] = "El hardware es aquello a lo que puedes dar patadas Software es aquello a lo que solo puedes insultar".toUpperCase();
-        msgs[4] = "En Internet nadie sabe que eres un perro".toUpperCase();
-        msgs[5] = "No soy un nerd solo soy mas inteligente que TU".toUpperCase();
-        msgs[6] = "Los fines de semana fueron hechos para la programacion".toUpperCase();
-        msgs[7] = "Los programadores nunca mueren tan solo se pierden en el Proceso".toUpperCase();
-        msgs[8] = "Cuando tengas duda usa la fuerza bruta".toUpperCase();
-        msgs[9] = "Cuidense de los programadores que lleven destornilladores".toUpperCase();
-        msgs[9] = "Samuel es un crak ?".toUpperCase();
-        
-        
+
+        msgs[0] = "El sol es amarillo".toUpperCase();
+        msgs[1] = "La luna brilla en la noche".toUpperCase();
+        msgs[2] = "El perro ladra".toUpperCase();
+        msgs[3] = "Los gatos son suaves".toUpperCase();
+        msgs[4] = "Me gusta el chocolate".toUpperCase();
+        msgs[5] = "Las flores son bonitas".toUpperCase();
+        msgs[6] = "Voy a la escuela".toUpperCase();
+        msgs[7] = "Los peces nadan en el agua".toUpperCase();
+        msgs[8] = "Los pájaros vuelan".toUpperCase();
+        msgs[9] = "Me encanta jugar".toUpperCase();
+
         for (int i = 1; i < 27; i++) {
-            btns[i].addActionListener(new ActionListener() { 
-                    public void actionPerformed(ActionEvent e) { 
-                        checarLetra(e);                    
-                    } 
+            btns[i].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    checarLetra(e);
+                }
             });
         }
         iniciar();
     }
-    
-    private void iniciar(){
+
+    private void iniciar() {
         err = 0;
+        puntuacion = 0;  // Reiniciar la puntuación al iniciar un nuevo juego
         jButton1.setIcon(imgs[0]);
         jTextPane1.setText("");
 
@@ -94,10 +94,10 @@ public class Main extends javax.swing.JFrame {
             btns[i].setEnabled(true);
         }
 
-        ran =(int) 0 + (int)(Math.random() * ((msgs.length - 1) + 1));
+        ran = (int) (Math.random() * msgs.length);
 
         String pal[] = msgs[ran].split(" ");
-        res = new String[msgs[ran].length()+1];
+        res = new String[msgs[ran].length() + 1];
         int j = 0;
 
         for (String pal1 : pal) {
@@ -109,47 +109,53 @@ public class Main extends javax.swing.JFrame {
             res[j++] = " ";
         }
     }
-    
-    private void checarLetra(ActionEvent e){
-        JButton bt = (JButton)e.getSource();
+
+    private void checarLetra(ActionEvent e) {
+        JButton bt = (JButton) e.getSource();
         char c[];
+        boolean letraEncontrada = false;
+
         for (int i = 1; i < 27; i++) {
-            if(bt == btns[i]){
-                //SE SACA LA LETRA
-                c = Character.toChars(64+i);
-                boolean esta = false;
+            if (bt == btns[i]) {
+                // SE SACA LA LETRA
+                c = Character.toChars(64 + i);
                 for (int j = 0; j < msgs[ran].length(); j++) {
-                    if(c[0] == msgs[ran].charAt(j)){
-                        res[j] = c[0]+"";
-                        esta = true;
+                    if (c[0] == msgs[ran].charAt(j)) {
+                        res[j] = c[0] + "";
+                        letraEncontrada = true;
                     }
                 }
 
-                if(esta){
+                if (letraEncontrada) {
                     jTextPane1.setText("");
                     for (String re : res) {
-                        if(" ".equals(re))jTextPane1.setText(jTextPane1.getText() + "\n");
-                        else jTextPane1.setText(jTextPane1.getText() + re +" ");
+                        if (" ".equals(re)) {
+                            jTextPane1.setText(jTextPane1.getText() + "\n");
+                        } else {
+                            jTextPane1.setText(jTextPane1.getText() + re + " ");
+                        }
                     }
 
                     boolean gano = true;
                     for (String re : res) {
-                        if(re.equals("_")){
+                        if (re.equals("_")) {
                             gano = false;
                             break;
                         }
                     }
 
-                    if(gano){
-                        JOptionPane.showMessageDialog(this, "FELICIDADES HAS GANADO!!!");
+                    if (gano) {
+                        JOptionPane.showMessageDialog(this, "FELICIDADES HAS GANADO!!!\nPuntuación: " + puntuacion);
                         iniciar();
                         return;
                     }
+                    puntuacion += PUNTOS_POR_LETRA;  // Incrementar la puntuación por letra correcta
 
-                }else{
+                } else {
                     jButton1.setIcon(imgs[++err]);
-                    if(err == 5){
-                        JOptionPane.showMessageDialog(this, "HAS PERDIDO, LA FRASE ERA:\n"+msgs[ran]);
+                    puntuacion -= PUNTOS_POR_ERROR;  // Decrementar la puntuación por error
+                    if (err == 5) {
+                        JOptionPane.showMessageDialog(this, "HAS PERDIDO, LA FRASE ERA:\n" + msgs[ran] + "\nPuntuación: " + puntuacion);
                         iniciar();
                         return;
                     }
@@ -159,9 +165,7 @@ public class Main extends javax.swing.JFrame {
                 break;
             }
         }
-        
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -569,39 +573,39 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-        iniciar();       
+        iniciar();
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-       menujocsabesedari newframe = new menujocsabesedari();
+        menujocsabesedari newframe = new menujocsabesedari();
 
         newframe.setVisible(true);
 
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego del ahorcado!\\n\\n\" +\n" +
-"                         \"Instrucciones:\\n\" +\n" +
-"                         \"- Se mostrará una palabra oculta.\\n\" +\n" +
-"                         \"- Tu objetivo es adivinar la palabra pulsando las letras una por una.\\n\" +\n" +
-"                         \"- Tienes un número limitado de intentos para adivinar la palabra antes de ser ahorcado.\\n\" +\n" +
-"                         \"- Pulsa una letra en la interfaz y el sistema verificará si está en la palabra.\\n\" +\n" +
-"                         \"- Si la letra está en la palabra, se mostrará en su posición correspondiente.\\n\" +\n" +
-"                         \"- Si la letra no está en la palabra, se perderá un intento.\\n\" +\n" +
-"                         \"- ¡Diviértete y trata de adivinar la palabra para evitar ser ahorcado!\";");
+        JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego del ahorcado!\\n\\n\" +\n"
+                + "                         \"Instrucciones:\\n\" +\n"
+                + "                         \"- Se mostrará una palabra oculta.\\n\" +\n"
+                + "                         \"- Tu objetivo es adivinar la palabra pulsando las letras una por una.\\n\" +\n"
+                + "                         \"- Tienes un número limitado de intentos para adivinar la palabra antes de ser ahorcado.\\n\" +\n"
+                + "                         \"- Pulsa una letra en la interfaz y el sistema verificará si está en la palabra.\\n\" +\n"
+                + "                         \"- Si la letra está en la palabra, se mostrará en su posición correspondiente.\\n\" +\n"
+                + "                         \"- Si la letra no está en la palabra, se perderá un intento.\\n\" +\n"
+                + "                         \"- ¡Diviértete y trata de adivinar la palabra para evitar ser ahorcado!\";");
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-          PanellJocs newframe = new PanellJocs();
+        PanellJocs newframe = new PanellJocs();
 
         newframe.setVisible(true);
 
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jButton31ActionPerformed
 
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
