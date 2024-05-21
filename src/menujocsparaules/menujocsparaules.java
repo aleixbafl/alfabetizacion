@@ -5,6 +5,7 @@
 package menujocsparaules;
 
 import IniciarJocs.PanellJocs;
+import JocAnimals.jocsanimal;
 import javax.swing.ImageIcon;
 
 /**
@@ -33,7 +34,7 @@ public class menujocsparaules extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        animals = new javax.swing.JButton();
         tornar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,8 +66,13 @@ public class menujocsparaules extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Animals");
-        jButton1.setActionCommand("");
+        animals.setText("Animals");
+        animals.setActionCommand("");
+        animals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animalsActionPerformed(evt);
+            }
+        });
 
         tornar.setText("Tornar-hi");
         tornar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +87,7 @@ public class menujocsparaules extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(animals)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -92,7 +98,7 @@ public class menujocsparaules extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(46, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(animals)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(tornar)
                 .addContainerGap(104, Short.MAX_VALUE))
@@ -145,6 +151,20 @@ public class menujocsparaules extends javax.swing.JFrame {
         pantallaJocs.setVisible(true);
     }//GEN-LAST:event_tornarActionPerformed
 
+    private void animalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animalsActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
+        jocsanimal animals = new jocsanimal();
+        animals.setTitle("Panell Activitats - Alfabetització");
+        animals.setMinimumSize(new java.awt.Dimension(1018, 910));
+        animals.setResizable(false);
+        animals.setLocationRelativeTo(null);
+        animals.setIconImage(icono.getImage());
+
+        this.dispose();
+        animals.setVisible(true);
+    }//GEN-LAST:event_animalsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,7 +201,7 @@ public class menujocsparaules extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton animals;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
