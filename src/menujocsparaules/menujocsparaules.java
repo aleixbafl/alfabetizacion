@@ -6,6 +6,7 @@ package menujocsparaules;
 
 import IniciarJocs.PanellJocs;
 import JocAnimals.jocsanimal;
+import ahorcadov2.Main;
 import javax.swing.ImageIcon;
 
 /**
@@ -36,6 +37,7 @@ public class menujocsparaules extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         animals = new javax.swing.JButton();
         tornar = new javax.swing.JButton();
+        penjat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,24 +83,35 @@ public class menujocsparaules extends javax.swing.JFrame {
             }
         });
 
+        penjat.setText("Penjat");
+        penjat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                penjatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(animals)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tornar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(animals)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(penjat)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(46, Short.MAX_VALUE)
-                .addComponent(animals)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(animals)
+                    .addComponent(penjat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(tornar)
                 .addContainerGap(104, Short.MAX_VALUE))
@@ -165,6 +178,20 @@ public class menujocsparaules extends javax.swing.JFrame {
         animals.setVisible(true);
     }//GEN-LAST:event_animalsActionPerformed
 
+    private void penjatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_penjatActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
+        Main penjat = new Main();
+        penjat.setTitle("El Penjat - Alfabetització");
+        penjat.setMinimumSize(new java.awt.Dimension(800, 600));
+        penjat.setResizable(false);
+        penjat.setLocationRelativeTo(null);
+        penjat.setIconImage(icono.getImage());
+
+        this.dispose();
+        penjat.setVisible(true);
+    }//GEN-LAST:event_penjatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,6 +233,7 @@ public class menujocsparaules extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton penjat;
     private javax.swing.JButton tornar;
     // End of variables declaration//GEN-END:variables
 }

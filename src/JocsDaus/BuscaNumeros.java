@@ -26,7 +26,6 @@ public class BuscaNumeros extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         imagendado1 = new javax.swing.JLabel();
@@ -50,35 +49,23 @@ public class BuscaNumeros extends javax.swing.JFrame {
         });
         jPanel1.setLayout(null);
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Tornar ha numeros");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(130, 690, 180, 27);
-
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Menu");
+        jButton1.setText("Tornar-hi");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(30, 690, 72, 27);
+        jButton1.setBounds(30, 690, 100, 26);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("JUEGO DE DADOS ");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Joc dels Daus");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(290, 50, 212, 32);
+        jLabel1.setBounds(290, 50, 147, 33);
 
         imagendado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alea_6.png"))); // NOI18N
         jPanel1.add(imagendado1);
@@ -112,14 +99,12 @@ public class BuscaNumeros extends javax.swing.JFrame {
         jTextField1.setBounds(440, 470, 250, 50);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Que numero da la suma de dados ?");
+        jLabel2.setText("Quin és el resultat de la suma?");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(410, 430, 340, 25);
+        jLabel2.setBounds(410, 430, 340, 26);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Resultado:");
+        jLabel3.setText("Resultat:");
         jLabel3.setToolTipText("");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(360, 580, 440, 40);
@@ -134,25 +119,24 @@ public class BuscaNumeros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(500, 540, 120, 27);
+        jButton4.setBounds(500, 540, 120, 26);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("+");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(340, 246, 25, 50);
+        jLabel4.setBounds(340, 246, 21, 50);
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Instrucciónes");
+        jButton5.setText("Instruccions");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(330, 690, 120, 27);
+        jButton5.setBounds(150, 690, 120, 26);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -174,33 +158,29 @@ public class BuscaNumeros extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PanellJocs newframe = new PanellJocs();
+        ImageIcon icono = new ImageIcon("img/logo.png");
 
-        newframe.setVisible(true);
+        PanellJocs pantallaJocs = new PanellJocs();
+        pantallaJocs.setTitle("Panell Activitats - Alfabetització");
+        pantallaJocs.setMinimumSize(new java.awt.Dimension(600, 450));
+        pantallaJocs.setResizable(false);
+        pantallaJocs.setLocationRelativeTo(null);
+        pantallaJocs.setIconImage(icono.getImage());
 
         this.dispose();
+        pantallaJocs.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        menujocsnumeros newframe = new menujocsnumeros();
-
-        newframe.setVisible(true);
-
-        this.dispose();
-
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
 
@@ -292,7 +272,6 @@ public class BuscaNumeros extends javax.swing.JFrame {
     private javax.swing.JLabel imagendado1;
     private javax.swing.JLabel imagendado2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

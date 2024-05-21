@@ -203,7 +203,6 @@ public class Main extends javax.swing.JFrame {
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
         jButton29 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -223,134 +222,82 @@ public class Main extends javax.swing.JFrame {
         jTextPane1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(jTextPane1);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("A");
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("B");
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("C");
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("D");
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setText("E");
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
         jButton7.setText("F");
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
         jButton8.setText("G");
 
-        jButton9.setBackground(new java.awt.Color(255, 255, 255));
         jButton9.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 0, 0));
         jButton9.setText("H");
 
-        jButton10.setBackground(new java.awt.Color(255, 255, 255));
         jButton10.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(0, 0, 0));
         jButton10.setText("I");
 
-        jButton11.setBackground(new java.awt.Color(255, 255, 255));
         jButton11.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setText("J");
 
-        jButton12.setBackground(new java.awt.Color(255, 255, 255));
         jButton12.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(0, 0, 0));
         jButton12.setText("K");
 
-        jButton13.setBackground(new java.awt.Color(255, 255, 255));
         jButton13.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(0, 0, 0));
         jButton13.setText("L");
 
-        jButton14.setBackground(new java.awt.Color(255, 255, 255));
         jButton14.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(0, 0, 0));
         jButton14.setText("M");
 
-        jButton15.setBackground(new java.awt.Color(255, 255, 255));
         jButton15.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(0, 0, 0));
         jButton15.setText("N");
 
-        jButton16.setBackground(new java.awt.Color(255, 255, 255));
         jButton16.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton16.setForeground(new java.awt.Color(0, 0, 0));
         jButton16.setText("O");
 
-        jButton17.setBackground(new java.awt.Color(255, 255, 255));
         jButton17.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton17.setForeground(new java.awt.Color(0, 0, 0));
         jButton17.setText("P");
 
-        jButton18.setBackground(new java.awt.Color(255, 255, 255));
         jButton18.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(0, 0, 0));
         jButton18.setText("Q");
 
-        jButton19.setBackground(new java.awt.Color(255, 255, 255));
         jButton19.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton19.setForeground(new java.awt.Color(0, 0, 0));
         jButton19.setText("R");
 
-        jButton20.setBackground(new java.awt.Color(255, 255, 255));
         jButton20.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton20.setForeground(new java.awt.Color(0, 0, 0));
         jButton20.setText("S");
 
-        jButton21.setBackground(new java.awt.Color(255, 255, 255));
         jButton21.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton21.setForeground(new java.awt.Color(0, 0, 0));
         jButton21.setText("T");
 
-        jButton22.setBackground(new java.awt.Color(255, 255, 255));
         jButton22.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton22.setForeground(new java.awt.Color(0, 0, 0));
         jButton22.setText("U");
 
-        jButton23.setBackground(new java.awt.Color(255, 255, 255));
         jButton23.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton23.setForeground(new java.awt.Color(0, 0, 0));
         jButton23.setText("V");
 
-        jButton24.setBackground(new java.awt.Color(255, 255, 255));
         jButton24.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton24.setForeground(new java.awt.Color(0, 0, 0));
         jButton24.setText("W");
 
-        jButton25.setBackground(new java.awt.Color(255, 255, 255));
         jButton25.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton25.setForeground(new java.awt.Color(0, 0, 0));
         jButton25.setText("X");
 
-        jButton26.setBackground(new java.awt.Color(255, 255, 255));
         jButton26.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton26.setForeground(new java.awt.Color(0, 0, 0));
         jButton26.setText("Y");
 
-        jButton27.setBackground(new java.awt.Color(255, 255, 255));
         jButton27.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jButton27.setForeground(new java.awt.Color(0, 0, 0));
         jButton27.setText("Z");
 
         jButton28.setBackground(new java.awt.Color(0, 0, 0));
@@ -363,20 +310,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jButton30.setBackground(new java.awt.Color(0, 0, 0));
-        jButton30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton30.setForeground(new java.awt.Color(255, 255, 255));
-        jButton30.setText("Volver");
-        jButton30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton30ActionPerformed(evt);
-            }
-        });
-
         jButton29.setBackground(new java.awt.Color(0, 0, 0));
         jButton29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton29.setForeground(new java.awt.Color(255, 255, 255));
-        jButton29.setText("Instrucciónes");
+        jButton29.setText("Instruccions");
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
@@ -386,8 +323,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 102));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("EL JUEGO DEL AHORACADO ");
+        jLabel2.setText("El Joc del Penjat");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -426,11 +362,10 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton31)
-                    .addComponent(jButton30)
                     .addComponent(jButton29))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(110, 110, 110))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -547,15 +482,13 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addComponent(jButton29)
                         .addGap(18, 18, 18)
                         .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton31)
-                        .addGap(22, 22, 22))))
+                        .addGap(60, 60, 60))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -576,14 +509,6 @@ public class Main extends javax.swing.JFrame {
         iniciar();
     }//GEN-LAST:event_jButton28ActionPerformed
 
-    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-        menujocsabesedari newframe = new menujocsabesedari();
-
-        newframe.setVisible(true);
-
-        this.dispose();
-    }//GEN-LAST:event_jButton30ActionPerformed
-
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego del ahorcado!\\n\\n\" +\n"
                 + "                         \"Instrucciones:\\n\" +\n"
@@ -597,11 +522,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
         PanellJocs newframe = new PanellJocs();
-
-        newframe.setVisible(true);
+        newframe.setTitle("Panell Activitats - Alfabetització");
+        newframe.setMinimumSize(new java.awt.Dimension(600, 450));
+        newframe.setResizable(false);
+        newframe.setLocationRelativeTo(null);
+        newframe.setIconImage(icono.getImage());
 
         this.dispose();
+        newframe.setVisible(true);
     }//GEN-LAST:event_jButton31ActionPerformed
 
     public static void main(String args[]) {
@@ -637,7 +568,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

@@ -2,6 +2,7 @@
 package JocsNum;
 
 import AbesedariJocs.menujocsabesedari;
+import IniciarJocs.PanellJocs;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -32,13 +33,12 @@ public class JocdeNum extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tornar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         imagen2 = new javax.swing.JLabel();
         imagen1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        instruccions = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -48,10 +48,10 @@ public class JocdeNum extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("JOC DE NUMEROS ");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Joc de Números");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(286, 26, 215, 32);
+        jLabel1.setBounds(286, 26, 188, 33);
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -83,7 +83,7 @@ public class JocdeNum extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(480, 480, 111, 27);
+        jButton2.setBounds(480, 480, 112, 26);
 
         jTextField1.setBackground(new java.awt.Color(0, 0, 0));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,33 +91,20 @@ public class JocdeNum extends javax.swing.JFrame {
         jPanel1.add(jTextField1);
         jTextField1.setBounds(440, 410, 195, 53);
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Menu");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        tornar.setBackground(new java.awt.Color(0, 0, 0));
+        tornar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tornar.setForeground(new java.awt.Color(255, 255, 255));
+        tornar.setText("Tornar-hi");
+        tornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                tornarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(570, 680, 72, 27);
-
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Volver");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(680, 680, 80, 27);
+        jPanel1.add(tornar);
+        tornar.setBounds(660, 680, 100, 26);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Cuanto da esta resta ? ");
+        jLabel3.setText("Quin és el resultat?");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(460, 370, 203, 20);
 
@@ -130,22 +117,21 @@ public class JocdeNum extends javax.swing.JFrame {
         imagen1.setBounds(171, 123, 204, 204);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("-");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(381, 206, 15, 48);
+        jLabel6.setBounds(381, 206, 12, 50);
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Instrucciónes ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        instruccions.setBackground(new java.awt.Color(0, 0, 0));
+        instruccions.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        instruccions.setForeground(new java.awt.Color(255, 255, 255));
+        instruccions.setText("Instruccions");
+        instruccions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                instruccionsActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5);
-        jButton5.setBounds(405, 680, 130, 27);
+        jPanel1.add(instruccions);
+        instruccions.setBounds(500, 680, 130, 26);
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -164,8 +150,7 @@ public class JocdeNum extends javax.swing.JFrame {
         jPanel2.setBounds(220, 10, 340, 60);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Operacines contestadas : ");
+        jLabel4.setText("Operacions contestades:");
         jLabel4.setToolTipText("");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(440, 540, 250, 70);
@@ -174,11 +159,11 @@ public class JocdeNum extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
         );
 
         pack();
@@ -259,23 +244,21 @@ public class JocdeNum extends javax.swing.JFrame {
         jTextField1.setText("");
     }
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        menujocsnumeros newframe = new menujocsnumeros();
+    private void tornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tornarActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
 
-        newframe.setVisible(true);
-
-        this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        families newframe = new families();
-
-        newframe.setVisible(true);
+        PanellJocs pantallaJocs = new PanellJocs();
+        pantallaJocs.setTitle("Panell Activitats - Alfabetització");
+        pantallaJocs.setMinimumSize(new java.awt.Dimension(600, 450));
+        pantallaJocs.setResizable(false);
+        pantallaJocs.setLocationRelativeTo(null);
+        pantallaJocs.setIconImage(icono.getImage());
 
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        pantallaJocs.setVisible(true);
+    }//GEN-LAST:event_tornarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void instruccionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instruccionsActionPerformed
         JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de la resta!\\n\\n\" +\n"
                 + "\"Instrucciones:\\n\" +\n"
                 + "\"- Se mostrarán dos números aleatorios.\\n\" +\n"
@@ -284,7 +267,7 @@ public class JocdeNum extends javax.swing.JFrame {
                 + "\"- Haz clic en el botón \\\"Comprobar\\\" para verificar tu respuesta.\\n\" +\n"
                 + "\"- Puedes presionar el botón \\\"Ayuda\\\" en cualquier momento para ver esta explicación.\\n\" +\n"
                 + "\"- ¡Diviértete practicando resta!\";");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_instruccionsActionPerformed
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
@@ -302,11 +285,9 @@ public class JocdeNum extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imagen1;
     private javax.swing.JLabel imagen2;
+    private javax.swing.JButton instruccions;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -314,6 +295,7 @@ public class JocdeNum extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton tornar;
     // End of variables declaration//GEN-END:variables
 
     private String toString(int contadorJuegos) {

@@ -8,6 +8,7 @@ import AbesedariJocs.menujocsabesedari;
 import fills.insertaContra;
 import javax.swing.ImageIcon;
 import menujocsparaules.menujocsparaules;
+import menunumeros.menujocsnumeros;
 
 /**
  *
@@ -37,7 +38,7 @@ public class PanellJocs extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         abecedari = new javax.swing.JButton();
         paraules = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        numeros = new javax.swing.JButton();
         sortir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,7 +79,12 @@ public class PanellJocs extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Completar Frases");
+        numeros.setText("Números");
+        numeros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numerosActionPerformed(evt);
+            }
+        });
 
         sortir.setText("Panell Família");
         sortir.addActionListener(new java.awt.event.ActionListener() {
@@ -92,18 +98,17 @@ public class PanellJocs extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(abecedari)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(paraules)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addContainerGap(62, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(sortir)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(paraules)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(numeros)
+                .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sortir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,10 +117,10 @@ public class PanellJocs extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(abecedari)
                     .addComponent(paraules)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                    .addComponent(numeros))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(sortir)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -193,6 +198,20 @@ public class PanellJocs extends javax.swing.JFrame {
         menuAbcJocs.setVisible(true);
     }//GEN-LAST:event_abecedariActionPerformed
 
+    private void numerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numerosActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
+        menujocsnumeros menuNumeros = new menujocsnumeros();
+        menuNumeros.setTitle("Panell Activitats - Alfabetització");
+        menuNumeros.setMinimumSize(new java.awt.Dimension(600, 450));
+        menuNumeros.setResizable(false);
+        menuNumeros.setLocationRelativeTo(null);
+        menuNumeros.setIconImage(icono.getImage());
+        
+        this.dispose();
+        menuNumeros.setVisible(true);
+    }//GEN-LAST:event_numerosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,11 +249,11 @@ public class PanellJocs extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abecedari;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton numeros;
     private javax.swing.JButton paraules;
     private javax.swing.JButton sortir;
     // End of variables declaration//GEN-END:variables

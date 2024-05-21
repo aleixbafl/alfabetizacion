@@ -4,6 +4,11 @@
  */
 package menunumeros;
 
+import IniciarJocs.PanellJocs;
+import JocsDaus.BuscaNumeros;
+import JocsNum.JocdeNum;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Samuel Fluerici
@@ -27,48 +32,107 @@ public class menujocsnumeros extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        restaNum = new javax.swing.JButton();
+        sumaDaus = new javax.swing.JButton();
+        tornar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(600, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("JOCS DE NUMEROS");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton1.setText("Joc 1");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        jButton2.setText("Joc 2");
+        restaNum.setText("Resta Números");
+        restaNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restaNumActionPerformed(evt);
+            }
+        });
+
+        sumaDaus.setText("Suma Daus");
+        sumaDaus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sumaDausActionPerformed(evt);
+            }
+        });
+
+        tornar.setText("Tornar-hi");
+        tornar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tornarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(135, Short.MAX_VALUE)
+                .addComponent(restaNum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addComponent(sumaDaus)
+                .addContainerGap(136, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tornar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sumaDaus)
+                    .addComponent(restaNum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addComponent(tornar)
+                .addContainerGap(89, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addGap(91, 91, 91)
-                .addComponent(jButton1)
-                .addGap(85, 85, 85)
-                .addComponent(jButton2)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -84,6 +148,48 @@ public class menujocsnumeros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tornarActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+
+        PanellJocs pantallaJocs = new PanellJocs();
+        pantallaJocs.setTitle("Panell Activitats - Alfabetització");
+        pantallaJocs.setMinimumSize(new java.awt.Dimension(600, 450));
+        pantallaJocs.setResizable(false);
+        pantallaJocs.setLocationRelativeTo(null);
+        pantallaJocs.setIconImage(icono.getImage());
+
+        this.dispose();
+        pantallaJocs.setVisible(true);
+    }//GEN-LAST:event_tornarActionPerformed
+
+    private void restaNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restaNumActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+
+        JocdeNum restaNum = new JocdeNum();
+        restaNum.setTitle("Panell Activitats - Alfabetització");
+        restaNum.setMinimumSize(new java.awt.Dimension(800, 730));
+        restaNum.setResizable(false);
+        restaNum.setLocationRelativeTo(null);
+        restaNum.setIconImage(icono.getImage());
+
+        this.dispose();
+        restaNum.setVisible(true);
+    }//GEN-LAST:event_restaNumActionPerformed
+
+    private void sumaDausActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumaDausActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+
+        BuscaNumeros sumaDaus = new BuscaNumeros();
+        sumaDaus.setTitle("Panell Activitats - Alfabetització");
+        sumaDaus.setMinimumSize(new java.awt.Dimension(825, 730));
+        sumaDaus.setResizable(false);
+        sumaDaus.setLocationRelativeTo(null);
+        sumaDaus.setIconImage(icono.getImage());
+
+        this.dispose();
+        sumaDaus.setVisible(true);
+    }//GEN-LAST:event_sumaDausActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,9 +227,12 @@ public class menujocsnumeros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton restaNum;
+    private javax.swing.JButton sumaDaus;
+    private javax.swing.JButton tornar;
     // End of variables declaration//GEN-END:variables
 }
