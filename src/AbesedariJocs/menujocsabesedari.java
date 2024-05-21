@@ -6,6 +6,7 @@ package AbesedariJocs;
 
 import IniciarJocs.PanellJocs;
 import javax.swing.ImageIcon;
+import jocabc.jocdeabc;
 
 /**
  *
@@ -62,6 +63,11 @@ public class menujocsabesedari extends javax.swing.JFrame {
         );
 
         lletres.setText("Ordenar Lletres");
+        lletres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lletresActionPerformed(evt);
+            }
+        });
 
         paraulesJoc.setText("Ordenar Paraules");
         paraulesJoc.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +170,20 @@ public class menujocsabesedari extends javax.swing.JFrame {
         this.dispose();
         pantallaParaulesJoc.setVisible(true);
     }//GEN-LAST:event_paraulesJocActionPerformed
+
+    private void lletresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lletresActionPerformed
+        ImageIcon icono = new ImageIcon("img/logo.png");
+        
+        jocdeabc paraulesAbce = new jocdeabc();
+        paraulesAbce.setTitle("Ordenar Paraules - Alfabetització");
+        paraulesAbce.setMinimumSize(new java.awt.Dimension(834, 1270));
+        paraulesAbce.setResizable(false);
+        paraulesAbce.setLocationRelativeTo(null);
+        paraulesAbce.setIconImage(icono.getImage());
+        
+        this.dispose();
+        paraulesAbce.setVisible(true);
+    }//GEN-LAST:event_lletresActionPerformed
 
     /**
      * @param args the command line arguments
