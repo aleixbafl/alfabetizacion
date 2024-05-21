@@ -800,7 +800,6 @@ public class paraules extends javax.swing.JFrame {
             Comprobar quin boto a clicat i si la paraula es a l'ordre corresponent.
             En cas de que la paraula estigui a l'ordre correcte se 
         */
-        System.out.println(nomBotons.length);
         boolean trobat = false;
         int i = 0;
         do {

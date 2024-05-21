@@ -4,22 +4,17 @@
  */
 package fills;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import serverConexio.conexioBD;
 import java.sql.Timestamp;
 import javax.swing.ImageIcon;
+import objectesBD.fillsBD;
 import panells.families;
 
 /**
@@ -36,24 +31,11 @@ public class historic extends javax.swing.JFrame {
     public historic() {
         initComponents();
         
-        File f = new File("dni.fill");
-        conexioBD bd = new conexioBD();
-        try {
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
-            dniFill = br.readLine();
-            bd.obrirConexio();
-            ResultSet resultat = bd.ecjecutarSelect("SELECT * FROM `fills` WHERE `fills`.`dni` = '" + dniFill +"';");
-            if (resultat.next()) {
-            titol.setText("Historial del fill: " + resultat.getString("nom") + " " + resultat.getString("cognoms"));
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(historic.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(historic.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            missatge(bd.missatgeError(ex.getErrorCode()));
-        }
+        fillsBD fill = new fillsBD();
+        fill.lleguirFill();
+        titol.setText("Historial del fill: " + fill.getNom() + " " + fill.getCognoms());
+        
+        dniFill = fill.getDni();
     }
 
     /**
@@ -82,7 +64,7 @@ public class historic extends javax.swing.JFrame {
         activitat = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         nota = new javax.swing.JLabel();
-        resultats = new javax.swing.JButton();
+        visualitzarResultat = new javax.swing.JButton();
         tornar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,7 +122,12 @@ public class historic extends javax.swing.JFrame {
         nota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nota.setText("-");
 
-        resultats.setText("Resultats");
+        visualitzarResultat.setText("Visualitzar resultat");
+        visualitzarResultat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualitzarResultatActionPerformed(evt);
+            }
+        });
 
         tornar.setText("Panell Família");
         tornar.addActionListener(new java.awt.event.ActionListener() {
@@ -154,31 +141,35 @@ public class historic extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dataInici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 73, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dataFi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6))
+                        .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
-                            .addComponent(resultats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(visualitzarResultat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tornar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(activitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(activitat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(nota, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(visualitzarActivitats, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,23 +191,23 @@ public class historic extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(categoria)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(activitat))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addComponent(visualitzarResultat, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(categoria))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5))
-                    .addComponent(resultats, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(activitat, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nota)
-                    .addComponent(tornar))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tornar)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(nota)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -260,7 +251,7 @@ public class historic extends javax.swing.JFrame {
             bd.obrirConexio();
             try {
                 DefaultListModel modelo = new DefaultListModel();
-                ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT * FROM `realitzat` WHERE ((`realitzat`.`dataHora` >= '" + dataIniciStr + " 00:00:00') AND (`realitzat`.`dataHora` >= '" + dataFiStr + " 23:59:59')) AND `realitzat`.`dniFill` = '" + dniFill + "'; ");
+                ResultSet resultatUsuari = bd.ecjecutarSelect("SELECT * FROM `activitatRealitzat` WHERE ((`activitatRealitzat`.`dataHora` >= '" + dataIniciStr + " 00:00:00') AND (`activitatRealitzat`.`dataHora` <= '" + dataFiStr + " 23:59:59')) AND`activitatRealitzat`.`dniFill` = '" + dniFill + "';");
                 int numResul = 0;
                 while (resultatUsuari.next()){
                     numResul++;
@@ -307,6 +298,10 @@ public class historic extends javax.swing.JFrame {
         this.dispose();
         panellFamilies.setVisible(true);
     }//GEN-LAST:event_tornarActionPerformed
+
+    private void visualitzarResultatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualitzarResultatActionPerformed
+        
+    }//GEN-LAST:event_visualitzarResultatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,10 +354,10 @@ public class historic extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> llistatActitats;
     private javax.swing.JLabel nota;
-    private javax.swing.JButton resultats;
     private javax.swing.JLabel titol;
     private javax.swing.JButton tornar;
     private javax.swing.JButton visualitzarActivitats;
+    private javax.swing.JButton visualitzarResultat;
     // End of variables declaration//GEN-END:variables
 
     private void missatge(String missatge) {

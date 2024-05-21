@@ -7,11 +7,9 @@ package panells;
 import IniciarJocs.PanellJocs;
 import fills.afegir;
 import fills.historic;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.sql.Date;
@@ -22,7 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import loginReguistre.login;
 import objectesBD.fillsBD;
@@ -270,13 +267,29 @@ public class families extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void historicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicActionPerformed
-        int seleccionat = llistaFills.getSelectedIndex();
-        if (seleccionat != -1) {
-            String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
-            fillsBD fill = obtenirFills(contingut);
-            fill.guardarFill();
+        if (llistaFills == null) {
+            missatge("No hi ha fills per a visualitzar el seu historial.");
         } else {
-            missatge("Has de seleccionar un fill.");
+            int seleccionat = llistaFills.getSelectedIndex();
+            if (seleccionat != -1) {
+                String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
+                fillsBD fill = obtenirFills(contingut);
+                fill.guardarFill();
+                
+                ImageIcon icono = new ImageIcon("img/logo.png");
+                
+                historic pantallHistoric = new historic();
+                pantallHistoric.setTitle("Panell Família - Alfabetització");
+                pantallHistoric.setMinimumSize(new java.awt.Dimension(600, 500));
+                //panellFamilies.setResizable(false);
+                pantallHistoric.setLocationRelativeTo(null);
+                pantallHistoric.setIconImage(icono.getImage());
+
+                this.dispose();
+                pantallHistoric.setVisible(true);
+            } else {
+                missatge("Has de seleccionar un fill.");
+            }
         }
     }//GEN-LAST:event_historicActionPerformed
 
@@ -451,12 +464,13 @@ public class families extends javax.swing.JFrame {
                             fill.setNom(resultatUsuari.getString("f.nom"));
                             fill.setCognoms(resultatUsuari.getString("f.cognoms"));
                             fill.setDataNaixe(dateString(resultatUsuari.getDate("f.dataNaixe")));
-                            fill.setNiveInici(resultatUsuari.getInt("f.niveInici"));
-                            fill.setNiveActual(resultatUsuari.getInt("f.niveActual"));
+                            fill.setNivell(resultatUsuari.getInt("f.nivell"));
+                            
                             seguir = false;
                         }
                     }
                 } catch (SQLException ex) {
+                    System.out.println("Error: " + ex.getMessage());
                     missatge(bd.missatgeError(ex.getErrorCode()));
                 }
             }

@@ -17,43 +17,17 @@ public class fillsBD implements Serializable {
     private String nom;
     private String cognoms;
     private String dataNaixe;
-    private int niveInici;
-    private int niveActual;
+    private int nivell;
 
     public fillsBD() {
     }
 
-    public fillsBD(String dni, String nom, String cognoms, String dataNaixe, int niveInici, int niveActual) {
+    public fillsBD(String dni, String nom, String cognoms, String dataNaixe, int nivell) {
         this.dni = dni;
         this.nom = nom;
         this.cognoms = cognoms;
         this.dataNaixe = dataNaixe;
-        this.niveInici = niveInici;
-        this.niveActual = niveActual;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setCognoms(String cognoms) {
-        this.cognoms = cognoms;
-    }
-
-    public void setDataNaixe(String dataNaixe) {
-        this.dataNaixe = dataNaixe;
-    }
-
-    public void setNiveInici(int niveInici) {
-        this.niveInici = niveInici;
-    }
-
-    public void setNiveActual(int niveActual) {
-        this.niveActual = niveActual;
+        this.nivell = nivell;
     }
 
     public String getDni() {
@@ -72,13 +46,31 @@ public class fillsBD implements Serializable {
         return dataNaixe;
     }
 
-    public int getNiveInici() {
-        return niveInici;
+    public int getNivell() {
+        return nivell;
     }
 
-    public int getNiveActual() {
-        return niveActual;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setCognoms(String cognoms) {
+        this.cognoms = cognoms;
+    }
+
+    public void setDataNaixe(String dataNaixe) {
+        this.dataNaixe = dataNaixe;
+    }
+
+    public void setNivell(int nivell) {
+        this.nivell = nivell;
+    }
+    
+    
     
     public void guardarFill(){
         File f = new File("fill.fill");
@@ -105,8 +97,7 @@ public class fillsBD implements Serializable {
             this.nom = fillObj.getNom();
             this.cognoms = fillObj.getCognoms();
             this.dataNaixe = fillObj.getDataNaixe();
-            this.niveInici = fillObj.getNiveInici();
-            this.niveActual = fillObj.getNiveActual();
+            this.nivell = fillObj.getNivell();
             
             ois.close();
             fis.close();
