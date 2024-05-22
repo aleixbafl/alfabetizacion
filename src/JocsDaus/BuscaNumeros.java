@@ -1,4 +1,4 @@
-//samuel
+//samuel fluerici
 package JocsDaus;
 
 import IniciarJocs.PanellJocs;
