@@ -139,7 +139,7 @@ public class families extends javax.swing.JFrame {
         jPanel3.setToolTipText("");
 
         afegir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        afegir.setForeground(new java.awt.Color(255, 255, 255));
+        afegir.setForeground(new java.awt.Color(0, 0, 0));
         afegir.setText("Afegir");
         afegir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +148,7 @@ public class families extends javax.swing.JFrame {
         });
 
         eliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        eliminar.setForeground(new java.awt.Color(0, 0, 0));
         eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +157,7 @@ public class families extends javax.swing.JFrame {
         });
 
         historic.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        historic.setForeground(new java.awt.Color(255, 255, 255));
+        historic.setForeground(new java.awt.Color(0, 0, 0));
         historic.setText("Històric");
         historic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +166,7 @@ public class families extends javax.swing.JFrame {
         });
 
         activitats.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        activitats.setForeground(new java.awt.Color(255, 255, 255));
+        activitats.setForeground(new java.awt.Color(0, 0, 0));
         activitats.setText("Activitats");
         activitats.setActionCommand("Iniciar Activitats");
         activitats.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +176,7 @@ public class families extends javax.swing.JFrame {
         });
 
         tancaSessio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tancaSessio.setForeground(new java.awt.Color(255, 255, 255));
+        tancaSessio.setForeground(new java.awt.Color(0, 0, 0));
         tancaSessio.setText("Tanca Sessió");
         tancaSessio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +184,7 @@ public class families extends javax.swing.JFrame {
             }
         });
 
-        llistaFills.setForeground(new java.awt.Color(255, 255, 255));
+        llistaFills.setForeground(new java.awt.Color(0, 0, 0));
         llistaFills.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -195,7 +195,7 @@ public class families extends javax.swing.JFrame {
         fillsMissatge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         desseleccionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        desseleccionar.setForeground(new java.awt.Color(255, 255, 255));
+        desseleccionar.setForeground(new java.awt.Color(0, 0, 0));
         desseleccionar.setText("Desseleccionar");
         desseleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

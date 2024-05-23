@@ -71,7 +71,7 @@ public class menujocsnumeros extends javax.swing.JFrame {
         );
 
         restaNum.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        restaNum.setForeground(new java.awt.Color(255, 255, 255));
+        restaNum.setForeground(new java.awt.Color(0, 0, 0));
         restaNum.setText("Resta Números");
         restaNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +80,7 @@ public class menujocsnumeros extends javax.swing.JFrame {
         });
 
         sumaDaus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        sumaDaus.setForeground(new java.awt.Color(255, 255, 255));
+        sumaDaus.setForeground(new java.awt.Color(0, 0, 0));
         sumaDaus.setText("Suma Daus");
         sumaDaus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +89,7 @@ public class menujocsnumeros extends javax.swing.JFrame {
         });
 
         tornar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tornar.setForeground(new java.awt.Color(255, 255, 255));
+        tornar.setForeground(new java.awt.Color(0, 0, 0));
         tornar.setText("Tornar-hi");
         tornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

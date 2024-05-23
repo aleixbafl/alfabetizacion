@@ -68,7 +68,7 @@ public class PanellJocs extends javax.swing.JFrame {
         );
 
         abecedari.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        abecedari.setForeground(new java.awt.Color(255, 255, 255));
+        abecedari.setForeground(new java.awt.Color(0, 0, 0));
         abecedari.setText("Abecedari");
         abecedari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +77,7 @@ public class PanellJocs extends javax.swing.JFrame {
         });
 
         paraules.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        paraules.setForeground(new java.awt.Color(255, 255, 255));
+        paraules.setForeground(new java.awt.Color(0, 0, 0));
         paraules.setText("Paraules");
         paraules.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +86,7 @@ public class PanellJocs extends javax.swing.JFrame {
         });
 
         numeros.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        numeros.setForeground(new java.awt.Color(255, 255, 255));
+        numeros.setForeground(new java.awt.Color(0, 0, 0));
         numeros.setText("Números");
         numeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +95,7 @@ public class PanellJocs extends javax.swing.JFrame {
         });
 
         sortir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        sortir.setForeground(new java.awt.Color(255, 255, 255));
+        sortir.setForeground(new java.awt.Color(0, 0, 0));
         sortir.setText("Panell Família");
         sortir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

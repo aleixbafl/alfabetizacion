@@ -65,7 +65,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
         );
 
         lletres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lletres.setForeground(new java.awt.Color(255, 255, 255));
+        lletres.setForeground(new java.awt.Color(0, 0, 0));
         lletres.setText("Ordenar Lletres");
         lletres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +74,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
         });
 
         paraulesJoc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        paraulesJoc.setForeground(new java.awt.Color(255, 255, 255));
+        paraulesJoc.setForeground(new java.awt.Color(0, 0, 0));
         paraulesJoc.setText("Ordenar Paraules");
         paraulesJoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +83,7 @@ public class menujocsabesedari extends javax.swing.JFrame {
         });
 
         tornar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tornar.setForeground(new java.awt.Color(255, 255, 255));
+        tornar.setForeground(new java.awt.Color(0, 0, 0));
         tornar.setText("Tornar-hi");
         tornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

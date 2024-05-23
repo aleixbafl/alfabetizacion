@@ -71,7 +71,7 @@ public class menujocsparaules extends javax.swing.JFrame {
         );
 
         animals.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        animals.setForeground(new java.awt.Color(255, 255, 255));
+        animals.setForeground(new java.awt.Color(0, 0, 0));
         animals.setText("Animals");
         animals.setActionCommand("");
         animals.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +81,7 @@ public class menujocsparaules extends javax.swing.JFrame {
         });
 
         tornar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tornar.setForeground(new java.awt.Color(255, 255, 255));
+        tornar.setForeground(new java.awt.Color(0, 0, 0));
         tornar.setText("Tornar-hi");
         tornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +90,7 @@ public class menujocsparaules extends javax.swing.JFrame {
         });
 
         penjat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        penjat.setForeground(new java.awt.Color(255, 255, 255));
+        penjat.setForeground(new java.awt.Color(0, 0, 0));
         penjat.setText("Penjat");
         penjat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
