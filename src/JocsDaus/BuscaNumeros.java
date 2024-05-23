@@ -200,7 +200,6 @@ public class BuscaNumeros extends javax.swing.JFrame {
         } else {
             try {
                 int numInt = Integer.parseInt(numeroIntroduit.getText());
-                System.out.println(respuestasCorrectas.length + " | " + contadorJuegos);
                 if (numInt == sumaDados) {
                     jLabel3.setText("Resultat: Número correcte!");
                     respuestasCorrectas[contadorJuegos] = true;
