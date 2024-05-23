@@ -2,10 +2,12 @@
 package JocsDaus;
 
 import IniciarJocs.PanellJocs;
+import java.sql.SQLException;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import menunumeros.menujocsnumeros;
+import objectesBD.fillsBD;
+import serverConexio.conexioBD;
 
 public class BuscaNumeros extends javax.swing.JFrame {
 
@@ -15,10 +17,12 @@ public class BuscaNumeros extends javax.swing.JFrame {
     public int sumaDados;
     private int contadorJuegos = 0;
     private boolean[] respuestasCorrectas = new boolean[10];
+    private String numeros = "";
 
     public BuscaNumeros() {
         initComponents();
         puntuacion = 0;
+        valida.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -30,11 +34,11 @@ public class BuscaNumeros extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         imagendado1 = new javax.swing.JLabel();
         imagendado2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        start = new javax.swing.JButton();
+        numeroIntroduit = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        valida = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -75,28 +79,28 @@ public class BuscaNumeros extends javax.swing.JFrame {
         jPanel1.add(imagendado2);
         imagendado2.setBounds(450, 150, 380, 270);
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("START");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        start.setBackground(new java.awt.Color(0, 0, 0));
+        start.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        start.setForeground(new java.awt.Color(255, 255, 255));
+        start.setText("START");
+        start.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                startMouseClicked(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                startActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(50, 470, 260, 50);
+        jPanel1.add(start);
+        start.setBounds(50, 470, 260, 50);
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(440, 470, 250, 50);
+        numeroIntroduit.setBackground(new java.awt.Color(0, 0, 0));
+        numeroIntroduit.setForeground(new java.awt.Color(255, 255, 255));
+        numeroIntroduit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(numeroIntroduit);
+        numeroIntroduit.setBounds(440, 470, 250, 50);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel2.setText("Quin és el resultat de la suma?");
@@ -109,17 +113,17 @@ public class BuscaNumeros extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(360, 580, 440, 40);
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Validar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        valida.setBackground(new java.awt.Color(0, 0, 0));
+        valida.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        valida.setForeground(new java.awt.Color(255, 255, 255));
+        valida.setText("Validar");
+        valida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                validaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(500, 540, 120, 26);
+        jPanel1.add(valida);
+        valida.setBounds(500, 540, 120, 26);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setText("+");
@@ -186,49 +190,57 @@ public class BuscaNumeros extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel1MouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        Random rnd = new Random();
-        int dado1 = rnd.nextInt(6) + 1;
-        int dado2 = rnd.nextInt(6) + 1;
+    private void startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startMouseClicked
+        
+    }//GEN-LAST:event_startMouseClicked
+
+    private void validaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validaActionPerformed
+        if (numeroIntroduit.getText().isEmpty()) {
+            missatge("Has d'introduir un número.");
+        } else {
+            try {
+                int numInt = Integer.parseInt(numeroIntroduit.getText());
+                System.out.println(respuestasCorrectas.length + " | " + contadorJuegos);
+                if (numInt == sumaDados) {
+                    jLabel3.setText("Resultat: Número correcte!");
+                    respuestasCorrectas[contadorJuegos] = true;
+                    puntuacion++;
+                } else {
+                    jLabel3.setText("Resultat: Número incorrecte!");
+                    respuestasCorrectas[contadorJuegos] = false;
+                }
+                if (contadorJuegos < 9) {
+                    contadorJuegos++;
+                    start.setEnabled(true);
+                    valida.setEnabled(false);
+                } else if (contadorJuegos >= 9) {
+                    start.setEnabled(false);
+                    valida.setEnabled(false);
+                    missatge("Ja s'ha acabat l'activitat.");
+                    mostrarPuntuacion();
+                    guardarNota();
+                }
+                guardarOperacions(dado1, dado2, sumaDados, numInt);
+            } catch (NumberFormatException ex) {
+                missatge("El valor que has d'introduir ha de ser un número.");
+            }
+        }
+    }//GEN-LAST:event_validaActionPerformed
+
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+        dado1 = numeroRandom();
+        dado2 = numeroRandom();
 
         imagendado1.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado1 + ".png")));
         imagendado2.setIcon(new ImageIcon(getClass().getResource("/imagenes/Alea_" + dado2 + ".png")));
 
         sumaDados = dado1 + dado2;
-
-        contadorJuegos++;
-        if (contadorJuegos >= 10) {
-            mostrarPuntuacion();
-        }
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        try {
-            int numeroIngresado = Integer.parseInt(jTextField1.getText());
-            if (numeroIngresado == sumaDados) {
-                jLabel3.setText("¡Número correcto!");
-                respuestasCorrectas[contadorJuegos - 1] = true;
-            } else {
-                jLabel3.setText("Número incorrecto. La suma de los dados es: " + sumaDados);
-                respuestasCorrectas[contadorJuegos - 1] = false;
-            }
-        } catch (NumberFormatException e) {
-            jLabel3.setText("Por favor, ingresa un número válido.");
-            respuestasCorrectas[contadorJuegos - 1] = false;
-        }
-
-        contadorJuegos++;
-        if (contadorJuegos >= 10) {
-            mostrarPuntuacion();
-        }
-
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+        numeroIntroduit.setText("");
+        start.setEnabled(false);
+        valida.setEnabled(true);
+        jLabel3.setText("Resultat:");
+    }//GEN-LAST:event_startActionPerformed
 
     private void mostrarPuntuacion() {
         int respuestasCorrectasCount = 0;
@@ -238,15 +250,8 @@ public class BuscaNumeros extends javax.swing.JFrame {
             }
         }
         JOptionPane.showMessageDialog(this, "Tu puntuación es: " + respuestasCorrectasCount + "/10");
-        reiniciarJuego();
     }
-
-    private void reiniciarJuego() {
-        contadorJuegos = 0;
-        respuestasCorrectas = new boolean[10];
-        jLabel3.setText("");
-        jTextField1.setText("");
-    }
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         JOptionPane.showMessageDialog(rootPane, "\"¡Bienvenido al juego de los dados!\\n\\n\" +\n"
                 + "\"Instrucciones:\\n\" +\n"
@@ -272,8 +277,6 @@ public class BuscaNumeros extends javax.swing.JFrame {
     private javax.swing.JLabel imagendado1;
     private javax.swing.JLabel imagendado2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -281,6 +284,48 @@ public class BuscaNumeros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField numeroIntroduit;
+    private javax.swing.JButton start;
+    private javax.swing.JButton valida;
     // End of variables declaration//GEN-END:variables
+
+    private void missatge(String missatge) {
+        JOptionPane.showMessageDialog(rootPane, missatge);
+    }
+
+    private void guardarNota() {
+        double c = 0;
+        for (int i = 0; i < respuestasCorrectas.length; i++) {
+            if (respuestasCorrectas[i]) {
+                c++;
+            }
+        }
+
+        fillsBD fill = new fillsBD();
+        fill.lleguirFill();
+
+        conexioBD conexio = new conexioBD();
+        conexio.obrirConexio();
+        try {
+            conexio.ecjecutarActualitzar("INSERT INTO `activitatRealitzat`(`dniFill`, `nota`, `tipo`, `comtingutActiv`) VALUES ('" + fill.getDni() + "','" + c + "','Números - Sumar Daus','" + numeros + "');");
+        } catch (SQLException ex) {
+            missatge(conexio.missatgeError(ex));
+            conexio.tancaConexio();
+        }
+        missatge("S'ha guardat correctament la nota de l'activitat.");
+        conexio.tancaConexio();
+    }
+
+    private void guardarOperacions(int dado1, int dado2, int sumaDados, int numIntroduit) {
+        if (numeros.equals("")) {
+            numeros = "(" + dado1 + "  + " + dado2 + " = " + sumaDados + " | Introduit: " + numIntroduit + ")";
+        } else {
+            numeros = numeros + ", (" + dado1 + "+" + dado2 + " = " + sumaDados + " | Introduit: " + numIntroduit + ")";
+        }
+    }
+
+    private int numeroRandom() {
+        Random rnd = new Random();
+        return rnd.nextInt(6) + 1;
+    }
 }

@@ -1,5 +1,6 @@
 package alfabetizacion;
 
+import java.io.File;
 import javax.swing.ImageIcon;
 import loginReguistre.login;
 
@@ -10,6 +11,11 @@ public class Alfabetizacion {
     }
 
     private void inici() {
+        File f = new File("fill.fill");
+        if (f.exists()) {
+            f.delete();
+        }
+        
         ImageIcon icono = new ImageIcon("img/logo.png");
         
         login pantallaLogin = new login();
