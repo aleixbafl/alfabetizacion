@@ -119,6 +119,7 @@ public class JocdeNum extends javax.swing.JFrame {
         imagen1.setBounds(171, 123, 204, 204);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("-");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(381, 206, 15, 48);
