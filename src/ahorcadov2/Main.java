@@ -92,7 +92,7 @@ public class Main extends javax.swing.JFrame {
         jTextPane1.setText("");
 
         for (int i = 1; i < 27; i++) {
-            btns[i].setEnabled(true);
+            btns[i].setEnabled(true);    
         }
 
         ran = (int) (Math.random() * msgs.length);

@@ -107,6 +107,7 @@ public class families extends javax.swing.JFrame {
         llistaFills = new javax.swing.JList<>();
         fillsMissatge = new javax.swing.JLabel();
         desseleccionar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +116,7 @@ public class families extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gestió de Fills ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -136,6 +138,8 @@ public class families extends javax.swing.JFrame {
 
         jPanel3.setToolTipText("");
 
+        afegir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        afegir.setForeground(new java.awt.Color(255, 255, 255));
         afegir.setText("Afegir");
         afegir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +147,8 @@ public class families extends javax.swing.JFrame {
             }
         });
 
+        eliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        eliminar.setForeground(new java.awt.Color(255, 255, 255));
         eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +156,8 @@ public class families extends javax.swing.JFrame {
             }
         });
 
+        historic.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        historic.setForeground(new java.awt.Color(255, 255, 255));
         historic.setText("Històric");
         historic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +165,8 @@ public class families extends javax.swing.JFrame {
             }
         });
 
+        activitats.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        activitats.setForeground(new java.awt.Color(255, 255, 255));
         activitats.setText("Activitats");
         activitats.setActionCommand("Iniciar Activitats");
         activitats.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +175,8 @@ public class families extends javax.swing.JFrame {
             }
         });
 
+        tancaSessio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tancaSessio.setForeground(new java.awt.Color(255, 255, 255));
         tancaSessio.setText("Tanca Sessió");
         tancaSessio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +184,7 @@ public class families extends javax.swing.JFrame {
             }
         });
 
+        llistaFills.setForeground(new java.awt.Color(255, 255, 255));
         llistaFills.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -181,6 +194,8 @@ public class families extends javax.swing.JFrame {
 
         fillsMissatge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        desseleccionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        desseleccionar.setForeground(new java.awt.Color(255, 255, 255));
         desseleccionar.setText("Desseleccionar");
         desseleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,49 +203,58 @@ public class families extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes4/gestion.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(tancaSessio)
-                .addContainerGap(234, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(afegir)
-                    .addComponent(historic)
                     .addComponent(eliminar)
-                    .addComponent(activitats))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(desseleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fillsMissatge, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(afegir)
+                    .addComponent(activitats)
+                    .addComponent(historic)
+                    .addComponent(tancaSessio))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fillsMissatge, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(desseleccionar, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fillsMissatge, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(afegir)
-                        .addGap(18, 24, Short.MAX_VALUE)
-                        .addComponent(eliminar)
-                        .addGap(18, 24, Short.MAX_VALUE)
-                        .addComponent(activitats)
-                        .addGap(18, 25, Short.MAX_VALUE)
-                        .addComponent(historic))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(desseleccionar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(tancaSessio)
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(desseleccionar))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(afegir)
+                            .addGap(18, 18, 18)
+                            .addComponent(eliminar)
+                            .addGap(18, 18, 18)
+                            .addComponent(activitats)
+                            .addGap(18, 18, 18)
+                            .addComponent(historic)
+                            .addGap(114, 114, 114)
+                            .addComponent(tancaSessio))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -428,6 +452,7 @@ public class families extends javax.swing.JFrame {
     private javax.swing.JLabel fillsMissatge;
     private javax.swing.JButton historic;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
