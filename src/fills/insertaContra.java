@@ -40,10 +40,13 @@ public class insertaContra extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Introdueix la contrasenya del vostre usuari.");
 
+        acceptar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        acceptar.setForeground(new java.awt.Color(0, 0, 0));
         acceptar.setText("Acceptar");
         acceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +54,8 @@ public class insertaContra extends javax.swing.JFrame {
             }
         });
 
+        tornar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tornar.setForeground(new java.awt.Color(0, 0, 0));
         tornar.setText("Tornar-hi");
         tornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +87,7 @@ public class insertaContra extends javax.swing.JFrame {
                 .addComponent(acceptar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tornar)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
