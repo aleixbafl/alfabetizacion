@@ -362,15 +362,15 @@ public class families extends javax.swing.JFrame {
                         String contingut = (String) llistaFills.getModel().getElementAt(seleccionat);
                         fillsBD fill = obtenirFills(contingut);
                         if (!fill.getNom().isEmpty()) {
+                            conexioBD bd = new conexioBD();
                             try {
-                                conexioBD bd = new conexioBD();
                                 bd.obrirConexio();
                                 bd.ecjecutarActualitzar("DELETE FROM fills WHERE nom = '" + fill.getNom() + "' AND cognoms = '" + fill.getCognoms() + "';");
                                 DefaultListModel<String> model = (DefaultListModel<String>) llistaFills.getModel();
                                 model.remove(seleccionat);
                                 missatge("S'ha eliminat correctament el fill.");
                             } catch (SQLException ex) {
-                                Logger.getLogger(families.class.getName()).log(Level.SEVERE, null, ex);
+                                missatge(bd.missatgeError(ex.getErrorCode()));
                             }
                         }
                 } else {
