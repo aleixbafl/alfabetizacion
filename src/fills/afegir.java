@@ -306,6 +306,7 @@ public class afegir extends javax.swing.JFrame {
     
     private boolean dniCorrecte(String dni) {
         if (dni.length() != 9) {
+            missatge("El DNI ha de ser compost per 8 números i una lletra al final.");
             return false;
         }
 
