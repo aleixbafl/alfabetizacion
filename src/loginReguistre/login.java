@@ -80,6 +80,7 @@ public class login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Iniciar Sessió");
 
@@ -94,7 +95,8 @@ public class login extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nom Usuari:");
 
@@ -102,12 +104,15 @@ public class login extends javax.swing.JFrame {
         usuari.setToolTipText("Los Simpson");
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Contrasenya:");
 
         contrasenya.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         contrasenya.setToolTipText("Contrasenya1234");
 
+        inicia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        inicia.setForeground(new java.awt.Color(0, 0, 0));
         inicia.setText("Iniciar");
         inicia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +120,8 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        registrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        registrar.setForeground(new java.awt.Color(0, 0, 0));
         registrar.setText("Registrar-se");
         registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

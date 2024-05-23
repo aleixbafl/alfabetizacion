@@ -104,22 +104,27 @@ public class reguistre extends javax.swing.JFrame {
 
         projenitor1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Progenitor 1 (obligatori):");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI:");
 
         dniObligatori.setToolTipText("Ex.: 12345678A");
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nom:");
 
         nomObligatori.setToolTipText("Ex.: Pepe");
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cognom:");
 
         cognomObligatori.setToolTipText("Ex.: Garciá López");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Data Naixement:");
 
         javax.swing.GroupLayout projenitor1Layout = new javax.swing.GroupLayout(projenitor1);
@@ -174,22 +179,27 @@ public class reguistre extends javax.swing.JFrame {
 
         projenitor3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel8.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Progenitor 2 (opcional):");
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("DNI:");
 
         dniOpcional.setToolTipText("Ex.: 12345678A");
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nom:");
 
         nomOpcional.setToolTipText("Ex.: Pepe");
 
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Cognom:");
 
         cognomOpcional.setToolTipText("Ex.: Garciá López");
 
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Data Naixement:");
 
         javax.swing.GroupLayout projenitor3Layout = new javax.swing.GroupLayout(projenitor3);
@@ -246,16 +256,21 @@ public class reguistre extends javax.swing.JFrame {
         jPanel4.setOpaque(false);
         jPanel4.setRequestFocusEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Usuari:");
 
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Nom Usuari:");
 
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Correu Electrònic:");
 
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Contrasenya:");
 
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Confirmar:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -306,6 +321,8 @@ public class reguistre extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        login.setForeground(new java.awt.Color(0, 0, 0));
         login.setText("Ja tinc un compte");
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,6 +330,8 @@ public class reguistre extends javax.swing.JFrame {
             }
         });
 
+        registrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        registrar.setForeground(new java.awt.Color(0, 0, 0));
         registrar.setText("Registrar Compte");
         registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
