@@ -48,10 +48,11 @@ public class JocdeNum extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Joc de Números");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(286, 26, 188, 33);
+        jLabel1.setBounds(286, 26, 185, 32);
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -83,7 +84,7 @@ public class JocdeNum extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(480, 480, 112, 26);
+        jButton2.setBounds(480, 480, 111, 27);
 
         jTextField1.setBackground(new java.awt.Color(0, 0, 0));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,9 +102,10 @@ public class JocdeNum extends javax.swing.JFrame {
             }
         });
         jPanel1.add(tornar);
-        tornar.setBounds(660, 680, 100, 26);
+        tornar.setBounds(660, 680, 100, 27);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Quin és el resultat?");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(460, 370, 203, 20);
@@ -119,7 +121,7 @@ public class JocdeNum extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel6.setText("-");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(381, 206, 12, 50);
+        jLabel6.setBounds(381, 206, 15, 48);
 
         instruccions.setBackground(new java.awt.Color(0, 0, 0));
         instruccions.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -131,7 +133,7 @@ public class JocdeNum extends javax.swing.JFrame {
             }
         });
         jPanel1.add(instruccions);
-        instruccions.setBounds(500, 680, 130, 26);
+        instruccions.setBounds(500, 680, 130, 27);
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -150,6 +152,7 @@ public class JocdeNum extends javax.swing.JFrame {
         jPanel2.setBounds(220, 10, 340, 60);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Operacions contestades:");
         jLabel4.setToolTipText("");
         jPanel1.add(jLabel4);

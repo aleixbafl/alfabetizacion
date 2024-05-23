@@ -63,13 +63,14 @@ public class BuscaNumeros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(30, 690, 100, 26);
+        jButton1.setBounds(30, 690, 100, 27);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Joc dels Daus");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(290, 50, 147, 33);
+        jLabel1.setBounds(290, 50, 152, 32);
 
         imagendado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Alea_6.png"))); // NOI18N
         jPanel1.add(imagendado1);
@@ -103,11 +104,13 @@ public class BuscaNumeros extends javax.swing.JFrame {
         numeroIntroduit.setBounds(440, 470, 250, 50);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Quin és el resultat de la suma?");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(410, 430, 340, 26);
+        jLabel2.setBounds(410, 430, 340, 25);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Resultat:");
         jLabel3.setToolTipText("");
         jPanel1.add(jLabel3);
@@ -123,12 +126,12 @@ public class BuscaNumeros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(valida);
-        valida.setBounds(500, 540, 120, 26);
+        valida.setBounds(500, 540, 120, 27);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setText("+");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(340, 246, 21, 50);
+        jLabel4.setBounds(340, 246, 25, 50);
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -140,7 +143,7 @@ public class BuscaNumeros extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(150, 690, 120, 26);
+        jButton5.setBounds(150, 690, 120, 27);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -200,6 +203,7 @@ public class BuscaNumeros extends javax.swing.JFrame {
         } else {
             try {
                 int numInt = Integer.parseInt(numeroIntroduit.getText());
+                System.out.println(respuestasCorrectas.length + " | " + contadorJuegos);
                 if (numInt == sumaDados) {
                     jLabel3.setText("Resultat: Número correcte!");
                     respuestasCorrectas[contadorJuegos] = true;
