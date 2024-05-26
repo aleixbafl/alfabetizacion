@@ -316,7 +316,7 @@ public class BuscaNumeros extends javax.swing.JFrame {
         try {
             conexio.ecjecutarActualitzar("INSERT INTO `activitatRealitzat`(`dniFill`, `nota`, `tipo`, `comtingutActiv`) VALUES ('" + fill.getDni() + "','" + c + "','Números - Sumar Daus','" + numeros + "');");
         } catch (SQLException ex) {
-            missatge(conexio.missatgeError(ex));
+            missatge(conexio.missatgeError(ex.getErrorCode()));
             conexio.tancaConexio();
         }
         missatge("S'ha guardat correctament la nota de l'activitat.");
