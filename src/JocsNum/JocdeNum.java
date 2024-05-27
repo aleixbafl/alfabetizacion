@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import menunumeros.menujocsnumeros;
 import panells.families;
+import serverConexio.conexioBD;
 
 public class JocdeNum extends javax.swing.JFrame {
 
@@ -17,7 +18,8 @@ public class JocdeNum extends javax.swing.JFrame {
     public int puntuacion;
     private int contadorJuegos = 0;
     private boolean[] respuestasCorrectas = new boolean[10];
-
+    private String contingutfill = "";
+ 
     public JocdeNum() {
         initComponents();
         puntuacion = 0;
@@ -221,7 +223,12 @@ public class JocdeNum extends javax.swing.JFrame {
                 // Actualizar la etiqueta de imagen solo es necesario si las imágenes no coinciden con el valor
                 imagen1.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num1 + ".png")));
                 imagen2.setIcon(new ImageIcon(getClass().getResource("/imagenes2/un" + num2 + ".png")));
-
+                
+                if (contingutfill.isEmpty()){
+                    contingutfill = "(" + num1 + "-" + num2 + "=" + restaNum + ")";
+                }else{
+                    contingutfill = contingutfill + " | " + " (" + num1 + "-" + num2 + "=" + restaNum + ")"; 
+                }
             } else {
                 mostrarPuntuacion();
             }
@@ -235,9 +242,18 @@ public class JocdeNum extends javax.swing.JFrame {
                 respuestasCorrectasCount++;
             }
         }
+        
         JOptionPane.showMessageDialog(this, "Tu puntuación es: " + respuestasCorrectasCount + "/10");
+        conexioBD conexio = new conexioBD();
+        conexio.obrirConexio();
+        String missatgeText = conexio.guardarNota(respuestasCorrectasCount, contingutfill, "Numero - Resta");
+        if (!missatgeText.isEmpty()) {
+            //mostrarli a l'usuari el missatge d'error
+        }
         reiniciarJuego();
+        
     }
+    
 
     private void reiniciarJuego() {
         contadorJuegos = 0;
@@ -285,6 +301,8 @@ public class JocdeNum extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imagen1;
